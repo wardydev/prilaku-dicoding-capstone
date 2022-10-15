@@ -1,0 +1,11 @@
+@import "../../styles/variables.module.scss";
+
+.button {
+    background: $primary-color;
+}
+.heading {
+    font-size: 72px;
+  background: $primary-color;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
