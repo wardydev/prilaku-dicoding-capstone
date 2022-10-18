@@ -3,9 +3,47 @@
 .button {
     background: $primary-color;
 }
-.heading {
-    font-size: 72px;
+.gradientText {
+  font-weight: 600;
   background: $primary-color;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.main {
+  background-color: $dark-color;
+  min-height: 100vh;
+  .container {
+    width: 55%;
+    margin: 0rem auto;
+    margin-top: 6rem;
+  
+    form {
+      .inputForm {
+        width: 100%;
+        padding: 0.65rem 1rem;
+        border-radius: 2rem;
+        outline: none;
+        border: 2px solid $light-color;
+        background: none;
+        color: white;
+  
+        &:focus {
+          border: 2px solid rgba(0,153,247,1);
+        }
+      }
+    }
+  }
+
+  .buttonLogin {
+    padding: 0.65rem 1rem;
+    border-radius: 2rem;
+    color: white;
+    background: $primary-color;
+    transition: 0.3s;
+    &:hover {
+      background: $primary-color-shadow;
+    }
+  }
+
 }
