@@ -40,7 +40,12 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ userAuthenticated, handleFacebookLogin, handleLoginWithGoogle }}
+      value={{
+        userAuthenticated,
+        setUserAuthenticated,
+        handleFacebookLogin,
+        handleLoginWithGoogle,
+      }}
     >
       {children}
     </AuthContext.Provider>

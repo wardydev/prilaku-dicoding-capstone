@@ -1,14 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { IoLogoGoogle, IoLogoFacebook } from "react-icons/io5";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import styles from "./login.module.scss";
 import Button from "../../src/components/Button";
 import { AuthContext } from "../../src/context/AuthProvider";
+import { getUserInfo } from "../../src/utils/functions";
 
 const Login = () => {
-  const { handleFacebookLogin, handleLoginWithGoogle } =
+  const { handleFacebookLogin, handleLoginWithGoogle, userAuthenticated } =
     useContext(AuthContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    const userParsed = JSON.parse(getUserInfo());
+    if (userAuthenticated || userParsed) {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <div className={`${styles.main} row text-light`}>
       <div className="col-lg-6 col-12">
@@ -47,7 +58,7 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="d-grid gap-2">
+            <div className="d-grid gap-2 mt-4">
               <button className={styles.buttonLogin}>Login</button>
             </div>
           </form>
