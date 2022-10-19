@@ -8,8 +8,6 @@ const Home = () => {
   const { userAuthenticated } = useContext(AuthContext);
   const router = useRouter();
 
-  console.log(userAuthenticated);
-
   useEffect(() => {
     const userParsed = JSON.parse(getUserInfo());
     if (userAuthenticated || userParsed) {
