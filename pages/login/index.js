@@ -1,17 +1,49 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoLogoGoogle, IoLogoFacebook } from "react-icons/io5";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import styles from "./login.module.scss";
 import Button from "../../src/components/Button";
 import { AuthContext } from "../../src/context/AuthProvider";
-import { getUserInfo } from "../../src/utils/functions";
+import { getUserInfo, putUserInfo } from "../../src/utils/functions";
+import { auth } from "../../src/config/firebase";
 
 const Login = () => {
-  const { handleFacebookLogin, handleLoginWithGoogle, userAuthenticated } =
-    useContext(AuthContext);
+  const initialState = {
+    email: "",
+    password: "",
+  };
+  const [value, setValue] = useState(initialState);
+  const {
+    handleFacebookLogin,
+    handleLoginWithGoogle,
+    userAuthenticated,
+    setUserAuthenticated,
+  } = useContext(AuthContext);
   const router = useRouter();
+
+  const handleInputChange = (e) => {
+    setValue({
+      ...value,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleLoginWithEmailPassword = async (e) => {
+    e.preventDefault();
+    try {
+      const { email, password } = value;
+      const res = await signInWithEmailAndPassword(auth, email, password);
+      const { accessToken } = await res.user;
+      setUserAuthenticated(accessToken);
+      putUserInfo(JSON.stringify(accessToken));
+      router.push("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const userParsed = JSON.parse(getUserInfo());
@@ -33,7 +65,7 @@ const Login = () => {
               </Link>
             </p>
           </div>
-          <form className="mb-4">
+          <form className="mb-4" onSubmit={handleLoginWithEmailPassword}>
             <div className="mb-3 d-flex flex-column">
               <label htmlFor="email" className="mb-1">
                 Email
@@ -44,6 +76,9 @@ const Login = () => {
                 placeholder="email@gmail.com"
                 className={styles.inputForm}
                 required
+                name="email"
+                value={value.email}
+                onChange={handleInputChange}
               />
             </div>
             <div className="mb-3 d-flex flex-column">
@@ -56,6 +91,9 @@ const Login = () => {
                 placeholder="Input your password"
                 className={styles.inputForm}
                 required
+                name="password"
+                value={value.password}
+                onChange={handleInputChange}
               />
             </div>
             <div className="d-grid gap-2 mt-4">
