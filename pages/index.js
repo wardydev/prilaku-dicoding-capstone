@@ -2,10 +2,14 @@ import React, { useEffect, useContext, useState } from "react";
 import { useRouter } from "next/router";
 import { onAuthStateChanged } from "firebase/auth";
 import Head from "next/head";
+import { BiCategoryAlt } from "react-icons/bi";
 
 import { getUserInfo } from "../src/utils/functions";
 import { AuthContext } from "../src/context/AuthProvider";
 import { auth } from "../src/config/firebase";
+import Layout from "../src/components/Layout";
+import Banner from "../src/components/Banner";
+import CardWithHeading from "../src/components/CardWithHeading";
 
 const Home = () => {
   const { userAuthenticated } = useContext(AuthContext);
@@ -35,10 +39,19 @@ const Home = () => {
           procuts
         </title>
       </Head>
-      <h1>
-        Welcome back{" "}
-        {user?.displayName !== null ? user?.displayName : user?.email}
-      </h1>
+      <Layout>
+        <Banner />
+        <CardWithHeading
+          icon={<BiCategoryAlt size="30" />}
+          headingTitle="Top Categories"
+          column={4}
+          isViewAll={true}
+        />
+        <h1>
+          Welcome back{" "}
+          {user?.displayName !== null ? user?.displayName : user?.email}
+        </h1>
+      </Layout>
     </div>
   );
 };
