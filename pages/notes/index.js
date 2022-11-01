@@ -196,11 +196,6 @@ const Notes = () => {
             return (
               <div className="col-3" key={note.id}>
                 <div className="card bg-dark">
-                  <img
-                    src={note.data.noteImage}
-                    class="card-img-top"
-                    alt={note.data.title}
-                  />
                   <div className="card-body">
                     <h5 className="card-title">{note.data.title}</h5>
                     <p className="card-text">{note.data.description}</p>
