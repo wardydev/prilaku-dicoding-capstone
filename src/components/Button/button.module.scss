@@ -1,0 +1,22 @@
+@import "../../../styles/variables.module.scss";
+
+.buttonFill {
+    border-radius: 2rem;
+    color: $light-color;
+    background: $primary-color;
+    transition: 0.3s;
+    &:hover {
+      background: $primary-color-shadow;
+    }
+}
+.buttonOutline {
+    border-radius: 2rem;
+    color: $light-color;
+    border: 1.65px solid rgb(140, 139, 139);
+    background: transparent;
+    transition: 0.3s;
+    &:hover {
+      color: rgb(185, 174, 174);
+      border: 1.75px solid rgb(185, 174, 174);
+    }
+}
