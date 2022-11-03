@@ -51,7 +51,7 @@ setelah pekerjaan selesai dan sudah melakukan pull, langkah terahir push
 
 <ul>
   <li>caranya tinggal git push aja</li>
-<ul>
+</ul>
 
 ```
   git push
@@ -64,7 +64,7 @@ nah setelah langkah-langkah diatas telah dilakukan, sebenarnya udah selesai, sed
 
 <ul>
   <li>yang pertama setelah melakukan push, checkout kembali ke branch main (git checkout main)</li>
-<ul>
+</ul>
 
 ```
 git checkout main
@@ -72,7 +72,7 @@ git checkout main
 
 <ul>
   <li>kemudian lakukan git pull kembali dengan cara (git pull origin main)</li>
-<ul>
+</ul>
 
 ```
 git pull origin main
@@ -80,7 +80,7 @@ git pull origin main
 
 <ul>
   <li>dan langkah terahir adalah hapus branch yang telah di kerjakan jika dirasa pekerjaan yang telah di push sudah benar dan tidak ada yang perlu diperbaiki lagi</li>
-<ul>
+</ul>
 
 Kalo dibaca sampe abis bener-bener gabut sih kalian awkwk
 
