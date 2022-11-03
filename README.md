@@ -1,8 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+## CLONE PROJECT
+
+Langkah pertama yang harus dilakukan adalah clone project, caranya adalah:
+<ul>
+  <li>buat folder terlebih dahulu di laptop teman-teman</li>
+</ul>
 
 ```bash
 npm run dev
@@ -10,25 +13,83 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<ul>
+  <li>setelah berhasil di clone, JANGAN LUPA UNTUK NPM INSTALL agar node_modules nya dapat terpasang dan packagenya bisa berjalan dengan baikn</li>
+</ul>
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<ul>
+  <li> baca langkah berikutnya ya guys</li>
+</ul>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## SEBELUM MENGERJAKAN TASK
+sebelum mengerjakan task (yang nanti akan kita bahas bersama di grup)
+silahkan cek menu bagian issues di github teman teman, disana tempat melihat tugas apa yang akan dikerjakan bagi masing-masing orang
 
-## Learn More
+bentar lagi slese tulisanya nih, sabar
 
-To learn more about Next.js, take a look at the following resources:
+## CARA MENGERJAKAN TASK
+(mungkin udah pada tau caranya, tapi saya tulis aja)
+Langkah pertama yang harus dilakukan antara lain adalah:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<ul>
+  <li>membuat branch di akun github teman-teman formatnya seperti ini (1-nama-task), ganti nomer sesuai urutan tasknya ya guys</li>
+  <li>kemudian checkout ke branch yang telah dibuat melalui terminal (git checkout nama_branch)</li>
+  <li>gass ngoding sesuai tugas</li>
+  <li>INI PENTING UNTUK MENGHINDARI TERJADINYA CONFLICT, (LAKUKAN GIT PULL TERLEBIH DAHULU SEBELUM MENGIRIM/PUSH PEKERJAANYA YA GUYS), caranya adalah (git pull origin main)
+	tujuanya adalah barangkali ada tmen yang lain yang sudah ngepush jadi perlu kita sejajari dulu timelinenya sehingga ketika kita ngepush tidak terjadi error</li>
+</ul>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+satu langkah lagi guys
 
-## Deploy on Vercel
+## CARA SUBMIT TASK
+(gampang kok ini)
+setelah pekerjaan selesai dan sudah melakukan pull, langkah terahir push
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<ul>
+  <li>caranya tinggal git push aja</li>
+<ul>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+  git push
+```
+
+tinggal sedikit aja
+
+## TERUS APA SETELAH ITU?
+nah setelah langkah-langkah diatas telah dilakukan, sebenarnya udah selesai, sedikit aja yang perlu dilakukan lagi
+
+<ul>
+  <li>yang pertama setelah melakukan push, checkout kembali ke branch main (git checkout main)</li>
+<ul>
+
+```
+git checkout main
+```
+
+<ul>
+  <li>kemudian lakukan git pull kembali dengan cara (git pull origin main)</li>
+<ul>
+
+```
+git pull origin main
+```
+
+<ul>
+  <li>dan langkah terahir adalah hapus branch yang telah di kerjakan jika dirasa pekerjaan yang telah di push sudah benar dan tidak ada yang perlu diperbaiki lagi</li>
+<ul>
+
+Kalo dibaca sampe abis bener-bener gabut sih kalian awkwk
+
+
+
+
+
+
+
+
+
+
