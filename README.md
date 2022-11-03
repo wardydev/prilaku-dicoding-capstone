@@ -8,9 +8,7 @@ Langkah pertama yang harus dilakukan adalah clone project, caranya adalah:
 </ul>
 
 ```bash
-npm run dev
-# or
-yarn dev
+git clone https://github.com/wardydev/prilaku-dicoding-capstone.git
 ```
 
 <ul>
