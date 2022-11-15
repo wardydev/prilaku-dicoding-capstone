@@ -1,0 +1,25 @@
+.sidebar {
+    width: 320px;
+    height: 100vh;
+    padding: 3rem 0 3rem 3rem;
+    border-radius: 0 1rem 1rem 0;
+    background-color: rgb(50, 50, 50);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+    .logoContainer {
+        margin-bottom: 2rem;
+    }
+
+    .menusContainer {
+        height: 75vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+.childrenContainer {
+    margin-left: 350px;
+}
