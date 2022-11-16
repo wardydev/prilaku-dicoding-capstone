@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-calendar/dist/Calendar.css";
 
 import "../styles/globals.css";
 import AuthProvider from "../src/context/AuthProvider";
