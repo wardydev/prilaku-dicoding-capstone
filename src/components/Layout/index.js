@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import ListMenu from "../ListMenu";
 import Logo from "../Logo";
 import styles from "./Layout.module.scss";
 import { routes } from "../../routes";
+import { useRouter } from "next/router";
 
 const Layout = ({ children }) => {
-  const [listMenuActive, setListMenuActive] = useState(1);
+  const router = useRouter();
+
+  const handleRouteClick = (path) => {
+    router.push(path);
+  };
+
   return (
     <>
       <div className={styles.sidebar}>
@@ -16,12 +22,17 @@ const Layout = ({ children }) => {
           <div className={styles.menuContainer}>
             {routes.map((route) => {
               return (
-                <div key={route.id} onClick={() => setListMenuActive(route.id)}>
+                <div
+                  key={route.id}
+                  onClick={() => handleRouteClick(route.path)}
+                >
                   <ListMenu
                     menu={route.routeName}
                     iconName={route.iconName}
                     path={route.path}
-                    isActive={route.id === listMenuActive ? true : false}
+                    isActive={
+                      router.pathname === "/" + route.path ? true : false
+                    }
                   />
                 </div>
               );
