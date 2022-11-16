@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "./ButtonCustom.module.scss";
 
-const ButtonCustom = ({ title, isIcon = false, size = "normal" }) => {
+const ButtonCustom = ({
+  title,
+  isIcon = false,
+  size = "normal",
+  iconName,
+  isFullWidth,
+}) => {
   let btnSize;
   switch (size) {
     case "normal":
@@ -11,8 +17,8 @@ const ButtonCustom = ({ title, isIcon = false, size = "normal" }) => {
       btnSize = styles.btnLarge;
   }
   return (
-    <button className={btnSize}>
-      {isIcon && <ion-icon name="add"></ion-icon>}
+    <button className={isFullWidth ? styles.btnNormalFull : btnSize}>
+      {isIcon && <ion-icon name={iconName}></ion-icon>}
       <span className="ms-1">{title}</span>
     </button>
   );
