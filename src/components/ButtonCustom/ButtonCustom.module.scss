@@ -7,9 +7,11 @@
     color: white;
     font-weight: 500;
     border: none;
+    opacity: 1;
 
     &:hover {
         background-color: #d9d9d95d;
+        opacity: 0.8;
     }
 }
 .btnNormalFull {
@@ -23,9 +25,11 @@
     font-weight: 500;
     border: none;
     width: 100%;
+    opacity: 1;
 
     &:hover {
         background-color: #f5f0f05d;
+        opacity: 0.8;
     }
 }
 .btnLarge {
@@ -37,8 +41,10 @@
     color: white;
     font-weight: 500;
     border: none;
+    opacity: 1;
 
     &:hover {
         background-color: #d9d9d95d;
+        opacity: 0.8;
     }
 }

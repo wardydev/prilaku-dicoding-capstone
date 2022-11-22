@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import AtTime from "../../src/components/AtTime";
 import ButtonCustom from "../../src/components/ButtonCustom";
 import CalendarComponent from "../../src/components/CalendarComponent";
+import FormHabbit from "../../src/components/FormHabbit";
 import HabbitCard from "../../src/components/HabbitCard";
 import Header from "../../src/components/Header";
 import Heading from "../../src/components/Heading";
 import Layout from "../../src/components/Layout";
+import Modal from "../../src/components/Modal";
 
 const Home = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <Layout>
+      {showModal && (
+        <Modal>
+          <FormHabbit />
+        </Modal>
+      )}
       <div className="row my-4">
         <div className="col-7 ms-auto">
           <Header
@@ -25,6 +34,7 @@ const Home = () => {
               isIcon={true}
               size="normal"
               iconName="add"
+              handlePress={() => setShowModal(true)}
             />
           </div>
           <div className="mt-3">
@@ -43,47 +53,8 @@ const Home = () => {
             <Heading title="Date" />
             <CalendarComponent />
           </div>
-          <div>
-            <Heading title="At Time" />
-            <div className="row">
-              <div className="col-6 mb-3">
-                <ButtonCustom
-                  title="All"
-                  isIcon={true}
-                  size="normal"
-                  iconName="home"
-                  isFullWidth={true}
-                />
-              </div>
-              <div className="col-6 mb-3">
-                <ButtonCustom
-                  title="Morning"
-                  isIcon={true}
-                  size="normal"
-                  iconName="home"
-                  isFullWidth={true}
-                />
-              </div>
-              <div className="col-6 mb-3">
-                <ButtonCustom
-                  title="Evening"
-                  isIcon={true}
-                  size="normal"
-                  iconName="home"
-                  isFullWidth={true}
-                />
-              </div>
-              <div className="col-6 mb-3">
-                <ButtonCustom
-                  title="Afternoon"
-                  isIcon={true}
-                  size="normal"
-                  iconName="home"
-                  isFullWidth={true}
-                />
-              </div>
-            </div>
-          </div>
+          <Heading title="At Time" />
+          <AtTime />
         </div>
       </div>
     </Layout>

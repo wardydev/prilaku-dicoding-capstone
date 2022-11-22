@@ -1,0 +1,27 @@
+.main {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background-color: #191919;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    .closeIcon {
+        position: absolute;
+        top: 50px;
+        left: 120px;
+        cursor: pointer;
+        background-color: #ffffff06;
+        border-radius: 50%;
+        padding: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+            background-color: #ffffff27;
+        }
+    }
+}
