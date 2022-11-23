@@ -1,7 +1,6 @@
-/* ::placeholder {
-  color: rgba(199, 199, 199, 0.386) !important;
-  font-size: medium;
-} */
+::placeholder {
+  color: rgb(156, 156, 156) !important;
+}
 
 html,
 body {

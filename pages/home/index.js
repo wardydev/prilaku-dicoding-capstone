@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AtTime from "../../src/components/AtTime";
+
 import ButtonCustom from "../../src/components/ButtonCustom";
 import CalendarComponent from "../../src/components/CalendarComponent";
 import FormHabbit from "../../src/components/FormHabbit";
@@ -15,7 +15,7 @@ const Home = () => {
     <Layout>
       {showModal && (
         <Modal>
-          <FormHabbit />
+          <FormHabbit setShowModal={setShowModal} showModal={showModal} />
         </Modal>
       )}
       <div className="row my-4">
@@ -54,7 +54,7 @@ const Home = () => {
             <CalendarComponent />
           </div>
           <Heading title="At Time" />
-          <AtTime />
+          {/* <AtTime /> */}
         </div>
       </div>
     </Layout>
