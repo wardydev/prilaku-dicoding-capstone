@@ -152,18 +152,18 @@ ion-icon {
 
 .landing__header__nav a {
   padding: 8px 16px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .landing__header__nav a:hover {
   color: #f58349;
 }
 
-.landing__header__nav .btnLogin {
+.landing__header__nav .btn-login {
   background-color: #e05c1a;
 }
 
-.landing__header__nav .btnLogin:hover {
+.landing__header__nav .btn-login:hover {
   color: #fff;
   background-color: #d44c08;
 }
@@ -188,7 +188,7 @@ ion-icon {
 }
 
 .landing__hero__subtitle {
-  color: #71717a;
+  color: #919199;
 }
 
 .landing__hero__cta {
@@ -200,4 +200,72 @@ ion-icon {
 .landing__hero__cta:hover {
   color: #fff;
   background-color: #d44c08;
+}
+
+.landing__image {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(138deg, #f58349, #f5a549);
+  border-radius: 4px;
+  backdrop-filter: blur(1px);
+}
+
+.landing__image > div {
+  max-width: 1000px;
+  padding: 3rem 1.5rem;
+}
+
+.landing__image img {
+  border-radius: 4px;
+  width: 100%;
+  box-shadow: #2c2c2c 2px 2px 10px;
+}
+
+.landing__feature {
+  margin: 10rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing__feature > * {
+  max-width: 800px;
+}
+
+.landing__feature > .title {
+  font-size: 2.6rem;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+}
+
+.landing__feature > .subtitle {
+  color: #919199;
+  font-size: 1.2rem;
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
+.landing__feature .row {
+  padding: 0 0.8rem;
+}
+
+.landing__feature__card {
+  border: 2px solid #3f3f46;
+  border-radius: 4px;
+  padding: 0;
+  padding: 16px;
+}
+
+.landing__feature__card > * {
+  margin: 0;
+}
+
+.landing__feature__card .title {
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.landing__feature__card .body {
+  color: #919199;
 }
