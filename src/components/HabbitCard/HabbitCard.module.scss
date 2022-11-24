@@ -3,7 +3,7 @@
     align-items: center;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
+    margin-bottom: 28px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
@@ -36,7 +36,7 @@
   }
   
   .wrapper:hover .input ~ .checkmark {
-    background-color: rgba(204, 204, 204, 0.258);
+    background-color: #cccccc42;
   }
   
   .wrapper .input:checked ~ .checkmark {
@@ -63,4 +63,32 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+
+  .link {
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+    &:hover {
+      border-bottom: 2px solid white;
+      cursor: pointer;
+    }
+  }
+
+  .options {
+    position: absolute;
+    min-width: 150px;
+    min-height: 100px;
+    background-color: #FFFFFF;
+    top: 22px;
+    right: -6px;
+    border-radius: 8px;
+    z-index: 99;
+
+    .menuOption {
+      color: rgb(65, 60, 60);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.13);
+        border-radius: 8px;
+      }
+    }
   }

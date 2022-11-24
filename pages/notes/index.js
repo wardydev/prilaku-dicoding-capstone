@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { db, auth, storage } from "../../src/config/firebase";
+import { db, auth } from "../../src/config/firebase";
 import {
   collection,
   addDoc,
   Timestamp,
   query,
-  orderBy,
   onSnapshot,
   deleteDoc,
   updateDoc,
@@ -13,7 +12,6 @@ import {
   where,
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const Notes = () => {
   let initialState = {
