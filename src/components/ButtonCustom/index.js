@@ -6,7 +6,9 @@ const ButtonCustom = ({
   isIcon = false,
   size = "normal",
   iconName,
-  isFullWidth,
+  isFullWidth = false,
+  handlePress,
+  color = "#d9d9d931",
 }) => {
   let btnSize;
   switch (size) {
@@ -15,9 +17,14 @@ const ButtonCustom = ({
       break;
     case "large":
       btnSize = styles.btnLarge;
+      break;
   }
   return (
-    <button className={isFullWidth ? styles.btnNormalFull : btnSize}>
+    <button
+      className={isFullWidth ? styles.btnNormalFull : btnSize}
+      onClick={handlePress}
+      style={{ backgroundColor: color }}
+    >
       {isIcon && <ion-icon name={iconName}></ion-icon>}
       <span className="ms-1">{title}</span>
     </button>

@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
-
 html,
 body {
   background-color: #191919 !important;
@@ -122,7 +121,8 @@ ion-icon {
   background-color: #75757568;
 }
 .react-calendar__tile--now {
-  color: #ff844b !important;
+
+  /* color: #FF844B !important; */
 }
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
@@ -138,10 +138,14 @@ ion-icon {
 .react-calendar__tile--active {
   color: rgb(255, 238, 0);
 }
-.react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-  /* background: #ffff76; */
+.react-calendar__tile--active:enabled {
+  color: white !important;
+  background-color: #1AB0B0;
 }
+/* .react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #ffff76;
+} */
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
