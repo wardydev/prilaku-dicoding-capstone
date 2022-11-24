@@ -8,9 +8,10 @@ const Home = () => {
       <div className="landing__header py-4 d-flex align-items-center justify-content-between">
         <Logo />
         <div className="landing__header__nav d-flex gap-2">
-          <a href="#">Home</a>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
           <a href="#">Blog</a>
-          <a href="#">Guide</a>
           <a href="#">About</a>
           <Link href="/login">
             <a className="btn-login">Login</a>
@@ -25,7 +26,7 @@ const Home = () => {
         <p className="landing__hero__subtitle">
           Prilaku let's you simply track your habits.
         </p>
-        <Link href="/home">
+        <Link href="/login">
           <a className="landing__hero__cta">Go to the app</a>
         </Link>
       </div>
@@ -61,6 +62,25 @@ const Home = () => {
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="landing__get-started">
+        <p className="title">Get started with Prilaku today</p>
+        <p className="subtitle">
+          Prilaku keeps your habits organized. Start tracking habit today!
+        </p>
+        <Link href="/login">
+          <a className="landing__hero__cta">Go to the app</a>
+        </Link>
+      </div>
+
+      <div className="landing__footer d-flex flex-column gap-2 align-items-center flex-md-row justify-content-md-between">
+        <div className="brand">
+          <Logo width="30" />
+          <p>Prilaku</p>
+        </div>
+
+        <p>@ 2022 Prilaku. All rights reserved.</p>
       </div>
     </div>
   );

@@ -269,3 +269,49 @@ ion-icon {
 .landing__feature__card .body {
   color: #919199;
 }
+
+.landing__get-started {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 10rem;
+}
+
+.landing__get-started > * {
+  max-width: 700px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.landing__get-started .title {
+  font-size: 4rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.landing__get-started .subtitle {
+  color: #919199;
+  line-height: 1;
+  padding: 1rem 0;
+}
+
+.landing__footer {
+  border-top: 2px solid #3f3f46;
+  padding: 1.6rem;
+}
+
+.landing__footer * {
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 0;
+}
+
+.landing__footer .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.landing__footer > p {
+  color: #919199;
+}
