@@ -1,8 +1,14 @@
-function putUserInfo(userInfo) {
-  return localStorage.setItem("userInfo", userInfo);
+function putJsonToken(token) {
+  return localStorage.setItem("TOKEN", token);
+}
+function getJsonToken() {
+  return localStorage.getItem("TOKEN");
+}
+function putUserInfo(users) {
+  return localStorage.setItem("DATAUSERS", users);
 }
 function getUserInfo() {
-  return localStorage.getItem("userInfo");
+  return localStorage.getItem("DATAUSERS");
 }
 
 function formatDate(date) {
@@ -14,4 +20,4 @@ function formatDate(date) {
   });
 }
 
-export { putUserInfo, getUserInfo, formatDate };
+export { putJsonToken, getJsonToken, formatDate, putUserInfo, getUserInfo };

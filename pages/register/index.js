@@ -8,7 +8,7 @@ import Button from "../../src/components/Button";
 import styles from "./register.module.scss";
 import { AuthContext } from "../../src/context/AuthProvider";
 import { auth } from "../../src/config/firebase";
-import { getUserInfo, putUserInfo } from "../../src/utils/functions";
+import { putJsonToken, putUserInfo } from "../../src/utils/functions";
 
 const Register = () => {
   const initialState = {
@@ -17,12 +17,8 @@ const Register = () => {
     confirmPassword: "",
   };
   const [value, setValue] = useState(initialState);
-  const {
-    handleFacebookLogin,
-    handleLoginWithGoogle,
-    setUserAuthenticated,
-    userAuthenticated,
-  } = useContext(AuthContext);
+  const { handleFacebookLogin, handleLoginWithGoogle } =
+    useContext(AuthContext);
   const router = useRouter();
 
   const handleInputValueChange = (e) => {
@@ -41,22 +37,15 @@ const Register = () => {
       try {
         const { email, password } = value;
         const res = await createUserWithEmailAndPassword(auth, email, password);
-        const { accessToken } = await res.user;
-        setUserAuthenticated(accessToken);
-        putUserInfo(JSON.stringify(accessToken));
+        const { accessToken } = res.user;
+        putUserInfo(JSON.stringify(res));
+        putJsonToken(JSON.stringify(accessToken));
         router.push("/");
       } catch (err) {
         console.log(err);
       }
     }
   };
-
-  useEffect(() => {
-    const userParsed = JSON.parse(getUserInfo());
-    if (userAuthenticated || userParsed) {
-      router.push("/");
-    }
-  }, []);
 
   return (
     <div className={`${styles.main} row text-light`}>

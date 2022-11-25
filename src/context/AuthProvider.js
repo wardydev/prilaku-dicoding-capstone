@@ -7,19 +7,18 @@ import {
   auth,
   googleProvider,
 } from "../../src/config/firebase";
-import { putUserInfo } from "../../src/utils/functions";
+import { putJsonToken, putUserInfo } from "../../src/utils/functions";
 
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
-  const [userAuthenticated, setUserAuthenticated] = useState();
   const router = useRouter();
 
   const handleFacebookLogin = async () => {
     try {
       const res = await signInWithPopup(auth, facebookProvider);
-      const { accessToken } = await res.user;
-      setUserAuthenticated(accessToken);
-      putUserInfo(JSON.stringify(accessToken));
+      const { accessToken } = res.user;
+      putJsonToken(JSON.stringify(accessToken));
+      putUserInfo(JSON.stringify(res));
       router.push("/");
     } catch (err) {
       console.log(err);
@@ -29,9 +28,9 @@ const AuthProvider = ({ children }) => {
   const handleLoginWithGoogle = async () => {
     try {
       const res = await signInWithPopup(auth, googleProvider);
-      const { accessToken } = await res.user;
-      setUserAuthenticated(accessToken);
-      putUserInfo(JSON.stringify(accessToken));
+      const { accessToken } = res.user;
+      putJsonToken(JSON.stringify(accessToken));
+      putUserInfo(JSON.stringify(res));
       router.push("/");
     } catch (err) {
       console.log(err);
@@ -41,8 +40,6 @@ const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        userAuthenticated,
-        setUserAuthenticated,
         handleFacebookLogin,
         handleLoginWithGoogle,
       }}
