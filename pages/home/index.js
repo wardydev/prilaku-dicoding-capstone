@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 
 import { db } from "../../src/config/firebase";
 import ButtonCustom from "../../src/components/ButtonCustom";
@@ -18,21 +24,24 @@ const Home = () => {
   const [isShowDetailUpdate, setIsShowDetailUpdate] = useState(false);
   const [habbits, setHabbits] = useState([]);
   const [dataDetailHabbit, setDataDetailHabbit] = useState(null);
+  const [habbitsDateActive, setHabbitsDateActive] = useState(new Date());
 
   const getHabbitDataFromFirestore = async () => {
     try {
-      const q = query(
-        collection(db, "habbits"),
-        where("isDone", "==", false),
-        where("uid", "==", "wardy")
-      );
+      const q = query(collection(db, "habbits"), where("uid", "==", "wardy"));
       onSnapshot(q, (querySnapshot) => {
-        setHabbits(
-          querySnapshot.docs.map((doc) => ({
+        const snapshots = querySnapshot.docs
+          .map((doc) => ({
             id: doc.id,
             data: doc.data(),
           }))
-        );
+          .filter((habbitByDate) => {
+            return (
+              habbitByDate.data.date.toDate().getDate() ===
+              habbitsDateActive.getDate()
+            );
+          });
+        setHabbits(snapshots);
       });
     } catch (err) {
       console.log(err);
@@ -41,7 +50,7 @@ const Home = () => {
 
   useEffect(() => {
     getHabbitDataFromFirestore();
-  }, []);
+  }, [habbits, habbitsDateActive]);
 
   const updateHabbit = (data) => {
     setDataDetailHabbit(data);
@@ -60,12 +69,13 @@ const Home = () => {
         <DetailHabbit
           setValue={setIsShowDetailUpdate}
           dataDetailHabbit={dataDetailHabbit}
+          setShowModal={setShowModal}
         />
       )}
       <div className="row my-4">
         <div className="col-7 ms-auto">
           <Header
-            title={formatDate(new Date())}
+            title={formatDate(habbitsDateActive)}
             imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Joko_Widodo_2019_official_portrait.jpg/1200px-Joko_Widodo_2019_official_portrait.jpg"
           />
         </div>
@@ -84,27 +94,35 @@ const Home = () => {
               }}
             />
           </div>
-          {habbits?.map((habbit) => {
-            return (
-              <div className="mt-3 position-relative" key={habbit.id}>
-                <HabbitCard
-                  title={habbit.data.name}
-                  iconName={habbit.data.icon}
-                  color={habbit.data.color}
-                  setValue={setIsShowDetailUpdate}
-                  setDataDetail={setDataDetailHabbit}
-                  data={habbit}
-                  deleteHabbitById={() => deleteHabbit("habbits", habbit.id)}
-                  handleUpdateHabbit={() => updateHabbit(habbit)}
-                />
-              </div>
-            );
-          })}
+          {habbits.length === 0 ? (
+            <h1>Tidak ada habbit hari ini</h1>
+          ) : (
+            habbits?.map((habbit) => {
+              return (
+                <div className="mt-3 position-relative" key={habbit.id}>
+                  <HabbitCard
+                    title={habbit.data.name}
+                    iconName={habbit.data.icon}
+                    color={habbit.data.color}
+                    setValue={setIsShowDetailUpdate}
+                    setDataDetail={setDataDetailHabbit}
+                    data={habbit}
+                    deleteHabbitById={() => deleteHabbit("habbits", habbit.id)}
+                    handleUpdateHabbit={() => updateHabbit(habbit)}
+                  />
+                </div>
+              );
+            })
+          )}
         </div>
         <div className="col-4">
           <div className="mb-4">
             <Heading title="Date" />
-            <CalendarComponent />
+            <CalendarComponent
+              value={habbitsDateActive}
+              setValue={setHabbitsDateActive}
+              activeStartDate={habbitsDateActive}
+            />
           </div>
         </div>
       </div>
