@@ -98,35 +98,6 @@ const History = () => {
               activeStartDate={habbitsDateActive}
             />
           </div>
-          <div>
-            <Heading title="At Time" />
-            <div className="row">
-              <div className="col-6 mb-3">
-                <CardRate
-                  color="#7F00FF"
-                  rateName="Left Habbit"
-                  rateCount="50%"
-                  message="Keren Bro"
-                />
-              </div>
-              <div className="col-6 mb-3">
-                <CardRate
-                  color="#7F00FF"
-                  rateName="Habbit Finished"
-                  rateCount="20%"
-                  message="Keren Bro"
-                />
-              </div>
-              <div className="col-6 mb-3">
-                <CardRate
-                  color="#7F00FF"
-                  rateName="Completion Rate"
-                  rateCount="100%"
-                  message="Keren Bro"
-                />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </Layout>

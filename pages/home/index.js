@@ -18,6 +18,7 @@ import Layout from "../../src/components/Layout";
 import { formatDate } from "../../src/utils/functions";
 import DetailHabbit from "../../src/components/DetailHabbit";
 import { deleteHabbit } from "../../src/utils/firebaseFunc";
+import CardRate from "../../src/components/CardRate";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -25,23 +26,38 @@ const Home = () => {
   const [habbits, setHabbits] = useState([]);
   const [dataDetailHabbit, setDataDetailHabbit] = useState(null);
   const [habbitsDateActive, setHabbitsDateActive] = useState(new Date());
+  const [remaindHabbits, setRemaindHabbits] = useState(0);
+  const [finishedHabbits, setFinishedHabbits] = useState(0);
+  const [completionRate, setCompletionRate] = useState(0);
 
   const getHabbitDataFromFirestore = async () => {
     try {
       const q = query(collection(db, "habbits"), where("uid", "==", "wardy"));
       onSnapshot(q, (querySnapshot) => {
-        const snapshots = querySnapshot.docs
-          .map((doc) => ({
-            id: doc.id,
-            data: doc.data(),
-          }))
-          .filter((habbitByDate) => {
-            return (
-              habbitByDate.data.date.toDate().getDate() ===
-              habbitsDateActive.getDate()
-            );
-          });
-        setHabbits(snapshots);
+        const snapshots = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }));
+
+        const habbitByDate = snapshots.filter((habbit) => {
+          return (
+            habbit.data.date.toDate().getDate() === habbitsDateActive.getDate()
+          );
+        });
+
+        const dataRemaindHabbits = snapshots.filter((habbit) => {
+          return habbit.data.isDone === false;
+        });
+        const dataFinishedHabbits = snapshots.filter((habbit) => {
+          return habbit.data.isDone === true;
+        });
+
+        setCompletionRate(
+          (100 * dataFinishedHabbits.length) / snapshots.length
+        );
+        setFinishedHabbits(dataFinishedHabbits);
+        setRemaindHabbits(dataRemaindHabbits);
+        setHabbits(habbitByDate);
       });
     } catch (err) {
       console.log(err);
@@ -70,6 +86,9 @@ const Home = () => {
           setValue={setIsShowDetailUpdate}
           dataDetailHabbit={dataDetailHabbit}
           setShowModal={setShowModal}
+          remaindHabbits={remaindHabbits}
+          finishedHabbits={finishedHabbits}
+          completionRate={completionRate}
         />
       )}
       <div className="row my-4">
@@ -123,6 +142,35 @@ const Home = () => {
               setValue={setHabbitsDateActive}
               activeStartDate={habbitsDateActive}
             />
+          </div>
+          <div>
+            <Heading title="At Time" />
+            <div className="row">
+              <div className="col-6 mb-3">
+                <CardRate
+                  color="#7F00FF"
+                  rateName="Left Habbit"
+                  rateCount={remaindHabbits.length}
+                  message="Keren Bro"
+                />
+              </div>
+              <div className="col-6 mb-3">
+                <CardRate
+                  color="#7F00FF"
+                  rateName="Habbit Finished"
+                  rateCount={finishedHabbits.length}
+                  message="Keren Bro"
+                />
+              </div>
+              <div className="col-6 mb-3">
+                <CardRate
+                  color="#7F00FF"
+                  rateName="Completion Rate"
+                  rateCount={`${Math.round(completionRate)}%`}
+                  message="Keren Bro"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
