@@ -7,7 +7,11 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import styles from "./login.module.scss";
 import Button from "../../src/components/Button";
 import { AuthContext } from "../../src/context/AuthProvider";
-import { putJsonToken, putUserInfo } from "../../src/utils/functions";
+import {
+  getJsonToken,
+  putJsonToken,
+  putUserInfo,
+} from "../../src/utils/functions";
 import { auth } from "../../src/config/firebase";
 
 const Login = () => {
@@ -40,6 +44,12 @@ const Login = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    if (JSON.parse(getJsonToken()) !== null) {
+      router.push("/");
+    }
+  }, []);
 
   return (
     <div className={`${styles.main} row text-light`}>

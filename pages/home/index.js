@@ -107,7 +107,7 @@ const Home = () => {
         <div className="col-8">
           <div className="mb-4">
             <ButtonCustom
-              title="Create New Habit"
+              title="Tambahkan Habbit"
               isIcon={true}
               size="normal"
               iconName="add"
@@ -118,7 +118,7 @@ const Home = () => {
             />
           </div>
           {habbits.length === 0 ? (
-            <p>There is no activity today</p>
+            <h1>Tidak ada habbit hari ini</h1>
           ) : (
             habbits?.map((habbit) => {
               return (
@@ -148,22 +148,22 @@ const Home = () => {
             />
           </div>
           <div>
-            <Heading title="Summary" />
+            <Heading title="At Time" />
             <div className="row">
-              <div className="col-6">
+              <div className="col-6 mb-3">
                 <CardRate
                   color="#7F00FF"
-                  rateName="Unfinished Habit"
+                  rateName="Left Habbit"
                   rateCount={remaindHabbits.length}
-                  message="You can do it!"
+                  message="Keren Bro"
                 />
               </div>
-              <div className="col-6">
+              <div className="col-6 mb-3">
                 <CardRate
                   color="#7F00FF"
-                  rateName="Habit Finished"
+                  rateName="Habbit Finished"
                   rateCount={finishedHabbits.length}
-                  message="Trust the process!"
+                  message="Keren Bro"
                 />
               </div>
               <div className="col-6 mb-3">
@@ -171,7 +171,7 @@ const Home = () => {
                   color="#7F00FF"
                   rateName="Completion Rate"
                   rateCount={`${Math.round(completionRate)}%`}
-                  message="Belive in yourself!"
+                  message="Keren Bro"
                 />
               </div>
             </div>

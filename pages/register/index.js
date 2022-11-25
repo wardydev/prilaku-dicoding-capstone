@@ -8,7 +8,11 @@ import Button from "../../src/components/Button";
 import styles from "./register.module.scss";
 import { AuthContext } from "../../src/context/AuthProvider";
 import { auth } from "../../src/config/firebase";
-import { putJsonToken, putUserInfo } from "../../src/utils/functions";
+import {
+  getJsonToken,
+  putJsonToken,
+  putUserInfo,
+} from "../../src/utils/functions";
 
 const Register = () => {
   const initialState = {
@@ -46,6 +50,12 @@ const Register = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (JSON.parse(getJsonToken()) !== null) {
+      router.push("/");
+    }
+  }, []);
 
   return (
     <div className={`${styles.main} row text-light`}>

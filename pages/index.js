@@ -26,7 +26,7 @@ const Home = () => {
         <p className="landing__hero__subtitle">
           Prilaku let's you simply track your habits.
         </p>
-        <Link href="/login">
+        <Link href="/home">
           <a className="landing__hero__cta">Go to the app</a>
         </Link>
       </div>
