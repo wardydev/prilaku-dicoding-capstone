@@ -68,8 +68,8 @@ const History = () => {
       </div>
       <div className="row">
         <div className="col-8">
-          <Heading title="Habbit Finished" />
-          {habbits.length === 0 ? (
+          <Heading title="Habit Finished" />
+          {habbits?.length === 0 ? (
             <h1>Tidak ada habbit finished hari ini</h1>
           ) : (
             habbits?.map((habbit) => {

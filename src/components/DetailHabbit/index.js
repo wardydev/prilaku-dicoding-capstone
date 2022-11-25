@@ -30,7 +30,7 @@ const DetailHabbit = ({
             <CardRate
               color="#7F00FF"
               rateName="Left Habbit"
-              rateCount={remaindHabbits.length}
+              rateCount={remaindHabbits?.length}
               message="Keren Bro"
             />
           </div>
@@ -38,7 +38,7 @@ const DetailHabbit = ({
             <CardRate
               color="#7F00FF"
               rateName="Habbit Finished"
-              rateCount={finishedHabbits.length}
+              rateCount={finishedHabbits?.length}
               message="Keren Bro"
             />
           </div>
