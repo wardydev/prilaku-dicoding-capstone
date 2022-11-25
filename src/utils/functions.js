@@ -1,14 +1,22 @@
 function putJsonToken(token) {
-  return localStorage.setItem("TOKEN", token);
+  if (typeof window !== "undefined") {
+    return window.localStorage.setItem("TOKEN", token);
+  }
 }
 function getJsonToken() {
-  return localStorage.getItem("TOKEN");
+  if (typeof window !== "undefined") {
+    return window.localStorage.getItem("TOKEN");
+  }
 }
 function putUserInfo(users) {
-  return localStorage.setItem("DATAUSERS", users);
+  if (typeof window !== "undefined") {
+    return window.localStorage.setItem("DATAUSERS", users);
+  }
 }
 function getUserInfo() {
-  return localStorage.getItem("DATAUSERS");
+  if (typeof window !== "undefined") {
+    return window.localStorage.getItem("DATAUSERS");
+  }
 }
 
 function formatDate(date) {

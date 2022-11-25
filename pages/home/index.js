@@ -15,7 +15,7 @@ import HabbitCard from "../../src/components/HabbitCard";
 import Header from "../../src/components/Header";
 import Heading from "../../src/components/Heading";
 import Layout from "../../src/components/Layout";
-import { formatDate } from "../../src/utils/functions";
+import { formatDate, getUserInfo } from "../../src/utils/functions";
 import DetailHabbit from "../../src/components/DetailHabbit";
 import { deleteHabbit } from "../../src/utils/firebaseFunc";
 import CardRate from "../../src/components/CardRate";
@@ -32,7 +32,11 @@ const Home = () => {
 
   const getHabbitDataFromFirestore = async () => {
     try {
-      const q = query(collection(db, "habbits"), where("uid", "==", "wardy"));
+      const userSigned = JSON.parse(getUserInfo());
+      const q = query(
+        collection(db, "habbits"),
+        where("uid", "==", userSigned.user.uid)
+      );
       onSnapshot(q, (querySnapshot) => {
         const snapshots = querySnapshot.docs.map((doc) => ({
           id: doc.id,
