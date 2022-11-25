@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./FormHabbit.module.scss";
 import {
   collection,
@@ -27,6 +27,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
   const [iconIdActive, setIconIdActive] = useState();
   const [colorIdActive, setColorIdActive] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [disabledButton, setDisabledButton] = useState(true);
 
   const [habbitName, setHabbitName] = useState(
     detailHabbit !== null ? detailHabbit.data.name : ""
@@ -43,7 +44,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
   const [dateValue, setDateValue] = useState(
     detailHabbit !== null ? detailHabbit.data.date.toDate() : new Date()
   );
-  const [atTimevalue, setAtTimeValue] = useState();
+  const [atTimevalue, setAtTimeValue] = useState(null);
 
   const handlePenClick = () => {
     habbitNameRef.current.focus();
@@ -58,6 +59,9 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
   };
 
   const addHabbitToFirestore = async () => {
+    if (_checkDataInputed()) {
+      return;
+    }
     setIsLoading(true);
     try {
       const data = {
@@ -83,6 +87,9 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
   };
 
   const updateHabbitToFirestore = async () => {
+    if (_checkDataInputed()) {
+      return;
+    }
     setIsLoading(true);
     try {
       const docRef = doc(db, "habbits", detailHabbit.id);
@@ -105,6 +112,16 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
   const _checkTitleButton = () => {
     return detailHabbit !== null ? "Edit Habbit" : "Tambah Habbit";
   };
+
+  const _checkDataInputed = () => {
+    return habbitName === "" || note === "" || atTimevalue === null;
+  };
+
+  useEffect(() => {
+    if (!_checkDataInputed()) {
+      setDisabledButton(false);
+    }
+  }, [habbitName, note, atTimevalue]);
 
   return (
     <Modal setValue={setShowModal}>
@@ -235,6 +252,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
         handlePress={
           detailHabbit !== null ? updateHabbitToFirestore : addHabbitToFirestore
         }
+        isDisabled={disabledButton}
       />
     </Modal>
   );
