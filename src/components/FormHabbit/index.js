@@ -110,7 +110,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
   };
 
   const _checkTitleButton = () => {
-    return detailHabbit !== null ? "Edit Habbit" : "Tambah Habbit";
+    return detailHabbit !== null ? "Update Habit" : "Create Habit";
   };
 
   const _checkDataInputed = () => {
@@ -128,7 +128,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
       <div className="d-flex align-items-center mb-4">
         <input
           type="text"
-          placeholder="Habbit name"
+          placeholder="Habit name"
           className={`rounded rounded-lg py-2 me-4 px-3 ${
             isFullWidth ? styles.inputHabbit : styles.inputHabbitFocus
           }`}
@@ -148,7 +148,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
         )}
       </div>
       <div className="mb-4">
-        <Heading title="Pilih Icon" />
+        <Heading title="Choose Icon" />
         <Card>
           <div className="d-flex align-items-center p-2">
             <ion-icon
@@ -162,7 +162,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
                   onClick={() => setShowModalIcons(!showModalIcons)}
                 >
                   {iconName === "american-football-outline"
-                    ? "Pilih Icon"
+                    ? "Choose Icon"
                     : iconName}
                 </h4>
                 {showModalIcons && (
@@ -218,7 +218,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
         <textarea
           name="sdfsdf"
           rows="5"
-          placeholder="Placeholder textarea"
+          placeholder="Write notes"
           className="w-100 form-control rounded rounded-lg p-3 shadow-none"
           style={{
             backgroundColor: "#f5f0f05d",
@@ -232,7 +232,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
       </div>
       <div className="d-flex mb-4">
         <div>
-          <Heading title="Pilih Tanggal" />
+          <Heading title="Choose Date" />
           <CalendarComponent
             value={dateValue}
             setValue={setDateValue}

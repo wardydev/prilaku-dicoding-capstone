@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
             })}
           </div>
           <div className={styles.logout}>
-            <ListMenu iconName="log-out-outline" menu="Checkout" />
+            <ListMenu iconName="log-out-outline" menu="Logout" />
           </div>
         </div>
       </div>

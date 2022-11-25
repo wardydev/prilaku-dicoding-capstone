@@ -79,7 +79,7 @@ const HabbitCard = ({
                 className={`fw-semibold py-1 ${styles.menuOption}`}
                 onClick={deleteHabbitById}
               >
-                Hapus
+                Delete
               </span>
               {!data?.data?.isDone && (
                 <span
