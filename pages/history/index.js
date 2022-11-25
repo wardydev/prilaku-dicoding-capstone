@@ -3,12 +3,11 @@ import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 import { db } from "../../src/config/firebase";
 import CalendarComponent from "../../src/components/CalendarComponent";
-import CardRate from "../../src/components/CardRate";
 import HabbitCard from "../../src/components/HabbitCard";
 import Header from "../../src/components/Header";
 import Heading from "../../src/components/Heading";
 import Layout from "../../src/components/Layout";
-import { formatDate } from "../../src/utils/functions";
+import { formatDate, getUserInfo } from "../../src/utils/functions";
 import DetailHabbit from "../../src/components/DetailHabbit";
 import { deleteHabbit } from "../../src/utils/firebaseFunc";
 
@@ -20,10 +19,11 @@ const History = () => {
 
   const getHabbitDataFromFirestore = async () => {
     try {
+      const userSigned = JSON.parse(getUserInfo());
       const q = query(
         collection(db, "habbits"),
         where("isDone", "==", true),
-        where("uid", "==", "wardy")
+        where("uid", "==", userSigned.user.uid)
       );
       onSnapshot(q, (querySnapshot) => {
         setHabbits(

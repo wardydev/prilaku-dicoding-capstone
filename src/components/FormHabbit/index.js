@@ -18,6 +18,7 @@ import { DATAICONS, DATATIME, DATACOLORS } from "../../utils/constants";
 import ModalItem from "../ModalItem";
 import { db } from "../../config/firebase";
 import Spinner from "../Spinner";
+import { getUserInfo } from "../../utils/functions";
 
 const FormHabbit = ({ setShowModal, detailHabbit }) => {
   const habbitNameRef = useRef();
@@ -28,6 +29,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
   const [colorIdActive, setColorIdActive] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [disabledButton, setDisabledButton] = useState(true);
+  const userSigned = JSON.parse(getUserInfo());
 
   const [habbitName, setHabbitName] = useState(
     detailHabbit !== null ? detailHabbit.data.name : ""
@@ -73,7 +75,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
         time: atTimevalue,
         isDone: false,
         created: Timestamp.now(),
-        uid: "wardy",
+        uid: userSigned.user.uid,
       };
 
       const habbit = await addDoc(collection(db, "habbits"), data);
