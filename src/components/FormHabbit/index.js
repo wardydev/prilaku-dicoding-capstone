@@ -250,7 +250,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
         title={isLoading ? <Spinner /> : _checkTitleButton()}
         isFullWidth={true}
         size="large"
-        color="#1AB0B0"
+        color="#E05C1A"
         handlePress={
           detailHabbit !== null ? updateHabbitToFirestore : addHabbitToFirestore
         }
