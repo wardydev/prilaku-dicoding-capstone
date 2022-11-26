@@ -14,6 +14,7 @@ import DetailHabbit from "../../src/components/DetailHabbit";
 import { deleteHabbit } from "../../src/utils/firebaseFunc";
 import CardRate from "../../src/components/CardRate";
 import Spinner from "../../src/components/Spinner";
+import Alert from "../../src/components/Alert";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -127,6 +128,7 @@ const Home = () => {
                     color={habbit.data.color}
                     setValue={setIsShowDetailUpdate}
                     setDataDetail={setDataDetailHabbit}
+                    time={habbit.data.time}
                     data={habbit}
                     deleteHabbitById={() => deleteHabbit("habbits", habbit.id)}
                     handleUpdateHabbit={() => updateHabbit(habbit)}
@@ -135,7 +137,9 @@ const Home = () => {
               );
             })
           )}
-          {habbits?.length === 0 && <p>There is no activity today</p>}
+          {habbits?.length === 0 && (
+            <Alert type="danger" message="There is no activity today" />
+          )}
         </div>
         <div className="col-4">
           <div className="mb-4">
