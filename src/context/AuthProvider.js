@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/router";
 
@@ -12,6 +12,7 @@ import { putJsonToken, putUserInfo } from "../../src/utils/functions";
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const router = useRouter();
+  const [isSignout, setIsSignout] = useState(false);
 
   const handleFacebookLogin = async () => {
     try {

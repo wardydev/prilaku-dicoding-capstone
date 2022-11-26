@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  collection,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 import { db } from "../../src/config/firebase";
 import ButtonCustom from "../../src/components/ButtonCustom";
@@ -19,19 +13,22 @@ import { formatDate, getUserInfo } from "../../src/utils/functions";
 import DetailHabbit from "../../src/components/DetailHabbit";
 import { deleteHabbit } from "../../src/utils/firebaseFunc";
 import CardRate from "../../src/components/CardRate";
+import Spinner from "../../src/components/Spinner";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [isShowDetailUpdate, setIsShowDetailUpdate] = useState(false);
-  const [habbits, setHabbits] = useState([]);
+  const [habbits, setHabbits] = useState();
   const [dataDetailHabbit, setDataDetailHabbit] = useState(null);
   const [habbitsDateActive, setHabbitsDateActive] = useState(new Date());
   const [remaindHabbits, setRemaindHabbits] = useState(0);
   const [finishedHabbits, setFinishedHabbits] = useState(0);
   const [completionRate, setCompletionRate] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getHabbitDataFromFirestore = async () => {
     try {
+      setIsLoading(false);
       const userSigned = JSON.parse(getUserInfo());
       const q = query(
         collection(db, "habbits"),
@@ -59,6 +56,7 @@ const Home = () => {
         setCompletionRate(
           (100 * dataFinishedHabbits.length) / snapshots.length
         );
+
         setFinishedHabbits(dataFinishedHabbits);
         setRemaindHabbits(dataRemaindHabbits);
         setHabbits(habbitByDate);
@@ -107,7 +105,7 @@ const Home = () => {
         <div className="col-8">
           <div className="mb-4">
             <ButtonCustom
-              title="Create New Habit"
+              title="Tambahkan Habbit"
               isIcon={true}
               size="normal"
               iconName="add"
@@ -117,8 +115,8 @@ const Home = () => {
               }}
             />
           </div>
-          {habbits.length === 0 ? (
-            <p>There is no activity today</p>
+          {isLoading ? (
+            <Spinner />
           ) : (
             habbits?.map((habbit) => {
               return (
@@ -137,6 +135,7 @@ const Home = () => {
               );
             })
           )}
+          {habbits?.length === 0 && <p>There is no activity today</p>}
         </div>
         <div className="col-4">
           <div className="mb-4">
@@ -148,30 +147,32 @@ const Home = () => {
             />
           </div>
           <div>
-            <Heading title="Summary" />
+            <Heading title="At Time" />
             <div className="row">
-              <div className="col-6">
+              <div className="col-6 mb-3">
                 <CardRate
                   color="#7F00FF"
-                  rateName="Unfinished Habit"
+                  rateName="Left Habbit"
                   rateCount={remaindHabbits.length}
-                  message="You can do it!"
+                  message="Keren Bro"
                 />
               </div>
-              <div className="col-6">
+              <div className="col-6 mb-3">
                 <CardRate
                   color="#7F00FF"
-                  rateName="Habit Finished"
+                  rateName="Habbit Finished"
                   rateCount={finishedHabbits.length}
-                  message="Trust the process!"
+                  message="Keren Bro"
                 />
               </div>
               <div className="col-6 mb-3">
                 <CardRate
                   color="#7F00FF"
                   rateName="Completion Rate"
-                  rateCount={`${Math.round(completionRate)}%`}
-                  message="Belive in yourself!"
+                  rateCount={`${
+                    habbits?.length === 0 ? "0" : Math.round(completionRate)
+                  }%`}
+                  message="Keren Bro"
                 />
               </div>
             </div>

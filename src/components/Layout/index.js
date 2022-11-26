@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ListMenu from "../ListMenu";
 import Logo from "../Logo";
 import styles from "./Layout.module.scss";
 import { routes } from "../../routes";
 import { useRouter } from "next/router";
+import { AuthContext } from "../../context/AuthProvider";
+import { auth } from "../../config/firebase";
 
 const Layout = ({ children }) => {
   const router = useRouter();
+  const [isUserSignOut, setIsUserSignOut] = useState(false);
+
+  const handleSignout = () => {
+    auth.signOut().then(() => {
+      setIsUserSignOut(true);
+    });
+  };
 
   const handleRouteClick = (path) => {
     router.push(path);
   };
+
+  useEffect(() => {
+    if (isUserSignOut) {
+      window.localStorage.removeItem("TOKEN");
+      window.localStorage.removeItem("DATAUSERS");
+      router.push("/login");
+    }
+  }, [isUserSignOut]);
 
   return (
     <>
@@ -38,8 +55,8 @@ const Layout = ({ children }) => {
               );
             })}
           </div>
-          <div className={styles.logout}>
-            <ListMenu iconName="log-out-outline" menu="Logout" />
+          <div className={styles.logout} onClick={handleSignout}>
+            <ListMenu iconName="log-out-outline" menu="Logout" isPath={true} />
           </div>
         </div>
       </div>
