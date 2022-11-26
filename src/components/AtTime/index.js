@@ -6,7 +6,12 @@ const AtTime = ({ data, setValue }) => {
 
   const handleTimePick = (e, id) => {
     setSelectedTime(id);
-    setValue(e.target.dataset.hours);
+    const data = {
+      name: e.target.dataset.time,
+      hours: e.target.dataset.hours,
+      icon: e.target.dataset.icon,
+    };
+    setValue(data);
   };
 
   return (
@@ -16,6 +21,8 @@ const AtTime = ({ data, setValue }) => {
           <div className="mb-3 col-4" key={time.id}>
             <button
               data-hours={time.hours}
+              data-icon={time.iconName}
+              data-time={time.timeName}
               className={styles.btnNormal}
               style={
                 selectedTime === time.id
@@ -24,8 +31,18 @@ const AtTime = ({ data, setValue }) => {
               }
               onClick={(e) => handleTimePick(e, time.id)}
             >
-              <ion-icon name={time.iconName} data-hours={time.hours}></ion-icon>
-              <span className="ms-1" data-hours={time.hours}>
+              <ion-icon
+                name={time.iconName}
+                data-hours={time.hours}
+                data-icon={time.iconName}
+                data-time={time.timeName}
+              ></ion-icon>
+              <span
+                className="ms-1"
+                data-hours={time.hours}
+                data-icon={time.iconName}
+                data-time={time.timeName}
+              >
                 {time.timeName}
               </span>
             </button>

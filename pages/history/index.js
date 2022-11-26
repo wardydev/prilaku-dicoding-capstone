@@ -10,6 +10,7 @@ import Layout from "../../src/components/Layout";
 import { formatDate, getUserInfo } from "../../src/utils/functions";
 import DetailHabbit from "../../src/components/DetailHabbit";
 import { deleteHabbit } from "../../src/utils/firebaseFunc";
+import Alert from "../../src/components/Alert";
 
 const History = () => {
   const [isShowDetailUpdate, setIsShowDetailUpdate] = useState(false);
@@ -70,7 +71,7 @@ const History = () => {
         <div className="col-8">
           <Heading title="Habit Finished" />
           {habbits?.length === 0 ? (
-            <p>There is no activity done this date</p>
+            <Alert type="danger" message="There is no activity today" />
           ) : (
             habbits?.map((habbit) => {
               return (
@@ -83,6 +84,7 @@ const History = () => {
                     setDataDetail={setDataDetailHabbit}
                     data={habbit}
                     deleteHabbitById={() => deleteHabbit("habbits", habbit.id)}
+                    time={habbit.data.time}
                   />
                 </div>
               );

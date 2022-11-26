@@ -12,6 +12,7 @@ const HabbitCard = ({
   data,
   deleteHabbitById,
   handleUpdateHabbit,
+  time,
 }) => {
   const [isShowMoreOptions, setIsShowMoreOptions] = useState(false);
   const [isDone, setIsDone] = useState(data?.data?.isDone);
@@ -49,15 +50,21 @@ const HabbitCard = ({
         style={{ backgroundColor: isDone ? "#cccccc42" : color }}
       >
         <div className="d-flex align-items-center">
-          <ion-icon name={iconName}></ion-icon>
-          <span
-            className={`ms-3 fw ${styles.link}`}
-            onClick={handleDetailHabbit}
-          >
-            <strong className={isDone && "text-decoration-line-through"}>
-              {title}
-            </strong>
-          </span>
+          <ion-icon name={iconName} style={{ fontSize: 36 }}></ion-icon>
+          <div className="ms-3">
+            <span className={`fw ${styles.link}`} onClick={handleDetailHabbit}>
+              <strong className={isDone && "text-decoration-line-through"}>
+                {title}
+              </strong>
+            </span>
+            <div className="d-flex align-items-center opacity-75">
+              <ion-icon
+                name={time.icon}
+                style={{ fontSize: 16, color: "yellow" }}
+              ></ion-icon>
+              <span className="ms-2">{time.name}</span>
+            </div>
+          </div>
         </div>
         <div
           className="position-relative"
