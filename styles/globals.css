@@ -150,24 +150,91 @@ ion-icon {
   background-color: #e6e6e6;
 }
 
+.landing {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+}
+
+.hamburgerBtn,
+.hamburgerCloseBtn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+}
+
+.hamburgerBtn > svg,
+.hamburgerCloseBtn > svg {
+  user-select: none;
+  pointer-events: none;
+}
+
+.hamburgerCloseBtn {
+  position: absolute;
+  font-size: 2rem ;
+  top: 1rem;
+  left: 1rem;
+}
+
 .landing__header {
   border-bottom: 2px solid #3f3f46;
 }
 
-.landing__header__nav a {
-  padding: 8px 16px;
-  border-radius: 4px;
+.landing__header__nav {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: #202124;
 }
 
-.landing__header__nav a:hover {
-  color: #f58349;
+.open-drawer {
+  display: block;
 }
 
-.landing__header__nav .btn-login {
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1rem;
+  width: 90vw;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 2.75rem;
+  padding-bottom: 2rem;
+}
+
+.nav-links li {
+  user-select: none;
+  pointer-events: none;
+}
+
+.nav-links a {
+  padding: 1rem 1.5rem;
+  display: inline-block;
+  user-select: auto;
+  pointer-events: auto;
+}
+
+.nav-links .btn-login {
+  padding: .75rem 1rem;
+  border-radius: .25rem;
+  width: fit-content;
   background-color: #e05c1a;
 }
 
-.landing__header__nav .btn-login:hover {
+
+.nav-links a:hover {
+  color: #f58349;
+}
+
+.nav-links .btn-login:hover {
   color: #fff;
   background-color: #d44c08;
 }
@@ -186,7 +253,7 @@ ion-icon {
 }
 
 .landing__hero__title {
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: bold;
   line-height: 1;
 }
@@ -288,7 +355,7 @@ ion-icon {
 }
 
 .landing__get-started .title {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
   line-height: 1;
 }
@@ -318,4 +385,47 @@ ion-icon {
 
 .landing__footer > p {
   color: #919199;
+}
+
+@media screen and (min-width: 500px) {
+  .hamburgerBtn,
+  .hamburgerCloseBtn {
+    display: none;
+  }
+
+  .landing__header__nav {
+    display: block;
+    position: static;
+    background-color: transparent;
+    width: fit-content;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .nav-links li,
+  .nav-links a {
+    width: fit-content;
+  }
+
+  .nav-links a {
+    padding: .75rem 1rem;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .nav-links {
+    gap: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .landing__hero__title,
+  .landing__get-started .title {
+    font-size: 4.25rem;
+  }
 }
