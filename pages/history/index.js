@@ -70,7 +70,7 @@ const History = () => {
         <div className="col-8">
           <Heading title="Habit Finished" />
           {habbits?.length === 0 ? (
-            <p>There is no activity today</p>
+            <p>There is no activity done this date</p>
           ) : (
             habbits?.map((habbit) => {
               return (

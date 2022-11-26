@@ -65,35 +65,35 @@ const DATAICONS = [
 const DATACOLORS = [
   {
     id: "1",
-    hex: "red",
+    hex: "#59C1BD",
   },
   {
     id: "2",
-    hex: "blue",
+    hex: "#7743DB",
   },
   {
     id: "3",
-    hex: "green",
+    hex: "#A9AF7E",
   },
   {
     id: "4",
-    hex: "yellow",
+    hex: "#E97777",
   },
   {
     id: "5",
-    hex: "purple",
+    hex: "#2146C7",
   },
   {
     id: "6",
-    hex: "pink",
+    hex: "#FF5858",
   },
   {
     id: "8",
-    hex: "salmon",
+    hex: "#38E54D",
   },
   {
     id: "9",
-    hex: "gray",
+    hex: "#256D85",
   },
 ];
 
