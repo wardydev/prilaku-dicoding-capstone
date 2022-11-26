@@ -26,7 +26,7 @@ const AtTime = ({ data, setValue }) => {
               className={styles.btnNormal}
               style={
                 selectedTime === time.id
-                  ? { backgroundColor: "#1AB0B0" }
+                  ? { backgroundColor: "#E05C1A" }
                   : { backgroundColor: "#d9d9d931" }
               }
               onClick={(e) => handleTimePick(e, time.id)}

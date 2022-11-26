@@ -1,21 +1,47 @@
 import Link from "next/link";
 import React from "react";
 import Logo from "../src/components/Logo";
+import { GoThreeBars } from "react-icons/go";
+import { IoCloseCircleSharp } from "react-icons/io5";
 
 const Home = () => {
+  const [drawer, setDrawer] = React.useState('closed');
+
+  React.useEffect(() => {
+
+  }, [setDrawer]);
+
+  const toggleDrawer = () => setDrawer((prevState) => prevState === 'open' ? 'closed' : 'open');
+
   return (
-    <div className="landing container">
+    <div className="landing">
       <div className="landing__header py-4 d-flex align-items-center justify-content-between">
         <Logo />
-        <div className="landing__header__nav d-flex gap-2">
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <a href="#">Blog</a>
-          <a href="#">About</a>
-          <Link href="/login">
-            <a className="btn-login">Login</a>
-          </Link>
+        <div className="hamburgerBtn" aria-label="open navigation drawer" onClick={toggleDrawer}>
+          <GoThreeBars aria-hidden="true" />
+        </div>
+        <div className={`landing__header__nav ${drawer === 'open' ? 'open-drawer' : ''}`}>
+          <div className="hamburgerCloseBtn" aria-label="close navigation drawer" onClick={toggleDrawer}>
+            <IoCloseCircleSharp />
+          </div>
+          <ul class="nav-links">
+            <li>
+              <Link href="/">
+                <a class="active">Home</a>
+              </Link>
+            </li>
+            <li>
+              <a href="#">Blog</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <Link href="/login">
+                <a className="btn-login">Login</a>
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
 
