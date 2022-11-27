@@ -39,7 +39,7 @@ const Login = () => {
       const { accessToken } = res.user;
       putUserInfo(JSON.stringify(res));
       putJsonToken(JSON.stringify(accessToken));
-      router.push("/");
+      router.push("/home");
     } catch (err) {
       console.log(err);
     }

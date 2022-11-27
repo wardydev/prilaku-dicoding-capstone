@@ -11,7 +11,11 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (JSON.parse(getJsonToken()) === null && router.pathname !== "/") {
+    if (
+      JSON.parse(getJsonToken()) === null &&
+      router.pathname !== "/" &&
+      router.pathname !== "/register"
+    ) {
       router.push("/login");
     }
   }, [router.pathname]);

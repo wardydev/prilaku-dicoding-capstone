@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
       const { accessToken } = res.user;
       putJsonToken(JSON.stringify(accessToken));
       putUserInfo(JSON.stringify(res));
-      router.push("/");
+      router.push("/home");
     } catch (err) {
       console.log(err);
     }
@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
       const { accessToken } = res.user;
       putJsonToken(JSON.stringify(accessToken));
       putUserInfo(JSON.stringify(res));
-      router.push("/");
+      router.push("/home");
     } catch (err) {
       console.log(err);
     }

@@ -53,7 +53,7 @@ const Register = () => {
 
   useEffect(() => {
     if (JSON.parse(getJsonToken()) !== null) {
-      router.push("/");
+      router.push("/home");
     }
   }, []);
 
