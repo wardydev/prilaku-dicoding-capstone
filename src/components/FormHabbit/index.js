@@ -150,7 +150,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
         )}
       </div>
       <div className="mb-4">
-        <Heading title="Choose Icon" />
+        <Heading title="Icon" />
         <Card>
           <div className="d-flex align-items-center p-2">
             <ion-icon

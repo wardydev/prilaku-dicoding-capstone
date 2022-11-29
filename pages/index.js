@@ -5,23 +5,34 @@ import { GoThreeBars } from "react-icons/go";
 import { IoCloseCircleSharp } from "react-icons/io5";
 
 const Home = () => {
-  const [drawer, setDrawer] = React.useState('closed');
+  const [drawer, setDrawer] = React.useState("closed");
 
-  React.useEffect(() => {
+  React.useEffect(() => {}, [setDrawer]);
 
-  }, [setDrawer]);
-
-  const toggleDrawer = () => setDrawer((prevState) => prevState === 'open' ? 'closed' : 'open');
+  const toggleDrawer = () =>
+    setDrawer((prevState) => (prevState === "open" ? "closed" : "open"));
 
   return (
     <div className="landing">
       <div className="landing__header py-4 d-flex align-items-center justify-content-between">
         <Logo />
-        <div className="hamburgerBtn" aria-label="open navigation drawer" onClick={toggleDrawer}>
+        <div
+          className="hamburgerBtn"
+          aria-label="open navigation drawer"
+          onClick={toggleDrawer}
+        >
           <GoThreeBars aria-hidden="true" />
         </div>
-        <div className={`landing__header__nav ${drawer === 'open' ? 'open-drawer' : ''}`}>
-          <div className="hamburgerCloseBtn" aria-label="close navigation drawer" onClick={toggleDrawer}>
+        <div
+          className={`landing__header__nav ${
+            drawer === "open" ? "open-drawer" : ""
+          }`}
+        >
+          <div
+            className="hamburgerCloseBtn"
+            aria-label="close navigation drawer"
+            onClick={toggleDrawer}
+          >
             <IoCloseCircleSharp />
           </div>
           <ul class="nav-links">

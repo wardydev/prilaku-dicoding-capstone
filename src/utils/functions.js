@@ -20,8 +20,8 @@ function getUserInfo() {
 }
 
 function formatDate(date) {
-  return date.toLocaleDateString("in", {
-    weekday: "long",
+  return date.toLocaleDateString("en-UK", {
+    weekday: "short",
     year: "numeric",
     month: "short",
     day: "numeric",

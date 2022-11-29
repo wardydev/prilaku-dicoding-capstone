@@ -71,7 +71,7 @@ const History = () => {
         <div className="col-8">
           <Heading title="Habit Finished" />
           {habbits?.length === 0 ? (
-            <Alert type="danger" message="There is no activity today" />
+            <Alert type="danger" message="You don't have finished activity" />
           ) : (
             habbits?.map((habbit) => {
               return (
