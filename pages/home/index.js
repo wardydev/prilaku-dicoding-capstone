@@ -102,11 +102,11 @@ const Home = () => {
           />
         </div>
       </div>
-      <div className="row">
+      <div className="row mb-4">
         <div className="col-8">
           <div className="mb-4">
             <ButtonCustom
-              title="Tambahkan Habbit"
+              title="Create New Habit"
               isIcon={true}
               size="normal"
               iconName="add"
@@ -151,32 +151,32 @@ const Home = () => {
             />
           </div>
           <div>
-            <Heading title="At Time" />
-            <div className="row">
-              <div className="col-6 mb-3">
+            <Heading title="Summary" />
+            <div className="row gap-2">
+              <div className="col-12">
                 <CardRate
                   color="#7F00FF"
-                  rateName="Left Habbit"
+                  rateName="Unfinished Habit"
                   rateCount={remaindHabbits.length}
-                  message="Keren Bro"
+                  message="You can do it!"
                 />
               </div>
-              <div className="col-6 mb-3">
+              <div className="col-12">
                 <CardRate
                   color="#7F00FF"
-                  rateName="Habbit Finished"
+                  rateName="Habit Finished"
                   rateCount={finishedHabbits.length}
-                  message="Keren Bro"
+                  message="Trust the process!"
                 />
               </div>
-              <div className="col-6 mb-3">
+              <div className="col-12">
                 <CardRate
                   color="#7F00FF"
                   rateName="Completion Rate"
                   rateCount={`${
                     habbits?.length === 0 ? "0" : Math.round(completionRate)
                   }%`}
-                  message="Keren Bro"
+                  message="Belive in yourself!"
                 />
               </div>
             </div>
