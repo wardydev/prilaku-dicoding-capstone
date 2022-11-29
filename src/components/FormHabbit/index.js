@@ -20,7 +20,7 @@ import { db } from "../../config/firebase";
 import Spinner from "../Spinner";
 import { getUserInfo } from "../../utils/functions";
 
-const FormHabbit = ({ setShowModal, detailHabbit }) => {
+const FormHabbit = ({ setShowModal, detailHabbit, closeSelectTypeModal }) => {
   const habbitNameRef = useRef();
   const [isFullWidth, setIsFullWidth] = useState(false);
   const [showModalIcons, setShowModalIcons] = useState(false);
@@ -81,6 +81,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
       const habbit = await addDoc(collection(db, "habbits"), data);
       if (habbit) {
         setShowModal(false);
+        closeSelectTypeModal(false);
         setIsLoading(false);
       }
     } catch (err) {
