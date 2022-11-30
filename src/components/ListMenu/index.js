@@ -9,6 +9,7 @@ const ListMenu = ({
   isActive = false,
   path,
   isPath = false,
+  isResponsive,
 }) => {
   return (
     <div className={styles.menus}>

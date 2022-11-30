@@ -95,7 +95,7 @@ const Home = () => {
         />
       )}
       <div className="row my-4">
-        <div className="col-7 ms-auto">
+        <div className="col-12 col-lg-7 ms-auto">
           <Header
             title={formatDate(habbitsDateActive)}
             imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Joko_Widodo_2019_official_portrait.jpg/1200px-Joko_Widodo_2019_official_portrait.jpg"
@@ -103,7 +103,7 @@ const Home = () => {
         </div>
       </div>
       <div className="row mb-4">
-        <div className="col-8">
+        <div className="col-12 col-lg-8 mb-4">
           <div className="mb-4">
             <ButtonCustom
               title="Create New Habit"
@@ -141,7 +141,7 @@ const Home = () => {
             <Alert type="danger" message="There is no activity today" />
           )}
         </div>
-        <div className="col-4">
+        <div className="col-12 col-lg-4">
           <div className="mb-4">
             <Heading title="Date" />
             <CalendarComponent
