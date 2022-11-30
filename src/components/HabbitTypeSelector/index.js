@@ -15,55 +15,56 @@ const ShowDescription = ({title, description}) => {
   )
 };
 
-function HabbitTypeSelector({ setSelectTypeModal, dataDetailHabbit, setDataDetailHabbit }) {
-  const [description, setDescription] = React.useState('regular');
+function HabbitTypeSelector({ setShowSelectTypeModal, dataDetailHabbit, setDataDetailHabbit }) {
   const [habbitCreatorModal, setHabbitCreatorModal] = React.useState(false);
+  const [habbitType, setHabbitType] = React.useState('regular');
 
-  const changeDescription = (desc) => {
-    setDescription(desc);
+  const changeHabbitType = (type) => {
+    setHabbitType(type);
   };
 
   return (
-    <Modal setValue={setSelectTypeModal}>
+    <Modal setValue={setShowSelectTypeModal}>
       {habbitCreatorModal && 
         <FormHabbit
           setShowModal={setHabbitCreatorModal}
           detailHabbit={dataDetailHabbit}
-          closeSelectTypeModal={setSelectTypeModal}
+          setShowSelectTypeModal={setShowSelectTypeModal}
+          habbitType={habbitType}
         />
       }
       <div className="row">
         <div className='col-4'>
-          <div className={`${styles['habit-type']} ${description === 'regular' ? 'bg-primary' : ''}`} onClick={() => changeDescription('regular')}>
+          <div className={`${styles['habit-type']} ${habbitType === 'regular' ? 'bg-primary' : ''}`} onClick={() => changeHabbitType('regular')}>
             <BiRepeat />
             <span>Regular</span>
           </div>
         </div>
         <div className='col-4'>
-          <div className={`${styles['habit-type']} ${description === 'negative' ? 'bg-danger' : ''}`} onClick={() => changeDescription('negative')}>
+          <div className={`${styles['habit-type']} ${habbitType === 'negative' ? 'bg-danger' : ''}`} onClick={() => changeHabbitType('negative')}>
             <BiBlock />
             <span>Negative</span>
           </div>
         </div>
         <div className='col-4'>
-          <div className={`${styles['habit-type']} ${description === 'one-time' ? 'bg-info' : ''}`} onClick={() => changeDescription('one-time')}>
+          <div className={`${styles['habit-type']} ${habbitType === 'one-time' ? 'bg-info' : ''}`} onClick={() => changeHabbitType('one-time')}>
             <BsFillCalendar2CheckFill />
             <span>One Time</span>
           </div>
         </div>
       </div>
       <div className="mt-4 card bg-dark p-4" style={{height: '150px'}}>
-        {description === 'regular' && 
+        {habbitType === 'regular' && 
           <ShowDescription 
             title='REGULAR'
             description='Related to your daily routine. Check it in a regular and repeated way. E.g. Do sports twice a week'
           />}
-        {description === 'negative' && 
+        {habbitType === 'negative' && 
           <ShowDescription 
             title='NEGATIVE'
             description='Start each day as complete. Only to uncheck it when your fail. E.g. smoking & alcohol'
           />}
-        {description === 'one-time' && 
+        {habbitType === 'one-time' && 
           <ShowDescription 
             title='ONE-TIME'
             description='Remind you if important one-time events on a specific date you set. E.g. Take a math test on Monday'

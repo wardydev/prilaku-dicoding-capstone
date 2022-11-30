@@ -35,10 +35,10 @@ const Home = () => {
           >
             <IoCloseCircleSharp />
           </div>
-          <ul class="nav-links">
+          <ul className="nav-links">
             <li>
               <Link href="/">
-                <a class="active">Home</a>
+                <a className="active">Home</a>
               </Link>
             </li>
             <li>

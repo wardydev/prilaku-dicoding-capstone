@@ -81,14 +81,10 @@ const Home = () => {
     <Layout>
       {showModal && (
         <HabbitTypeSelector 
-          setSelectTypeModal={setShowModal} 
+          setShowSelectTypeModal={setShowModal} 
           dataDetailHabbit={dataDetailHabbit} 
           setDataDetailHabbit={setDataDetailHabbit}
         />
-        // <FormHabbit
-        //   setShowModal={setShowModal}
-        //   detailHabbit={dataDetailHabbit}
-        // />
       )}
       {isShowDetailUpdate && (
         <DetailHabbit
