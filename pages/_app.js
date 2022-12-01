@@ -17,6 +17,12 @@ function MyApp({ Component, pageProps }) {
       router.pathname !== "/register"
     ) {
       router.push("/login");
+    } else if (
+      JSON.parse(getJsonToken()) !== null &&
+      router.pathname !== "/home" &&
+      router.pathname !== "/history"
+    ) {
+      router.push("/home");
     }
   }, [router.pathname]);
   return (
