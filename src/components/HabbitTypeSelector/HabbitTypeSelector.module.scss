@@ -1,0 +1,17 @@
+.habit-type {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;
+  border-radius: .25rem;
+
+  svg {
+    font-size: 2rem;
+  }
+}
+
+.onActive {
+  background-color: blue;
+}

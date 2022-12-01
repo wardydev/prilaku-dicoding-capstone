@@ -15,6 +15,7 @@ import { deleteHabbit } from "../../src/utils/firebaseFunc";
 import CardRate from "../../src/components/CardRate";
 import Spinner from "../../src/components/Spinner";
 import Alert from "../../src/components/Alert";
+import HabbitTypeSelector from "../../src/components/HabbitTypeSelector";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -79,9 +80,10 @@ const Home = () => {
   return (
     <Layout>
       {showModal && (
-        <FormHabbit
-          setShowModal={setShowModal}
-          detailHabbit={dataDetailHabbit}
+        <HabbitTypeSelector 
+          setShowSelectTypeModal={setShowModal} 
+          dataDetailHabbit={dataDetailHabbit} 
+          setDataDetailHabbit={setDataDetailHabbit}
         />
       )}
       {isShowDetailUpdate && (
