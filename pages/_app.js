@@ -14,7 +14,8 @@ function MyApp({ Component, pageProps }) {
     if (
       JSON.parse(getJsonToken()) === null &&
       router.pathname !== "/" &&
-      router.pathname !== "/register"
+      router.pathname !== "/register" &&
+      router.pathname !== "/blog"
     ) {
       router.push("/login");
     }

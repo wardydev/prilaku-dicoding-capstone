@@ -1,60 +1,11 @@
 import Link from "next/link";
-import React from "react";
 import Logo from "../src/components/Logo";
-import { GoThreeBars } from "react-icons/go";
-import { IoCloseCircleSharp } from "react-icons/io5";
+import HomeHeader from "../src/components/HomeHeader";
 
 const Home = () => {
-  const [drawer, setDrawer] = React.useState("closed");
-
-  React.useEffect(() => {}, [setDrawer]);
-
-  const toggleDrawer = () =>
-    setDrawer((prevState) => (prevState === "open" ? "closed" : "open"));
-
   return (
     <div className="landing">
-      <div className="landing__header py-4 d-flex align-items-center justify-content-between">
-        <Logo />
-        <div
-          className="hamburgerBtn"
-          aria-label="open navigation drawer"
-          onClick={toggleDrawer}
-        >
-          <GoThreeBars aria-hidden="true" />
-        </div>
-        <div
-          className={`landing__header__nav ${
-            drawer === "open" ? "open-drawer" : ""
-          }`}
-        >
-          <div
-            className="hamburgerCloseBtn"
-            aria-label="close navigation drawer"
-            onClick={toggleDrawer}
-          >
-            <IoCloseCircleSharp />
-          </div>
-          <ul class="nav-links">
-            <li>
-              <Link href="/">
-                <a class="active">Home</a>
-              </Link>
-            </li>
-            <li>
-              <a href="#">Blog</a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <Link href="/login">
-                <a className="btn-login">Login</a>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <HomeHeader />
 
       <div className="landing__hero text-center">
         <p className="landing__hero__title">
@@ -106,7 +57,7 @@ const Home = () => {
         <p className="subtitle">
           Prilaku keeps your habits organized. Start tracking habit today!
         </p>
-        <Link href="/login">
+        <Link href="/home">
           <a className="landing__hero__cta">Go to the app</a>
         </Link>
       </div>
