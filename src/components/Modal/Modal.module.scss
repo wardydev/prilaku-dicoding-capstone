@@ -1,3 +1,17 @@
+@mixin respond ($breakpoint) {
+    @if $breakpoint==tablet {
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 576px) {
+      @content;
+    }
+  }
+}
+
 .main {
     position: fixed;
     width: 100vw;
@@ -8,6 +22,14 @@
     background-color: #191919;
     overflow-y: scroll;
     overflow-x: hidden;
+
+    .content {
+        background-color: black;
+        min-height: 100vh;
+        @include respond(mobile) {
+            padding-top: 60px;
+        }
+    }
 
     .closeIcon {
         position: fixed;
@@ -23,6 +45,12 @@
         justify-content: center;
         align-items: center;
         margin-left: auto;
+
+        @include respond(mobile) {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
 
         &:hover {
             background-color: #ffffff27;
