@@ -1,57 +1,51 @@
 import axios from "axios";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import HomeHeader from "../../src/components/HomeHeader";
 import styles from "./blog.module.scss";
+import Spinner from "../../src/components/Spinner";
+import { formatDate } from "../../src/utils/functions";
 
 const index = () => {
+  const router = useRouter();
+  const { id } = router.query;
   const [blogs, setBlogs] = useState();
+  const [blog, setBlog] = useState();
 
   useEffect(() => {
     axios
       .get("http://prekuel.com/wp-json/wp/v2/posts/?per_page=5")
       .then((res) => setBlogs(res.data));
   }, []);
+  
+  useEffect(() => {
+    if (blogs) {
+      const blog = blogs.filter((blog) => blog.id == id)[0];
+      blog ? setBlog(blog) : setBlog(false);
+    }
+  }, [blogs]);
 
   return (
     <div className="landing">
       <HomeHeader />
 
-      <div className={styles.header}>
-        <h1>DETAIL</h1>
-        <h2>Anything that makes a better you</h2>
-      </div>
-
-      <div className={`${styles.cardList}`}>
-        {blogs?.map((blog) => {
-          return (
-            <div key={blog.id} className={`${styles.card}`}>
-              <div>
-                <img
-                  src={blog.better_featured_image.source_url}
-                  alt={blog.title.rendered}
-                />
-                <p
-                  className={styles.title}
-                  dangerouslySetInnerHTML={{ __html: blog.title.rendered }}
-                  title={blog.title.rendered}
-                ></p>
-                <p
-                  className={styles.body}
-                  dangerouslySetInnerHTML={{ __html: blog.excerpt.rendered }}
-                ></p>
-              </div>
-
-              <Link href={`/blog/${blog.id}`}>
-                <a className={styles.link}>
-                  <p>Continue Reading</p>
-                  <img src="images/ic_arrow.svg" alt="Arrow" />
-                </a>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
+      {blog ? (
+        <div className={styles.articles}>
+          <p className={styles.date}>
+            {formatDate(new Date(blog.date))} <span>∙</span> Prilaku
+          </p>
+          <h1 dangerouslySetInnerHTML={{ __html: blog.title.rendered }}></h1>
+          <img
+            src={blog.better_featured_image.source_url}
+            alt={blog.title.rendered}
+          />
+          <p dangerouslySetInnerHTML={{ __html: blog.content.rendered }}></p>
+        </div>
+      ) : (
+        <div className={styles.center} style={{ marginTop: "5rem" }}>
+          <Spinner />
+        </div>
+      )}
     </div>
   );
 };
