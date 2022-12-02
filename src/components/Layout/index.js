@@ -1,33 +1,28 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import ListMenu from "../ListMenu";
 import Logo from "../Logo";
 import styles from "./Layout.module.scss";
 import { routes } from "../../routes";
 import { useRouter } from "next/router";
-import { AuthContext } from "../../context/AuthProvider";
 import { auth } from "../../config/firebase";
+import { deleteCookie } from "cookies-next";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const [isUserSignOut, setIsUserSignOut] = useState(false);
 
   const handleSignout = () => {
-    auth.signOut().then(() => {
-      setIsUserSignOut(true);
-    });
+    auth.signOut();
+
+    deleteCookie("USER_TOKEN");
+    localStorage.removeItem("TOKEN");
+    localStorage.removeItem("DATAUSERS");
+
+    router.push("/");
   };
 
   const handleRouteClick = (path) => {
     router.push(path);
   };
-
-  useEffect(() => {
-    if (isUserSignOut) {
-      window.localStorage.removeItem("TOKEN");
-      window.localStorage.removeItem("DATAUSERS");
-      router.push("/login");
-    }
-  }, [isUserSignOut]);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { IoLogoFacebook, IoLogoGoogle } from "react-icons/io5";
+import { IoLogoGoogle } from "react-icons/io5";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/router";
 
@@ -13,6 +13,7 @@ import {
   putJsonToken,
   putUserInfo,
 } from "../../src/utils/functions";
+import { setCookie } from "cookies-next";
 
 const Register = () => {
   const initialState = {
@@ -21,8 +22,7 @@ const Register = () => {
     confirmPassword: "",
   };
   const [value, setValue] = useState(initialState);
-  const { handleFacebookLogin, handleLoginWithGoogle } =
-    useContext(AuthContext);
+  const { handleLoginWithGoogle } = useContext(AuthContext);
   const router = useRouter();
 
   const handleInputValueChange = (e) => {
@@ -42,9 +42,12 @@ const Register = () => {
         const { email, password } = value;
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const { accessToken } = res.user;
+
+        setCookie("USER_TOKEN", accessToken, { maxAge: 60 * 60 * 24 });
+
         putUserInfo(JSON.stringify(res));
         putJsonToken(JSON.stringify(accessToken));
-        router.push("/");
+        router.push("/home");
       } catch (err) {
         console.log(err);
       }
@@ -127,13 +130,6 @@ const Register = () => {
           </div>
 
           <div className="d-grid gap-2">
-            <Button
-              title="Login With Facebook"
-              isOutline={true}
-              size="large"
-              icon={<IoLogoFacebook size={20} />}
-              handleClick={handleFacebookLogin}
-            />
             <Button
               title="Login With Google"
               isOutline={true}

@@ -49,7 +49,7 @@ const HomeHeader = () => {
             <a href="#">About</a>
           </li>
           <li>
-            <Link href="/home">
+            <Link href="/login">
               <a className="btn-login">Login</a>
             </Link>
           </li>

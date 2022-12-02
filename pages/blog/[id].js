@@ -18,7 +18,7 @@ const index = () => {
       <HomeHeader />
 
       <div className={styles.header}>
-        <h1>Read Latest Articles</h1>
+        <h1>DETAIL</h1>
         <h2>Anything that makes a better you</h2>
       </div>
 
