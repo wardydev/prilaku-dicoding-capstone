@@ -1,0 +1,57 @@
+@mixin respond ($breakpoint) {
+    @if $breakpoint==tablet {
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 576px) {
+      @content;
+    }
+  }
+}
+
+.navbar {
+    display: none;
+
+    @include respond(tablet) {
+        display: none;
+    }
+    @include respond(mobile) {
+        display: block;
+        position: relative;
+        z-index: 99;
+    }
+
+    .menusContainer {
+        width: 100%;
+        background-color: black;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        z-index: -9;
+        transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 1rem;
+        
+        .menuActive {
+            background-color: rgba(128, 128, 128, 0.532);
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            &:hover {
+                color: orange;
+            }
+        } 
+        .menu {
+            width: 100%;
+            opacity: 0.6;
+            &:hover {
+                color: orange;
+            }
+        } 
+    }
+}

@@ -20,7 +20,7 @@ import { db } from "../../config/firebase";
 import Spinner from "../Spinner";
 import { getUserInfo } from "../../utils/functions";
 
-const FormHabbit = ({ setShowModal, detailHabbit }) => {
+const FormHabbit = ({ setShowModal, detailHabbit, setShowSelectTypeModal, habbitType: type }) => {
   const habbitNameRef = useRef();
   const [isFullWidth, setIsFullWidth] = useState(false);
   const [showModalIcons, setShowModalIcons] = useState(false);
@@ -31,6 +31,24 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
   const [disabledButton, setDisabledButton] = useState(true);
   const userSigned = JSON.parse(getUserInfo());
 
+  const HabbitType = {
+    regular: {
+      color: 'blue',
+      date: new Date(),
+      isDone: false
+    },
+    negative: {
+      color: 'red',
+      date: new Date(),
+      isDone: true
+    },
+    'one-time': {
+      color: 'purple',
+      date: new Date(),
+      isDone: false
+    }
+  };
+
   const [habbitName, setHabbitName] = useState(
     detailHabbit !== null ? detailHabbit.data.name : ""
   );
@@ -38,13 +56,13 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
     detailHabbit !== null ? detailHabbit.data.icon : "american-football-outline"
   );
   const [colorHex, setColorHex] = useState(
-    detailHabbit !== null ? detailHabbit.data.color : "white"
+    detailHabbit !== null ? detailHabbit.data.color : HabbitType[type]?.color
   );
   const [note, setNote] = useState(
     detailHabbit !== null ? detailHabbit.data.note : ""
   );
   const [dateValue, setDateValue] = useState(
-    detailHabbit !== null ? detailHabbit.data.date.toDate() : new Date()
+    detailHabbit !== null ? detailHabbit.data.date.toDate() : HabbitType[type]?.date
   );
   const [atTimevalue, setAtTimeValue] = useState(null);
 
@@ -73,7 +91,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
         note: note,
         date: dateValue,
         time: atTimevalue,
-        isDone: false,
+        isDone: HabbitType[type].isDone,
         created: Timestamp.now(),
         uid: userSigned.user.uid,
       };
@@ -81,6 +99,7 @@ const FormHabbit = ({ setShowModal, detailHabbit }) => {
       const habbit = await addDoc(collection(db, "habbits"), data);
       if (habbit) {
         setShowModal(false);
+        setShowSelectTypeModal(false);
         setIsLoading(false);
       }
     } catch (err) {

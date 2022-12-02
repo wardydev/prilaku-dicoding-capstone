@@ -23,38 +23,11 @@ const Layout = ({ children }) => {
   const handleRouteClick = (path) => {
     router.push(path);
   };
-
+  
   return (
     <>
-      <div className={styles.sidebar}>
-        <div className={styles.logoContainer}>
-          <Logo />
-        </div>
-        <div className={styles.menusContainer}>
-          <div className={styles.menuContainer}>
-            {routes.map((route) => {
-              return (
-                <div
-                  key={route.id}
-                  onClick={() => handleRouteClick(route.path)}
-                >
-                  <ListMenu
-                    menu={route.routeName}
-                    iconName={route.iconName}
-                    path={route.path}
-                    isActive={
-                      router.pathname === "/" + route.path ? true : false
-                    }
-                  />
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.logout} onClick={handleSignout}>
-            <ListMenu iconName="log-out-outline" menu="Logout" isPath={true} />
-          </div>
-        </div>
-      </div>
+      <Sidebar />
+      <Navbar />
       <div className={styles.childrenContainer}>{children}</div>
     </>
   );
