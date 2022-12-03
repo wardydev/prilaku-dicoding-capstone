@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { IoLogoGoogle, IoLogoFacebook } from "react-icons/io5";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 import styles from "./login.module.scss";
-import Button from "../../src/components/Button";
 import { AuthContext } from "../../src/context/AuthProvider";
 import {
   getJsonToken,
@@ -14,6 +12,7 @@ import {
 } from "../../src/utils/functions";
 import { auth } from "../../src/config/firebase";
 import { setCookie } from "cookies-next";
+import Logo from "../../src/components/Logo";
 
 const Login = () => {
   const initialState = {
@@ -55,75 +54,62 @@ const Login = () => {
   }, []);
 
   return (
-    <div className={`${styles.main} row text-light`}>
-      <div className="col-lg-6 col-12">
-        <div className={styles.container}>
-          <div className="mb-4">
-            <h1>Login ✌️</h1>
-            <p>
-              Has no an account yet?{" "}
-              <Link href="/register">
-                <a className={styles.gradientText}>Register now!</a>
-              </Link>
-            </p>
-          </div>
-          <form className="mb-4" onSubmit={handleLoginWithEmailPassword}>
-            <div className="mb-3 d-flex flex-column">
-              <label htmlFor="email" className="mb-1">
-                Email
-              </label>
+    <div className={`${styles.main}`}>
+      <div className={styles.container}>
+        <div className={styles.logo}>
+          <Link href="/">
+            <a>
+              <Logo />
+            </a>
+          </Link>
+        </div>
+
+        <div className={styles.card}>
+          <button
+            className={styles.btnGoogle}
+            onClick={handleLoginWithGoogle}
+          >
+            <img src="/images/ic_google.svg" alt="Google" />
+            <span>Log in with Google</span>
+          </button>
+
+          <form className={styles.form} onSubmit={handleLoginWithEmailPassword}>
+            <div>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
                 placeholder="email@gmail.com"
-                className={styles.inputForm}
                 required
                 name="email"
                 value={value.email}
                 onChange={handleInputChange}
               />
             </div>
-            <div className="mb-3 d-flex flex-column">
-              <label htmlFor="password" className="mb-1">
-                Password
-              </label>
+
+            <div>
+              <label htmlFor="password">Password</label>
               <input
                 type="password"
                 id="password"
                 placeholder="Input your password"
-                className={styles.inputForm}
                 required
                 name="password"
                 value={value.password}
                 onChange={handleInputChange}
               />
             </div>
-            <div className="d-grid gap-2 mt-4">
-              <button className={styles.buttonLogin}>Login</button>
-            </div>
-          </form>
-          <div className="d-grid gap-2 mb-3">
-            <span className="text-muted text-center">
-              Or Sign in with Social
-            </span>
-          </div>
 
-          <div className="d-grid gap-2">
-            <Button
-              title="Login With Google"
-              isOutline={true}
-              size="large"
-              icon={<IoLogoGoogle size={20} />}
-              handleClick={handleLoginWithGoogle}
-            />
-          </div>
+            <button type="submit">Login</button>
+          </form>
         </div>
-        <p className="text-center mt-5 text-white-50">
-          &copy; 2022 kokashop with fakestoreapi
+
+        <p>
+          Don't have an account yet?
+          <Link href="/register">
+            <a>Sign up</a>
+          </Link>
         </p>
-      </div>
-      <div className="col-6">
-        <h1>Illustration</h1>
       </div>
     </div>
   );
