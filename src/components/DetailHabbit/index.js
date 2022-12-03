@@ -1,22 +1,25 @@
 import React from "react";
 import { deleteHabbit } from "../../utils/firebaseFunc";
+import { formatDate } from "../../utils/functions";
 import ButtonCustom from "../ButtonCustom";
 import CalendarComponent from "../CalendarComponent";
 import Heading from "../Heading";
 import Modal from "../Modal";
 
 const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
+  const startDate = formatDate(new Date(dataDetailHabbit.data.startDate));
+  const endDate = formatDate(new Date(dataDetailHabbit.data.endDate));
   return (
     <Modal setValue={setValue}>
       <h3>{dataDetailHabbit?.data?.name}</h3>
       <div className="d-flex my-4">
-        <div className="me-4">
-          <CalendarComponent
-            setValue={() => null}
-            value={dataDetailHabbit?.data?.date.toDate()}
-            activeStartDate={dataDetailHabbit?.data?.date.toDate()}
-          />
-        </div>
+        <span>
+          Dari tanggal <strong className="text-warning">{startDate}</strong>{" "}
+        </span>{" "}
+        -
+        <span>
+          Sampai tanggal <strong className="text-warning">{endDate}</strong>
+        </span>
       </div>
       <div>
         <Heading title="Note" />
