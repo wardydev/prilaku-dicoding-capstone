@@ -134,6 +134,8 @@ const Home = () => {
                     data={habbit}
                     deleteHabbitById={() => deleteHabbit("habbits", habbit.id)}
                     handleUpdateHabbit={() => updateHabbit(habbit)}
+                    startDate={formatDate(new Date(habbit.data.startDate))}
+                    endDate={formatDate(new Date(habbit.data.endDate))}
                   />
                 </div>
               );
