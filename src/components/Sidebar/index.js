@@ -5,6 +5,7 @@ import ListMenu from "../ListMenu";
 import Logo from "../Logo";
 import { useRouter } from "next/router";
 import { auth } from "../../config/firebase";
+import { deleteCookie } from "cookies-next";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -13,6 +14,9 @@ const Sidebar = () => {
   const handleSignout = () => {
     auth.signOut().then(() => {
       setIsUserSignOut(true);
+      deleteCookie("USER_TOKEN");
+      localStorage.removeItem("TOKEN");
+      localStorage.removeItem("DATAUSERS");
     });
   };
 
