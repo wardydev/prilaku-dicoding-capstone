@@ -20,7 +20,12 @@ import { db } from "../../config/firebase";
 import Spinner from "../Spinner";
 import { getUserInfo } from "../../utils/functions";
 
-const FormHabbit = ({ setShowModal, detailHabbit, setShowSelectTypeModal, habbitType: type }) => {
+const FormHabbit = ({
+  setShowModal,
+  detailHabbit,
+  setShowSelectTypeModal,
+  habbitType: type,
+}) => {
   const habbitNameRef = useRef();
   const [isFullWidth, setIsFullWidth] = useState(false);
   const [showModalIcons, setShowModalIcons] = useState(false);
@@ -30,23 +35,25 @@ const FormHabbit = ({ setShowModal, detailHabbit, setShowSelectTypeModal, habbit
   const [isLoading, setIsLoading] = useState(false);
   const [disabledButton, setDisabledButton] = useState(true);
   const userSigned = JSON.parse(getUserInfo());
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState();
 
   const HabbitType = {
     regular: {
-      color: 'blue',
+      color: "blue",
       date: new Date(),
-      isDone: false
+      isDone: false,
     },
     negative: {
-      color: 'red',
+      color: "red",
       date: new Date(),
-      isDone: true
+      isDone: true,
     },
-    'one-time': {
-      color: 'purple',
+    "one-time": {
+      color: "purple",
       date: new Date(),
-      isDone: false
-    }
+      isDone: false,
+    },
   };
 
   const [habbitName, setHabbitName] = useState(
@@ -60,9 +67,6 @@ const FormHabbit = ({ setShowModal, detailHabbit, setShowSelectTypeModal, habbit
   );
   const [note, setNote] = useState(
     detailHabbit !== null ? detailHabbit.data.note : ""
-  );
-  const [dateValue, setDateValue] = useState(
-    detailHabbit !== null ? detailHabbit.data.date.toDate() : HabbitType[type]?.date
   );
   const [atTimevalue, setAtTimeValue] = useState(null);
 
@@ -89,11 +93,12 @@ const FormHabbit = ({ setShowModal, detailHabbit, setShowSelectTypeModal, habbit
         icon: iconName,
         color: colorHex,
         note: note,
-        date: dateValue,
         time: atTimevalue,
         isDone: HabbitType[type].isDone,
         created: Timestamp.now(),
         uid: userSigned.user.uid,
+        startDate: Date.parse(startDate),
+        endDate: Date.parse(endDate),
       };
 
       const habbit = await addDoc(collection(db, "habbits"), data);
@@ -119,7 +124,6 @@ const FormHabbit = ({ setShowModal, detailHabbit, setShowSelectTypeModal, habbit
         icon: iconName,
         color: colorHex,
         note: note,
-        date: dateValue,
         time: atTimevalue,
         created: Timestamp.now(),
       });
@@ -254,11 +258,24 @@ const FormHabbit = ({ setShowModal, detailHabbit, setShowSelectTypeModal, habbit
       <div className="d-flex mb-4">
         <div>
           <Heading title="Choose Date" />
-          <CalendarComponent
-            value={dateValue}
-            setValue={setDateValue}
-            activeStartDate={dateValue}
-          />
+          <div>
+            <label htmlFor="startDate">Start Date</label>
+            <input
+              type="date"
+              id="startDate"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="endDate">End Date</label>
+            <input
+              type="date"
+              id="endDate"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+            />
+          </div>
         </div>
         <div className="ms-5">
           <Heading title="At Time" />

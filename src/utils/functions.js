@@ -28,4 +28,17 @@ function formatDate(date) {
   });
 }
 
-export { putJsonToken, getJsonToken, formatDate, putUserInfo, getUserInfo };
+function subtractDays(numOfDays, date) {
+  date.setDate(date.getDate() - numOfDays);
+
+  return date.toLocaleString();
+}
+
+export {
+  putJsonToken,
+  getJsonToken,
+  formatDate,
+  putUserInfo,
+  getUserInfo,
+  subtractDays,
+};
