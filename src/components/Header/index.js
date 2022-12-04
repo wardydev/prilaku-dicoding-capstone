@@ -3,17 +3,11 @@ import Image from "next/image";
 
 import styles from "./Header.module.scss";
 
-const Header = ({ title, imageUrl }) => {
+const Header = ({ title, children }) => {
   return (
-    <div className={styles.container}>
-      <h4>{title}</h4>
-      <Image
-        src={imageUrl}
-        width={50}
-        height={50}
-        alt="image profile"
-        className={styles.image}
-      />
+    <div className={styles['header-app']}>
+      <h2>{title}</h2>
+      {children}
     </div>
   );
 };

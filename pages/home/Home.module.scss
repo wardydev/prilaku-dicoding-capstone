@@ -1,0 +1,35 @@
+@mixin respond($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+.header-app {
+  width: 100%;
+  background-color: #111317;
+  padding: 1rem;
+
+  &__inner {
+    width: 90vw;
+    margin: 0 auto;
+  }
+}
+
+.content-app {
+  background-color: #21242b;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  padding-bottom: 7rem;
+  &__inner {
+    width: 90vw;
+    margin: 0 auto;
+    padding: 1rem 0;
+  }
+}
+
+.add-habbit {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+

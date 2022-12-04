@@ -1,0 +1,195 @@
+$bgcolor: #303242;
+
+.react-calendar {
+  width: 100%;
+  max-width: 600px;
+  padding: 1rem;
+  background: $bgcolor;
+  border: none;
+  border-radius: .25rem;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+
+  &,
+  & *,
+  & *:before,
+  & *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  button {
+    margin: 0;
+    border: 0;
+    outline: none;
+
+    &:enabled {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    height: 44px;
+    margin-bottom: 1em;
+    color: white;
+    
+    button {
+      min-width: 44px;
+      background: none;
+      color: white;
+
+      &:disabled {
+        background-color: rgb(240, 240, 240);
+      }
+
+      &:enabled {
+        &:hover,
+        &:focus {
+          background-color: rgb(230, 230, 230);
+        }
+      }
+
+    }
+    
+    &__label {
+      user-select: none !important;
+      pointer-events: none !important;
+
+      span {
+        color: white;
+      }
+    }
+
+    &__prev2-button,
+    &__next2-button {
+      display: none;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  &__month-view {
+    &__weekdays {
+      display: none !important;
+    }
+
+    &__days {
+      display: block !important;
+      overflow: scroll;
+      white-space: nowrap;
+      padding: 0 .25rem;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      &__day {
+        &--weekend {
+          color: rgb(209, 0, 0);
+        }
+
+        &--neighboringMonth {
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  &__year-view,
+  &__decade-view,
+  &__century-view {
+    .react-calendar__tile {
+      padding: 2em 0.5em;
+    }
+  }
+
+  &__tile {
+    width: 54px;
+    height: 54px;
+    border-radius: .25rem;
+    max-width: 100%;
+    display: inline-flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+    background: none;
+    color: white;
+    text-align: center;
+    line-height: 16px;
+    margin-right: .5rem !important;
+
+    p {
+      padding: 0;
+      margin: 0;
+      font-weight: 100 !important;
+      font-size: 10px;
+    }
+    
+    abbr {
+      font-weight: bold;
+    }
+
+    &:disabled {
+      background-color: rgb(240, 240, 240);
+    }
+
+    &:enabled {
+      &:hover,
+      &:focus {
+        background-color: rgb(230, 230, 230);
+      }
+    }
+
+    &--now {
+      $bgcolor: rgb(255, 255, 201);
+      background: $bgcolor;
+
+      &:enabled {
+        &:hover,
+        &:focus {
+          background: lighten($bgcolor, 10%);
+        }
+      }
+    }
+
+    &--hasActive {
+      $bgcolor: darken(#2f7fe2, 30%);
+      background: $bgcolor;
+
+      &:enabled {
+        &:hover,
+        &:focus {
+          background: darken($bgcolor, 10%);
+        }
+      }
+    }
+
+    &--active {
+      $bgcolor: #2f7fe2;
+      background: $bgcolor;
+      color: white;
+
+      &:enabled {
+        &:hover,
+        &:focus {
+          background: lighten($bgcolor, 10%);
+        }
+      }
+    }
+  }
+
+  &--selectRange {
+    .react-calendar__tile {
+      &--hover {
+        background-color: rgb(230, 230, 230);
+      }
+    }
+  }
+}

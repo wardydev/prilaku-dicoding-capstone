@@ -1,9 +1,9 @@
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .image {
-        border-radius: 50%;
-    }
+.header-app {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    font-size: 1.4rem;
+    margin: 0;
+  }
 }

@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-calendar/dist/Calendar.css";
 
 import "../styles/globals.css";
+import "../styles/calendar.scss";
 import AuthProvider from "../src/context/AuthProvider";
 import { getJsonToken } from "../src/utils/functions";
 import { useEffect } from "react";

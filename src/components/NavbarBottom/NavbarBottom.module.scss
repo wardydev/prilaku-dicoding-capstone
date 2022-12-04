@@ -1,0 +1,46 @@
+@import '/styles/variables.module.scss';
+
+.navbar-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 80px;
+  background-color: $base-color;
+  color: white;
+  padding: .85rem 0 .65rem 0;
+}
+
+.navbar-bottom__inner {
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.navigation {
+  color: white;
+}
+
+.navigation-links {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    width: calc(80%/4);
+  }
+  a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .25rem;
+    
+    svg {
+      font-size: 1.45rem;
+    }
+  }
+}

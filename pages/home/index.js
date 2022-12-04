@@ -16,6 +16,11 @@ import CardRate from "../../src/components/CardRate";
 import Spinner from "../../src/components/Spinner";
 import Alert from "../../src/components/Alert";
 import HabbitTypeSelector from "../../src/components/HabbitTypeSelector";
+import ButtonIconOnly from "../../src/components/ButtonIconOnly";
+import { HiPlus } from "react-icons/hi";
+import NavbarBottom from "../../src/components/NavbarBottom";
+
+import styles from "./Home.module.scss";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -78,7 +83,7 @@ const Home = () => {
   };
 
   return (
-    <Layout>
+    <div className="home-page">
       {showModal && (
         <HabbitTypeSelector 
           setShowSelectTypeModal={setShowModal} 
@@ -96,17 +101,53 @@ const Home = () => {
           completionRate={completionRate}
         />
       )}
-      <div className="row my-4">
-        <div className="col-12 col-lg-7 ms-auto">
-          <Header
-            title={formatDate(habbitsDateActive)}
-            imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Joko_Widodo_2019_official_portrait.jpg/1200px-Joko_Widodo_2019_official_portrait.jpg"
-          />
+      <NavbarBottom />
+      <div className={styles['header-app']}>
+        <div className={styles['header-app__inner']}>
+          <Header title={formatDate(habbitsDateActive)}>
+            <ButtonIconOnly isCircle={true}>
+              <HiPlus />
+            </ButtonIconOnly>
+          </Header>
         </div>
       </div>
-      <div className="row mb-4">
-        <div className="col-12 col-lg-8 mb-4">
-          <div className="mb-4">
+      <div className={styles['content-app']}>
+        <div className={styles['content-app__inner']}>
+          <CalendarComponent
+            value={habbitsDateActive}
+            setValue={setHabbitsDateActive}
+            activeStartDate={habbitsDateActive}
+          />
+
+          {isLoading ? (
+              <Spinner />
+          ) : (
+            <div className="habbit-list">
+              {
+                habbits?.map((habbit) => {
+                  return (
+                    <div className="mt-3 position-relative" key={habbit.id}>
+                      <HabbitCard
+                        title={habbit.data.name}
+                        iconName={habbit.data.icon}
+                        color={habbit.data.color}
+                        setValue={setIsShowDetailUpdate}
+                        setDataDetail={setDataDetailHabbit}
+                        time={habbit.data.time}
+                        data={habbit}
+                        deleteHabbitById={() => deleteHabbit("habbits", habbit.id)}
+                        handleUpdateHabbit={() => updateHabbit(habbit)}
+                      />
+                    </div>
+                  );
+                })
+              }
+            </div>
+          )}
+          {habbits?.length === 0 && (
+            <Alert type="danger" message="There is no activity today" />
+          )}
+          <div className={`${styles['add-habbit']} mt-4`}>
             <ButtonCustom
               title="Create New Habit"
               isIcon={true}
@@ -118,46 +159,12 @@ const Home = () => {
               }}
             />
           </div>
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            habbits?.map((habbit) => {
-              return (
-                <div className="mt-3 position-relative" key={habbit.id}>
-                  <HabbitCard
-                    title={habbit.data.name}
-                    iconName={habbit.data.icon}
-                    color={habbit.data.color}
-                    setValue={setIsShowDetailUpdate}
-                    setDataDetail={setDataDetailHabbit}
-                    time={habbit.data.time}
-                    data={habbit}
-                    deleteHabbitById={() => deleteHabbit("habbits", habbit.id)}
-                    handleUpdateHabbit={() => updateHabbit(habbit)}
-                  />
-                </div>
-              );
-            })
-          )}
-          {habbits?.length === 0 && (
-            <Alert type="danger" message="There is no activity today" />
-          )}
-        </div>
-        <div className="col-12 col-lg-4">
-          <div className="mb-4">
-            <Heading title="Date" />
-            <CalendarComponent
-              value={habbitsDateActive}
-              setValue={setHabbitsDateActive}
-              activeStartDate={habbitsDateActive}
-            />
-          </div>
-          <div>
+          <div className="mt-4">
             <Heading title="Summary" />
             <div className="row gap-2">
               <div className="col-12">
                 <CardRate
-                  color="#7F00FF"
+                  color="#303242"
                   rateName="Unfinished Habit"
                   rateCount={remaindHabbits.length}
                   message="You can do it!"
@@ -165,7 +172,7 @@ const Home = () => {
               </div>
               <div className="col-12">
                 <CardRate
-                  color="#7F00FF"
+                  color="#303242"
                   rateName="Habit Finished"
                   rateCount={finishedHabbits.length}
                   message="Trust the process!"
@@ -173,7 +180,7 @@ const Home = () => {
               </div>
               <div className="col-12">
                 <CardRate
-                  color="#7F00FF"
+                  color="#303242"
                   rateName="Completion Rate"
                   rateCount={`${
                     habbits?.length === 0 ? "0" : Math.round(completionRate)
@@ -185,7 +192,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
