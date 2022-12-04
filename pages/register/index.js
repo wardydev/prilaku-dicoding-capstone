@@ -84,7 +84,8 @@ const Register = () => {
         <div className={styles.logo}>
           <Link href="/">
             <a>
-              <Logo />
+              <Logo width="35" />
+              <span>Prilaku</span>
             </a>
           </Link>
         </div>

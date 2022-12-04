@@ -121,7 +121,6 @@ ion-icon {
   background-color: #75757568;
 }
 .react-calendar__tile--now {
-
   /* color: #FF844B !important; */
 }
 .react-calendar__tile--now:enabled:hover,
@@ -140,7 +139,7 @@ ion-icon {
 }
 .react-calendar__tile--active:enabled {
   color: white !important;
-  background-color: #E05C1A;
+  background-color: #e05c1a;
 }
 /* .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
@@ -174,7 +173,7 @@ ion-icon {
 
 .hamburgerCloseBtn {
   position: absolute;
-  font-size: 2rem ;
+  font-size: 2rem;
   top: 1rem;
   left: 1rem;
 }
@@ -223,12 +222,11 @@ ion-icon {
 }
 
 .nav-links .btn-login {
-  padding: .75rem 1rem;
-  border-radius: .25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
   width: fit-content;
   background-color: #e05c1a;
 }
-
 
 .nav-links a:hover {
   color: #f58349;
@@ -413,7 +411,7 @@ ion-icon {
   }
 
   .nav-links a {
-    padding: .75rem 1rem;
+    padding: 0.75rem 1rem;
   }
 }
 
