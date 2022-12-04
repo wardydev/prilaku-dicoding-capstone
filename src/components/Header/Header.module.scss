@@ -1,9 +1,15 @@
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    .image {
-        border-radius: 50%;
-    }
+  h4 {
+    margin: 0;
+  }
+
+  .image {
+    border-radius: 50%;
+    background-color:gray;
+    display: flex;
+  }
 }

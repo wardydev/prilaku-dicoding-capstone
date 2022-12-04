@@ -97,7 +97,7 @@ const Home = () => {
         />
       )}
       <div className="row my-4">
-        <div className="col-12 col-lg-7 ms-auto">
+        <div className="col-12 col-lg-7 w-100">
           <Header
             title={formatDate(habbitsDateActive)}
             imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Joko_Widodo_2019_official_portrait.jpg/1200px-Joko_Widodo_2019_official_portrait.jpg"
