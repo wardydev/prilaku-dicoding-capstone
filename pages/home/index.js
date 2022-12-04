@@ -27,6 +27,7 @@ const Home = () => {
   const [finishedHabbits, setFinishedHabbits] = useState(0);
   const [completionRate, setCompletionRate] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [isShowCalendar, setIsShowCalendar] = useState(false);
 
   const getHabbitDataFromFirestore = async () => {
     try {
@@ -42,9 +43,10 @@ const Home = () => {
           data: doc.data(),
         }));
         const filterDate = snapshots.filter((habbit) => {
+          const dataActive = Date.parse(habbitsDateActive) + 86400000;
           return (
-            Date.parse(habbitsDateActive) < habbit.data.endDate &&
-            Date.parse(habbitsDateActive) > habbit.data.startDate
+            dataActive < habbit.data.endDate &&
+            dataActive > habbit.data.startDate
           );
         });
 
@@ -96,6 +98,55 @@ const Home = () => {
           completionRate={completionRate}
         />
       )}
+      <div className="card-rate__responsive-top my-3">
+        <div className="row">
+          <div className="col-4">
+            <CardRate
+              color="#7F00FF"
+              rateName="Unfinished Habit"
+              rateCount={remaindHabbits.length}
+              message="You can do it!"
+            />
+          </div>
+          <div className="col-4">
+            <CardRate
+              color="#7F00FF"
+              rateName="Habit Finished"
+              rateCount={finishedHabbits.length}
+              message="Trust the process!"
+            />
+          </div>
+          <div className="col-4">
+            <CardRate
+              color="#7F00FF"
+              rateName="Completion Rate"
+              rateCount={`${
+                habbits?.length === 0 ? "0" : Math.round(completionRate)
+              }%`}
+              message="Belive in yourself!"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="calendar-top my-4">
+        <ButtonCustom
+          title="Show Calendar"
+          isFullWidth={true}
+          isIcon={true}
+          iconName="calendar"
+          color="#FF844B"
+          handlePress={() => setIsShowCalendar(!isShowCalendar)}
+        />
+      </div>
+      {isShowCalendar && (
+        <div className="calendar-top mb-4">
+          <CalendarComponent
+            value={habbitsDateActive}
+            setValue={setHabbitsDateActive}
+            activeStartDate={habbitsDateActive}
+          />
+        </div>
+      )}
       <div className="row my-4">
         <div className="col-12 col-lg-7 w-100">
           <Header
@@ -146,7 +197,7 @@ const Home = () => {
           )}
         </div>
         <div className="col-12 col-lg-4">
-          <div className="mb-4">
+          <div className="calendar-bottom mb-4">
             <Heading title="Date" />
             <CalendarComponent
               value={habbitsDateActive}
@@ -154,10 +205,9 @@ const Home = () => {
               activeStartDate={habbitsDateActive}
             />
           </div>
-          <div>
-            <Heading title="Summary" />
-            <div className="row gap-2">
-              <div className="col-12">
+          <div className="card-rate__responsive-bottom">
+            <div className="row">
+              <div className="col-6 ">
                 <CardRate
                   color="#7F00FF"
                   rateName="Unfinished Habit"
@@ -165,7 +215,7 @@ const Home = () => {
                   message="You can do it!"
                 />
               </div>
-              <div className="col-12">
+              <div className="col-6 ">
                 <CardRate
                   color="#7F00FF"
                   rateName="Habit Finished"
@@ -173,7 +223,7 @@ const Home = () => {
                   message="Trust the process!"
                 />
               </div>
-              <div className="col-12">
+              <div className="col-6 ">
                 <CardRate
                   color="#7F00FF"
                   rateName="Completion Rate"

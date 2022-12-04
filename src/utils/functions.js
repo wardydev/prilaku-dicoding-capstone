@@ -34,6 +34,11 @@ function subtractDays(numOfDays, date) {
   return date.toLocaleString();
 }
 
+function getWindowSize() {
+  const { innerWidth, innerHeight } = window;
+  return { innerWidth, innerHeight };
+}
+
 export {
   putJsonToken,
   getJsonToken,
@@ -41,4 +46,5 @@ export {
   putUserInfo,
   getUserInfo,
   subtractDays,
+  getWindowSize,
 };

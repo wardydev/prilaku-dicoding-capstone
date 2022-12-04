@@ -24,7 +24,18 @@ a {
 ion-icon {
   font-size: 24px;
 }
-
+.card-rate__responsive-top {
+  display: block;
+}
+.card-rate__responsive-bottom {
+  display: none;
+}
+.calendar-top {
+  display: block;
+}
+.calendar-bottom {
+  display: none;
+}
 .react-calendar {
   width: 350px;
   max-width: 100%;
@@ -416,12 +427,30 @@ ion-icon {
 }
 
 @media screen and (min-width: 650px) {
+  .card-rate__responsive-top {
+    display: none;
+  }
+  .card-rate__responsive-bottom {
+    display: block;
+  }
+  .calendar-top {
+    display: none;
+  }
+  .calendar-bottom {
+    display: block;
+  }
   .nav-links {
     gap: 1.75rem;
   }
 }
 
 @media screen and (min-width: 768px) {
+  .card-rate__responsive-top {
+    display: none;
+  }
+  .card-rate__responsive-bottom {
+    display: block;
+  }
   .landing__hero__title,
   .landing__get-started .title {
     font-size: 4.25rem;
