@@ -69,6 +69,36 @@ const History = () => {
           setShowModal={false}
         />
       )}
+      <div className="card-rate__responsive-top my-3">
+        <div className="row">
+          <div className="col-4">
+            <CardRate
+              color="#7F00FF"
+              rateName="Unfinished Habit"
+              rateCount={remaindHabbits.length}
+              message="You can do it!"
+            />
+          </div>
+          <div className="col-4">
+            <CardRate
+              color="#7F00FF"
+              rateName="Habit Finished"
+              rateCount={finishedHabbits.length}
+              message="Trust the process!"
+            />
+          </div>
+          <div className="col-4">
+            <CardRate
+              color="#7F00FF"
+              rateName="Completion Rate"
+              rateCount={`${
+                habbits?.length === 0 ? "0" : Math.round(completionRate)
+              }%`}
+              message="Belive in yourself!"
+            />
+          </div>
+        </div>
+      </div>
       <div className="row my-4">
         <div className="col-12 col-lg-7 w-100">
           <Header
@@ -101,11 +131,11 @@ const History = () => {
             })
           )}
         </div>
-        <div className="col-12 col-lg-4">
+        <div className="card-rate__responsive-bottom col-12 col-lg-4">
           <div className="mb-4">
             <Heading title="Date" />
-            <div className="row gap-2">
-              <div className="col-12">
+            <div className="row">
+              <div className="col-6 mb-3">
                 <CardRate
                   color="#7F00FF"
                   rateName="Unfinished Habit"
@@ -113,7 +143,7 @@ const History = () => {
                   message="You can do it!"
                 />
               </div>
-              <div className="col-12">
+              <div className="col-6 mb-3">
                 <CardRate
                   color="#7F00FF"
                   rateName="Habit Finished"
@@ -121,7 +151,7 @@ const History = () => {
                   message="Trust the process!"
                 />
               </div>
-              <div className="col-12">
+              <div className="col-6 mb-3">
                 <CardRate
                   color="#7F00FF"
                   rateName="Completion Rate"
