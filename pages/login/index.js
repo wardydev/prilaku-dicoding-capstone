@@ -20,6 +20,7 @@ const Login = () => {
     password: "",
   };
   const [value, setValue] = useState(initialState);
+  const [errorMessage, setErrorMessage] = useState("");
   const { handleLoginWithGoogle } = useContext(AuthContext);
   const router = useRouter();
 
@@ -43,8 +44,22 @@ const Login = () => {
       putJsonToken(JSON.stringify(accessToken));
       router.push("/home");
     } catch (err) {
-      console.log(err);
+      setErrorMessage(sanitizeMessage(err.message));
     }
+  };
+
+  const sanitizeMessage = (message) => {
+    const sanitize = message.split("/")[1].slice(0, -2);
+
+    if (sanitize == "user-not-found") {
+      return "User not found";
+    }
+
+    if (sanitize == "wrong-password") {
+      return "Invalid email or password";
+    }
+
+    return "Something wrong, please try again";
   };
 
   useEffect(() => {
@@ -65,13 +80,15 @@ const Login = () => {
         </div>
 
         <div className={styles.card}>
-          <button
-            className={styles.btnGoogle}
-            onClick={handleLoginWithGoogle}
-          >
+          <button className={styles.btnGoogle} onClick={handleLoginWithGoogle}>
             <img src="/images/ic_google.svg" alt="Google" />
             <span>Log in with Google</span>
           </button>
+
+          <div className={styles.or}>
+            <p>or</p>
+            <div></div>
+          </div>
 
           <form className={styles.form} onSubmit={handleLoginWithEmailPassword}>
             <div>
@@ -79,7 +96,7 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
-                placeholder="email@gmail.com"
+                placeholder="Enter your email"
                 required
                 name="email"
                 value={value.email}
@@ -88,11 +105,13 @@ const Login = () => {
             </div>
 
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" className="mt-2">
+                Password
+              </label>
               <input
                 type="password"
                 id="password"
-                placeholder="Input your password"
+                placeholder="Enter your password"
                 required
                 name="password"
                 value={value.password}
@@ -100,14 +119,20 @@ const Login = () => {
               />
             </div>
 
-            <button type="submit">Login</button>
+            {errorMessage && (
+              <div className={styles.errorMessage}>* {errorMessage}</div>
+            )}
+
+            <button type="submit" className={styles.btnPrimary}>
+              Login
+            </button>
           </form>
         </div>
 
-        <p>
+        <p className={styles.bottomText}>
           Don't have an account yet?
           <Link href="/register">
-            <a>Sign up</a>
+            <a>Sign Up</a>
           </Link>
         </p>
       </div>
