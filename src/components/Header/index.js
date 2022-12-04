@@ -10,7 +10,7 @@ const Header = ({ title }) => {
   useEffect(() => {
     const { user } = JSON.parse(getUserInfo());
 
-    if (user.photoURL) {
+    if (user.photoURL !== null) {
       setImg(user.photoURL);
     }
   }, []);

@@ -53,16 +53,19 @@ const HabbitCard = ({
         className="w-100 rounded rounded-lg p-4 d-flex align-items-center justify-content-between ms-2"
         style={{ backgroundColor: isDone ? "#cccccc42" : color }}
       >
-        <div className="d-flex align-items-center">
-          <ion-icon name={iconName} style={{ fontSize: 36 }}></ion-icon>
-          <div className="ms-3">
-            <span className={`fw ${styles.link}`} onClick={handleDetailHabbit}>
+        <div className={styles.contentContainer}>
+          <ion-icon
+            name={iconName}
+            style={{ fontSize: 36, marginBottom: 6 }}
+          ></ion-icon>
+          <div className={styles.cardTitle}>
+            <span className={`${styles.link}`} onClick={handleDetailHabbit}>
               <strong className={isDone && "text-decoration-line-through"}>
                 {title}
               </strong>
             </span>
-            <div className="d-flex items-center">
-              <div className="d-flex align-items-center opacity-75 me-3">
+            <div className={styles.habbitCardInfo}>
+              <div className="d-flex align-items-center opacity-75 me-3 mb-1">
                 <ion-icon
                   name="calendar-outline"
                   style={{ fontSize: 16, color: "yellow" }}
@@ -72,7 +75,7 @@ const HabbitCard = ({
                   <span className="mx-2">{endDate}</span>
                 </div>
               </div>
-              <div className="d-flex align-items-center opacity-75">
+              <div className="d-flex align-items-center opacity-75 mb-1">
                 <ion-icon
                   name={time.icon}
                   style={{ fontSize: 16, color: "yellow" }}

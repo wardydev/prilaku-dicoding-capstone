@@ -1,3 +1,17 @@
+@mixin respond ($breakpoint) {
+  @if $breakpoint==tablet {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@if $breakpoint==mobile {
+  @media only screen and (max-width: 576px) {
+    @content;
+  }
+}
+}
+
 .wrapper {
     display: flex;
     align-items: center;
@@ -65,12 +79,40 @@
     transform: rotate(45deg);
   }
 
+  .contentContainer {
+    display: flex;
+    align-items: center;
+
+    .cardIcon {
+      background-color: red !important;
+    }
+
+    .cardTitle {
+      margin-left: 1rem;
+
+      @include respond(mobile) {
+        margin-left: 0;
+      }
+    }
+
+    @include respond(mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
   .link {
     font-size: 18px;
+    font-weight: bold;
     border-bottom: 2px solid rgba(255, 255, 255, 0);
     &:hover {
       border-bottom: 2px solid white;
       cursor: pointer;
+    }
+
+    @include respond(mobile) {
+      font-size: 20px;
+      margin-bottom: 12px;
     }
   }
 
@@ -91,5 +133,15 @@
         background-color: rgba(0, 0, 0, 0.13);
         border-radius: 8px;
       }
+    }
+  }
+
+  .habbitCardInfo {
+    display: flex;
+    align-items: center;
+
+    @include respond(mobile) {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
