@@ -4,9 +4,10 @@
 }
 
 .container {
-  max-width: 450px;
+  max-width: 430px;
   width: 100%;
   margin-top: 1rem;
+  padding: 0 12px;
 }
 
 .logo {
@@ -23,7 +24,7 @@
 }
 
 .card {
-  padding: 2rem 2.4rem;
+  padding: 1.2rem;
   border-radius: 4px;
   background-color: #252525;
   box-shadow: 2px 2px 5px #161616;
@@ -130,5 +131,11 @@
 .errorMessage {
   margin-top: 12px;
   font-size: 0.9rem;
-  color: #ff4545;
+  color: #ff5656;
+}
+
+@media screen and (min-width: 650px) {
+  .card {
+    padding: 2rem;
+  }
 }
