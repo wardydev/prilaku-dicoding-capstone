@@ -82,7 +82,7 @@ const Login = () => {
         <div className={styles.card}>
           <button className={styles.btnGoogle} onClick={handleLoginWithGoogle}>
             <img src="/images/ic_google.svg" alt="Google" />
-            <span>Log in with Google</span>
+            <span>Login with Google</span>
           </button>
 
           <div className={styles.or}>
@@ -105,7 +105,7 @@ const Login = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="mt-2">
+              <label htmlFor="password" className="mt-3">
                 Password
               </label>
               <input
