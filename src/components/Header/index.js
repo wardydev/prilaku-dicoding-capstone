@@ -5,7 +5,7 @@ import styles from "./Header.module.scss";
 
 const Header = ({ title, children }) => {
   return (
-    <div className={styles['header-app']}>
+    <div className={styles['header-bar']}>
       <h2>{title}</h2>
       {children}
     </div>

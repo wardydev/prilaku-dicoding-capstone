@@ -1,29 +1,86 @@
-@mixin respond($breakpoint) {
-  @media screen and (min-width: $breakpoint) {
-    @content;
+@import '/styles/mixin.modules';
+$marginLeft: 0;
+
+.home-page {
+  @include respond($breakpoint: 576px) {
+    $marginLeft: 200px !global;
+    margin-left: $marginLeft;
   }
-}
 
-.header-app {
-  width: 100%;
-  background-color: #111317;
-  padding: 1rem;
-
-  &__inner {
-    width: 90vw;
-    margin: 0 auto;
+  @include respond($breakpoint: 768px) {
+    $marginLeft: 320px !global;
+    margin-left: $marginLeft;
   }
-}
 
-.content-app {
-  background-color: #21242b;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-  padding-bottom: 7rem;
-  &__inner {
-    width: 90vw;
-    margin: 0 auto;
-    padding: 1rem 0;
+  .header-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    background-color: #111317;
+    padding-top: 1rem;
+    overflow: hidden;
+
+    @include respond($breakpoint: 576px) {
+      left: 200px;
+      width: calc(100% - 200px);
+    }
+
+    @include respond($breakpoint: 768px) {
+      left: 320px;
+      width: calc(100% - 320px);
+    }
+
+    &__inner {
+      @include respond($breakpoint: 576px) {
+        width: calc(90vw - 200px);
+      }
+      
+      @include respond($breakpoint: 768px) {
+        width: calc(90vw - 320px);
+      }
+
+      width: 90vw;
+      margin: 0 auto;
+    }
+
+    .date-info {
+      width: 100%;
+    }
+
+    .date-picker {
+      margin-top: 1.4rem;
+      background-color: #21242b;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+  }
+  
+  .main-content {
+    margin-top: 170px;
+    padding-top: 1rem;
+    background-color: #21242b;
+    padding-bottom: 7rem;
+
+    
+    &__inner {
+      @include respond($breakpoint: 576px) {
+        width: calc(90vw - $marginLeft);
+      }
+  
+      @include respond($breakpoint: 768px) {
+        width: calc(90vw - $marginLeft);
+      }
+
+      width: 90vw;
+      margin: 0 auto;
+      padding: 1rem 0;
+    }
+
+    .habbit-list {
+      min-height: 60vw;
+    }
   }
 }
 

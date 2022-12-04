@@ -1,8 +1,8 @@
-$bgcolor: #303242;
+$bgcolor: transparent !important;
 
 .react-calendar {
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
   padding: 1rem;
   background: $bgcolor;
   border: none;
