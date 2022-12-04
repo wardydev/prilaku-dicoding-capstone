@@ -4,7 +4,7 @@ import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../../src/config/firebase";
 import ButtonCustom from "../../src/components/ButtonCustom";
 import CalendarComponent from "../../src/components/CalendarComponent";
-import FormHabbit from "../../src/components/FormHabbit";
+// import FormHabbit from "../../src/components/FormHabbit";
 import HabbitCard from "../../src/components/HabbitCard";
 import Header from "../../src/components/Header";
 import Heading from "../../src/components/Heading";
@@ -46,10 +46,10 @@ const Home = () => {
           id: doc.id,
           data: doc.data(),
         }));
-
-        const habbitByDate = snapshots.filter((habbit) => {
+        const filterDate = snapshots.filter((habbit) => {
           return (
-            habbit.data.date.toDate().getDate() === habbitsDateActive.getDate()
+            Date.parse(habbitsDateActive) < habbit.data.endDate &&
+            Date.parse(habbitsDateActive) > habbit.data.startDate
           );
         });
 
@@ -66,7 +66,7 @@ const Home = () => {
 
         setFinishedHabbits(dataFinishedHabbits);
         setRemaindHabbits(dataRemaindHabbits);
-        setHabbits(habbitByDate);
+        setHabbits(filterDate);
       });
     } catch (err) {
       console.log(err);

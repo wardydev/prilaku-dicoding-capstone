@@ -13,6 +13,8 @@ const HabbitCard = ({
   deleteHabbitById,
   handleUpdateHabbit,
   time,
+  startDate,
+  endDate,
 }) => {
   const [isShowMoreOptions, setIsShowMoreOptions] = useState(false);
   const [isDone, setIsDone] = useState(data?.data?.isDone);
@@ -57,12 +59,24 @@ const HabbitCard = ({
                 {title}
               </strong>
             </span>
-            <div className="d-flex align-items-center opacity-75">
-              <ion-icon
-                name={time.icon}
-                style={{ fontSize: 16, color: "yellow" }}
-              ></ion-icon>
-              <span className="ms-2">{time.name}</span>
+            <div className="d-flex items-center">
+              <div className="d-flex align-items-center opacity-75 me-3">
+                <ion-icon
+                  name="calendar-outline"
+                  style={{ fontSize: 16, color: "yellow" }}
+                ></ion-icon>
+                <div className="d-flex items-center">
+                  <span className="mx-2">{startDate}</span>
+                  <span className="mx-2">{endDate}</span>
+                </div>
+              </div>
+              <div className="d-flex align-items-center opacity-75">
+                <ion-icon
+                  name={time.icon}
+                  style={{ fontSize: 16, color: "yellow" }}
+                ></ion-icon>
+                <span className="ms-2">{time.name}</span>
+              </div>
             </div>
           </div>
         </div>

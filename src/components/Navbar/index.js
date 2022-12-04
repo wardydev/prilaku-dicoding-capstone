@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import { deleteCookie } from "cookies-next";
+
 import { routes } from "../../routes";
 import Logo from "../Logo";
 import styles from "./Navbar.module.scss";
@@ -19,6 +20,9 @@ const Navbar = () => {
   const handleSignout = () => {
     auth.signOut().then(() => {
       setIsUserSignOut(true);
+      deleteCookie("USER_TOKEN");
+      localStorage.removeItem("TOKEN");
+      localStorage.removeItem("DATAUSERS");
     });
   };
 

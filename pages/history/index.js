@@ -11,12 +11,16 @@ import { formatDate, getUserInfo } from "../../src/utils/functions";
 import DetailHabbit from "../../src/components/DetailHabbit";
 import { deleteHabbit } from "../../src/utils/firebaseFunc";
 import Alert from "../../src/components/Alert";
+import CardRate from "../../src/components/CardRate";
 
 const History = () => {
   const [isShowDetailUpdate, setIsShowDetailUpdate] = useState(false);
   const [habbits, setHabbits] = useState([]);
   const [dataDetailHabbit, setDataDetailHabbit] = useState();
   const [habbitsDateActive, setHabbitsDateActive] = useState(new Date());
+  const [remaindHabbits, setRemaindHabbits] = useState(0);
+  const [finishedHabbits, setFinishedHabbits] = useState(0);
+  const [completionRate, setCompletionRate] = useState(0);
 
   const getHabbitDataFromFirestore = async () => {
     try {
@@ -27,19 +31,25 @@ const History = () => {
         where("uid", "==", userSigned.user.uid)
       );
       onSnapshot(q, (querySnapshot) => {
-        setHabbits(
-          querySnapshot.docs
-            .map((doc) => ({
-              id: doc.id,
-              data: doc.data(),
-            }))
-            .filter((habbitByDate) => {
-              return (
-                habbitByDate.data.date.toDate().getDate() ===
-                habbitsDateActive.getDate()
-              );
-            })
+        const snapshots = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }));
+
+        const dataRemaindHabbits = snapshots.filter((habbit) => {
+          return habbit.data.isDone === false;
+        });
+        const dataFinishedHabbits = snapshots.filter((habbit) => {
+          return habbit.data.isDone === true;
+        });
+
+        setCompletionRate(
+          (100 * dataFinishedHabbits.length) / snapshots.length
         );
+
+        setRemaindHabbits(dataRemaindHabbits);
+        setFinishedHabbits(dataFinishedHabbits);
+        setHabbits(snapshots);
       });
     } catch (err) {
       console.log(err);
@@ -60,7 +70,7 @@ const History = () => {
         />
       )}
       <div className="row my-4">
-        <div className="col-12 col-lg-7 ms-auto">
+        <div className="col-12 col-lg-7 w-100">
           <Header
             title={formatDate(habbitsDateActive)}
             imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Joko_Widodo_2019_official_portrait.jpg/1200px-Joko_Widodo_2019_official_portrait.jpg"
@@ -94,11 +104,34 @@ const History = () => {
         <div className="col-12 col-lg-4">
           <div className="mb-4">
             <Heading title="Date" />
-            <CalendarComponent
-              value={habbitsDateActive}
-              setValue={setHabbitsDateActive}
-              activeStartDate={habbitsDateActive}
-            />
+            <div className="row gap-2">
+              <div className="col-12">
+                <CardRate
+                  color="#7F00FF"
+                  rateName="Unfinished Habit"
+                  rateCount={remaindHabbits.length}
+                  message="You can do it!"
+                />
+              </div>
+              <div className="col-12">
+                <CardRate
+                  color="#7F00FF"
+                  rateName="Habit Finished"
+                  rateCount={finishedHabbits.length}
+                  message="Trust the process!"
+                />
+              </div>
+              <div className="col-12">
+                <CardRate
+                  color="#7F00FF"
+                  rateName="Completion Rate"
+                  rateCount={`${
+                    habbits?.length === 0 ? "0" : Math.round(completionRate)
+                  }%`}
+                  message="Belive in yourself!"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
