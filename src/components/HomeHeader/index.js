@@ -11,7 +11,6 @@ const HomeHeader = () => {
 
   useEffect(() => {
     const usedData = JSON.parse(getUserInfo());
-
     setUser(usedData);
   }, []);
 
