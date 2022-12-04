@@ -2,10 +2,18 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { GoThreeBars } from "react-icons/go";
 import { IoCloseCircleSharp } from "react-icons/io5";
+import { getUserInfo } from "../../utils/functions";
 import Logo from "../Logo";
 
 const HomeHeader = () => {
   const [drawer, setDrawer] = useState("closed");
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    const usedData = JSON.parse(getUserInfo());
+    
+    setUser(usedData);
+  }, []);
 
   useEffect(() => {}, [setDrawer]);
 
@@ -48,11 +56,13 @@ const HomeHeader = () => {
           <li>
             <a href="#">About</a>
           </li>
-          <li>
-            <Link href="/login">
-              <a className="btn-login">Login</a>
-            </Link>
-          </li>
+          {!user && (
+            <li>
+              <Link href="/login">
+                <a className="btn-login">Login</a>
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </div>

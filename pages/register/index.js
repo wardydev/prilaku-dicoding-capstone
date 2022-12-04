@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { IoLogoGoogle } from "react-icons/io5";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/router";
 
-import Button from "../../src/components/Button";
 import styles from "./register.module.scss";
 import { AuthContext } from "../../src/context/AuthProvider";
 import { auth } from "../../src/config/firebase";
@@ -14,6 +12,7 @@ import {
   putUserInfo,
 } from "../../src/utils/functions";
 import { setCookie } from "cookies-next";
+import Logo from "../../src/components/Logo";
 
 const Register = () => {
   const initialState = {
@@ -22,6 +21,7 @@ const Register = () => {
     confirmPassword: "",
   };
   const [value, setValue] = useState(initialState);
+  const [errorMessage, setErrorMessage] = useState("");
   const { handleLoginWithGoogle } = useContext(AuthContext);
   const router = useRouter();
 
@@ -35,7 +35,7 @@ const Register = () => {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     if (value.password !== value.confirmPassword) {
-      alert("password is not same");
+      setErrorMessage("Password are not the same");
       return;
     } else {
       try {
@@ -49,9 +49,27 @@ const Register = () => {
         putJsonToken(JSON.stringify(accessToken));
         router.push("/home");
       } catch (err) {
-        console.log(err);
+        setErrorMessage(sanitizeMessage(err.message));
       }
     }
+  };
+
+  const sanitizeMessage = (message) => {
+    const sanitize = message.split("/")[1].slice(0, -2);
+
+    if (sanitize == "invalid-email") {
+      return "Invalid email adress";
+    }
+
+    if (sanitize == "email-already-in-use") {
+      return "Email already in use";
+    }
+
+    if (sanitize == "weak-password") {
+      return "Weak password, try different combination";
+    }
+
+    return "Something wrong, please try again";
   };
 
   useEffect(() => {
@@ -61,90 +79,88 @@ const Register = () => {
   }, []);
 
   return (
-    <div className={`${styles.main} row text-light`}>
-      <div className="col-lg-6 col-12">
-        <div className={styles.container}>
-          <div className="mb-4">
-            <h1>Register ✌️</h1>
-            <p>
-              Has already an account?{" "}
-              <Link href="/login">
-                <a className={styles.gradientText}>Login Here!</a>
-              </Link>
-            </p>
+    <div className={`${styles.main}`}>
+      <div className={styles.container}>
+        <div className={styles.logo}>
+          <Link href="/">
+            <a>
+              <Logo width="35" />
+              <span>Prilaku</span>
+            </a>
+          </Link>
+        </div>
+
+        <div className={styles.card}>
+          <button className={styles.btnGoogle} onClick={handleLoginWithGoogle}>
+            <img src="/images/ic_google.svg" alt="Google" />
+            <span>Sign Up with Google</span>
+          </button>
+
+          <div className={styles.or}>
+            <p>or</p>
+            <div></div>
           </div>
-          <form className="mb-4" onSubmit={handleRegisterSubmit}>
-            <div className="mb-3 d-flex flex-column">
-              <label htmlFor="email" className="mb-1">
-                Email
-              </label>
+
+          <form className={styles.form} onSubmit={handleRegisterSubmit}>
+            <div>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
-                placeholder="email@gmail.com"
-                className={styles.inputForm}
+                placeholder="Enter your email"
                 required
                 name="email"
                 value={value.email}
                 onChange={handleInputValueChange}
               />
             </div>
-            <div className="mb-3 d-flex flex-column">
-              <label htmlFor="password" className="mb-1">
+
+            <div>
+              <label htmlFor="password" className="mt-3">
                 Password
               </label>
               <input
                 type="password"
                 id="password"
-                placeholder="Input your password"
-                className={styles.inputForm}
+                placeholder="Enter your password"
                 required
                 name="password"
                 value={value.password}
                 onChange={handleInputValueChange}
               />
             </div>
-            <div className="mb-3 d-flex flex-column">
-              <label htmlFor="confirmPassword" className="mb-1">
+
+            <div>
+              <label htmlFor="confirmPassword" className="mt-3">
                 Confirm Password
               </label>
               <input
                 type="password"
                 id="confirmPassword"
-                placeholder="Confirm Password"
-                className={styles.inputForm}
+                placeholder="Confirm password"
                 required
                 name="confirmPassword"
                 value={value.confirmPassword}
                 onChange={handleInputValueChange}
               />
             </div>
-            <div className="d-grid gap-2 mt-4">
-              <Button title="Register Now" isOutline={false} size="large" />
-            </div>
-          </form>
-          <div className="d-grid gap-2 mb-3">
-            <span className="text-muted text-center">
-              Or Sign in with Social
-            </span>
-          </div>
 
-          <div className="d-grid gap-2">
-            <Button
-              title="Login With Google"
-              isOutline={true}
-              size="large"
-              icon={<IoLogoGoogle size={20} />}
-              handleClick={handleLoginWithGoogle}
-            />
-          </div>
+            {errorMessage && (
+              <div className={styles.errorMessage}>* {errorMessage}</div>
+            )}
+
+            <button type="submit" className={styles.btnPrimary}>
+              Sign Up
+            </button>
+          </form>
         </div>
-        <p className="text-center mt-5 text-white-50">
-          &copy; 2022 kokashop with fakestoreapi
+
+        <p className={styles.bottomText}>
+          Already have an account?
+          <Link href="/login">
+            <a>Sign In</a>
+          </Link>
         </p>
-      </div>
-      <div className="col-6">
-        <h1>Illustration</h1>
       </div>
     </div>
   );
