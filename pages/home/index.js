@@ -27,6 +27,7 @@ const Home = () => {
   const [finishedHabbits, setFinishedHabbits] = useState(0);
   const [completionRate, setCompletionRate] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [isShowCalendar, setIsShowCalendar] = useState(false);
 
   const getHabbitDataFromFirestore = async () => {
     try {
@@ -42,9 +43,10 @@ const Home = () => {
           data: doc.data(),
         }));
         const filterDate = snapshots.filter((habbit) => {
+          const dataActive = Date.parse(habbitsDateActive) + 86400000;
           return (
-            Date.parse(habbitsDateActive) < habbit.data.endDate &&
-            Date.parse(habbitsDateActive) > habbit.data.startDate
+            dataActive < habbit.data.endDate &&
+            dataActive > habbit.data.startDate
           );
         });
 
@@ -126,6 +128,25 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className="calendar-top my-4">
+        <ButtonCustom
+          title="Show Calendar"
+          isFullWidth={true}
+          isIcon={true}
+          iconName="calendar"
+          color="#FF844B"
+          handlePress={() => setIsShowCalendar(!isShowCalendar)}
+        />
+      </div>
+      {isShowCalendar && (
+        <div className="calendar-top mb-4">
+          <CalendarComponent
+            value={habbitsDateActive}
+            setValue={setHabbitsDateActive}
+            activeStartDate={habbitsDateActive}
+          />
+        </div>
+      )}
       <div className="row my-4">
         <div className="col-12 col-lg-7 w-100">
           <Header
@@ -176,7 +197,7 @@ const Home = () => {
           )}
         </div>
         <div className="col-12 col-lg-4">
-          <div className="mb-4">
+          <div className="calendar-bottom mb-4">
             <Heading title="Date" />
             <CalendarComponent
               value={habbitsDateActive}

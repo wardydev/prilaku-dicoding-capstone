@@ -30,6 +30,12 @@ ion-icon {
 .card-rate__responsive-bottom {
   display: none;
 }
+.calendar-top {
+  display: block;
+}
+.calendar-bottom {
+  display: none;
+}
 .react-calendar {
   width: 350px;
   max-width: 100%;
@@ -425,6 +431,12 @@ ion-icon {
     display: none;
   }
   .card-rate__responsive-bottom {
+    display: block;
+  }
+  .calendar-top {
+    display: none;
+  }
+  .calendar-bottom {
     display: block;
   }
   .nav-links {
