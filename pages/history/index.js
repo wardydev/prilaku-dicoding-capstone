@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 import { db } from "../../src/config/firebase";
-import CalendarComponent from "../../src/components/CalendarComponent";
+// import CalendarComponent from "../../src/components/CalendarComponent";
 import HabbitCard from "../../src/components/HabbitCard";
 import Header from "../../src/components/Header";
 import Heading from "../../src/components/Heading";
