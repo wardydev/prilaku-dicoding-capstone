@@ -38,15 +38,17 @@ const HabbitCard = ({
 
   return (
     <div className="d-flex align-items-center">
-      <label className={styles.wrapper}>
-        <input
-          className={styles.input}
-          type="checkbox"
-          checked={isDone}
-          onChange={handleUpdateHabbitDone}
-        />
-        <span className={styles.checkmark}></span>
-      </label>
+      {!isDone && (
+        <label className={styles.wrapper}>
+          <input
+            className={styles.input}
+            type="checkbox"
+            checked={isDone}
+            onChange={handleUpdateHabbitDone}
+          />
+          <span className={styles.checkmark}></span>
+        </label>
+      )}
       <div
         className="w-100 rounded rounded-lg p-4 d-flex align-items-center justify-content-between ms-2"
         style={{ backgroundColor: isDone ? "#cccccc42" : color }}
