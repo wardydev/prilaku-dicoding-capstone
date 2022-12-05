@@ -43,7 +43,9 @@ const Register = () => {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const { accessToken } = res.user;
 
-        setCookie("USER_TOKEN", accessToken, { maxAge: 60 * 60 * 24 });
+        setCookie("USER_TOKEN", accessToken, {
+          maxAge: 60 * 60 * 24 * 7, // 7 days
+        });
 
         putUserInfo(JSON.stringify(res));
         putJsonToken(JSON.stringify(accessToken));

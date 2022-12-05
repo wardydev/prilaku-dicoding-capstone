@@ -1,8 +1,19 @@
 import Link from "next/link";
 import Logo from "../src/components/Logo";
 import HomeHeader from "../src/components/HomeHeader";
+import { getCookie } from "cookies-next";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {
+    const USER_TOKEN = getCookie("USER_TOKEN");
+
+    if (!USER_TOKEN) {
+      localStorage.removeItem("TOKEN");
+      localStorage.removeItem("DATAUSERS");
+    }
+  }, []);
+
   return (
     <div className="landing">
       <HomeHeader />
