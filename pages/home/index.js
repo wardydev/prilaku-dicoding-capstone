@@ -12,7 +12,6 @@ import Heading from "../../src/components/Heading";
 import Layout from "../../src/components/Layout";
 import {
   formatDate,
-  formatObjectToDate,
   formatterDateToObject,
   getUserInfo,
 } from "../../src/utils/functions";
