@@ -4,7 +4,6 @@ import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
 import { deleteHabbit } from "../../utils/firebaseFunc";
 import { formatDate, formatterDateToObject } from "../../utils/functions";
 import ButtonCustom from "../ButtonCustom";
-// import CalendarComponent from "../CalendarComponent";
 import Heading from "../Heading";
 import Modal from "../Modal";
 
@@ -23,6 +22,8 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
         <Calendar
           value={selectedDayRange}
           onChange={() => null}
+          colorPrimary="#F58349"
+          colorPrimaryLight="#FBCEB6"
           shouldHighlightWeekends
         />
       </div>

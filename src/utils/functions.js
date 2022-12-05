@@ -54,6 +54,10 @@ function formatterDateToObject(date) {
   };
 }
 
+function formatObjectToDate(date) {
+  return new Date(Object.values(date).join("-"));
+}
+
 export {
   putJsonToken,
   getJsonToken,
@@ -63,4 +67,5 @@ export {
   subtractDays,
   getWindowSize,
   formatterDateToObject,
+  formatObjectToDate,
 };

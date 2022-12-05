@@ -152,12 +152,18 @@ ion-icon {
   color: white !important;
   background-color: #e05c1a;
 }
-/* .react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-  background: #ffff76;
-} */
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
+}
+
+.Calendar {
+  background-color: #3A3A3A !important;
+}
+.Calendar__day {
+  color: white;
+}
+.Calendar__monthText, .Calendar__yearText {
+  color: white !important;
 }
 
 .landing {
