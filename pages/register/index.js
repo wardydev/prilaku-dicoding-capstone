@@ -44,7 +44,7 @@ const Register = () => {
         const { accessToken } = res.user;
 
         setCookie("USER_TOKEN", accessToken, {
-          maxAge: 60 * 60 * 24 * 7, // 7 days
+          maxAge: 60 * 60 * 24 * 7,
         });
 
         putUserInfo(JSON.stringify(res));
