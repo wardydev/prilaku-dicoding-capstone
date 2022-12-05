@@ -270,35 +270,16 @@ const FormHabbit = ({
           onChange={(e) => setNote(e.target.value)}
         />
       </div>
-      <div className="d-flex mb-4">
-        <div>
+      <div className="d-flex mb-4 row">
+        <div className="col-5">
           <Heading title="Choose Date" />
           <Calendar
             value={selectedDayRange}
             onChange={(selected) => handleSelectedDay(selected)}
             shouldHighlightWeekends
           />
-
-          <div>
-            <label htmlFor="startDate">Start Date</label>
-            <input
-              type="date"
-              id="startDate"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="endDate">End Date</label>
-            <input
-              type="date"
-              id="endDate"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-            />
-          </div>
         </div>
-        <div className="ms-5">
+        <div className="col-7">
           <Heading title="At Time" />
           <AtTime data={DATATIME} setValue={setAtTimeValue} />
         </div>

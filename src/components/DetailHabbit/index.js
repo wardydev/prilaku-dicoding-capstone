@@ -18,14 +18,18 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
   return (
     <Modal setValue={setValue}>
       <h3>{dataDetailHabbit?.data?.name}</h3>
-      <div className="my-3">
-        <Calendar
-          value={selectedDayRange}
-          onChange={() => null}
-          colorPrimary="#F58349"
-          colorPrimaryLight="#FBCEB6"
-          shouldHighlightWeekends
-        />
+      <div className="row">
+        <div className="col-5">
+          <div className="my-3">
+            <Calendar
+              value={selectedDayRange}
+              onChange={() => null}
+              colorPrimary="#F58349"
+              colorPrimaryLight="#FBCEB6"
+              shouldHighlightWeekends
+            />
+          </div>
+        </div>
       </div>
       <div className="d-flex my-4">
         <span>

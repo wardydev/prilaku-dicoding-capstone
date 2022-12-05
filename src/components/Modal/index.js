@@ -8,7 +8,9 @@ const Modal = ({ children, setValue }) => {
         <ion-icon name="close-outline" style={{ fontSize: 36 }}></ion-icon>
       </div>
       <div className={`row justify-content-center`}>
-        <div className={`col-12 col-lg-7 px-4 py-4 ${styles.content}`}>{children}</div>
+        <div className={`col-12 col-lg-7 px-4 py-4 ${styles.content}`}>
+          {children}
+        </div>
       </div>
     </main>
   );
