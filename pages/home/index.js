@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
 
 import { db } from "../../src/config/firebase";
 import ButtonCustom from "../../src/components/ButtonCustom";
@@ -9,7 +10,11 @@ import HabbitCard from "../../src/components/HabbitCard";
 import Header from "../../src/components/Header";
 import Heading from "../../src/components/Heading";
 import Layout from "../../src/components/Layout";
-import { formatDate, getUserInfo } from "../../src/utils/functions";
+import {
+  formatDate,
+  formatterDateToObject,
+  getUserInfo,
+} from "../../src/utils/functions";
 import DetailHabbit from "../../src/components/DetailHabbit";
 import { deleteHabbit } from "../../src/utils/firebaseFunc";
 import CardRate from "../../src/components/CardRate";
@@ -45,7 +50,7 @@ const Home = () => {
         const filterDate = snapshots.filter((habbit) => {
           const dataActive = Date.parse(habbitsDateActive) + 86400000;
           return (
-            dataActive < habbit.data.endDate &&
+            Date.parse(habbitsDateActive) <= habbit.data.endDate &&
             dataActive > habbit.data.startDate
           );
         });
@@ -140,10 +145,16 @@ const Home = () => {
       </div>
       {isShowCalendar && (
         <div className="calendar-top mb-4">
-          <CalendarComponent
-            value={habbitsDateActive}
-            setValue={setHabbitsDateActive}
-            activeStartDate={habbitsDateActive}
+          <Calendar
+            value={formatterDateToObject(habbitsDateActive)}
+            onChange={(selected) =>
+              setHabbitsDateActive(
+                new Date([selected.month, selected.day, selected.year])
+              )
+            }
+            colorPrimary="#F58349"
+            colorPrimaryLight="#FBCEB6"
+            shouldHighlightWeekends
           />
         </div>
       )}
@@ -199,10 +210,16 @@ const Home = () => {
         <div className="col-12 col-lg-4">
           <div className="calendar-bottom mb-4">
             <Heading title="Date" />
-            <CalendarComponent
-              value={habbitsDateActive}
-              setValue={setHabbitsDateActive}
-              activeStartDate={habbitsDateActive}
+            <Calendar
+              value={formatterDateToObject(habbitsDateActive)}
+              onChange={(selected) =>
+                setHabbitsDateActive(
+                  new Date([selected.month, selected.day, selected.year])
+                )
+              }
+              colorPrimary="#F58349"
+              colorPrimaryLight="#FBCEB6"
+              shouldHighlightWeekends
             />
           </div>
           <div className="card-rate__responsive-bottom">

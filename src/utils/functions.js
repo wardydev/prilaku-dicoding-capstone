@@ -39,6 +39,25 @@ function getWindowSize() {
   return { innerWidth, innerHeight };
 }
 
+function formatterDateToObject(date) {
+  const yyyy = date.getFullYear();
+  let mm = date.getMonth() + 1; // Months start at 0!
+  let dd = date.getDate();
+
+  if (dd < 10) dd = "0" + dd;
+  if (mm < 10) mm = "0" + mm;
+
+  return {
+    day: parseInt(dd),
+    month: mm,
+    year: yyyy,
+  };
+}
+
+function formatObjectToDate(date) {
+  return new Date(Object.values(date).join("-"));
+}
+
 export {
   putJsonToken,
   getJsonToken,
@@ -47,4 +66,6 @@ export {
   getUserInfo,
   subtractDays,
   getWindowSize,
+  formatterDateToObject,
+  formatObjectToDate,
 };

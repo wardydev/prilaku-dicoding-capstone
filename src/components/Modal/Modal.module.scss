@@ -27,7 +27,7 @@
         background-color: black;
         min-height: 100vh;
         @include respond(mobile) {
-            padding-top: 60px;
+            padding-top: 80px !important;
         }
     }
 
@@ -49,7 +49,7 @@
         @include respond(mobile) {
             position: absolute;
             top: 20px;
-            left: 20px;
+            right: 20px;
         }
 
         &:hover {

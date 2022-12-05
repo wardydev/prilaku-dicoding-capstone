@@ -7,18 +7,19 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
+import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
 
 import Modal from "../Modal";
 import Heading from "../Heading";
 import Card from "../Card";
-import CalendarComponent from "../CalendarComponent";
+// import CalendarComponent from "../CalendarComponent";
 import AtTime from "../AtTime";
 import ButtonCustom from "../ButtonCustom";
 import { DATAICONS, DATATIME, DATACOLORS } from "../../utils/constants";
 import ModalItem from "../ModalItem";
 import { db } from "../../config/firebase";
 import Spinner from "../Spinner";
-import { getUserInfo } from "../../utils/functions";
+import { formatterDateToObject, getUserInfo } from "../../utils/functions";
 
 const FormHabbit = ({
   setShowModal,
@@ -37,6 +38,10 @@ const FormHabbit = ({
   const userSigned = JSON.parse(getUserInfo());
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState();
+  const [selectedDayRange, setSelectedDayRange] = useState({
+    from: formatterDateToObject(new Date()),
+    to: null,
+  });
 
   const HabbitType = {
     regular: {
@@ -140,6 +145,16 @@ const FormHabbit = ({
 
   const _checkDataInputed = () => {
     return habbitName === "" || note === "" || atTimevalue === null;
+  };
+
+  const handleSelectedDay = (selected) => {
+    setSelectedDayRange(selected);
+    setStartDate(
+      new Date([selected.from.month, selected.from.day, selected.from.year])
+    );
+    setEndDate(
+      new Date([selected.to.month, selected.to.day, selected.to.year])
+    );
   };
 
   useEffect(() => {
@@ -255,29 +270,18 @@ const FormHabbit = ({
           onChange={(e) => setNote(e.target.value)}
         />
       </div>
-      <div className="d-flex mb-4">
-        <div>
+      <div className="d-flex mb-4 row">
+        <div className="col-5">
           <Heading title="Choose Date" />
-          <div>
-            <label htmlFor="startDate">Start Date</label>
-            <input
-              type="date"
-              id="startDate"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="endDate">End Date</label>
-            <input
-              type="date"
-              id="endDate"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-            />
-          </div>
+          <Calendar
+            value={selectedDayRange}
+            onChange={(selected) => handleSelectedDay(selected)}
+            shouldHighlightWeekends
+            colorPrimary="#F58349"
+            colorPrimaryLight="#FBCEB6"
+          />
         </div>
-        <div className="ms-5">
+        <div className="col-7">
           <Heading title="At Time" />
           <AtTime data={DATATIME} setValue={setAtTimeValue} />
         </div>

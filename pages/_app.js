@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-calendar/dist/Calendar.css";
+import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 
 import "../styles/globals.css";
 import AuthProvider from "../src/context/AuthProvider";

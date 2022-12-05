@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
+
 import { deleteHabbit } from "../../utils/firebaseFunc";
-import { formatDate } from "../../utils/functions";
+import { formatDate, formatterDateToObject } from "../../utils/functions";
 import ButtonCustom from "../ButtonCustom";
-import CalendarComponent from "../CalendarComponent";
 import Heading from "../Heading";
 import Modal from "../Modal";
 
 const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
   const startDate = formatDate(new Date(dataDetailHabbit.data.startDate));
   const endDate = formatDate(new Date(dataDetailHabbit.data.endDate));
+  const [selectedDayRange, setSelectedDayRange] = useState({
+    from: formatterDateToObject(new Date(dataDetailHabbit.data.startDate)),
+    to: formatterDateToObject(new Date(dataDetailHabbit.data.endDate)),
+  });
+
   return (
     <Modal setValue={setValue}>
       <h3>{dataDetailHabbit?.data?.name}</h3>
+      <div className="row">
+        <div className="col-5">
+          <div className="my-3">
+            <Calendar
+              value={selectedDayRange}
+              onChange={() => null}
+              colorPrimary="#F58349"
+              colorPrimaryLight="#FBCEB6"
+              shouldHighlightWeekends
+            />
+          </div>
+        </div>
+      </div>
       <div className="d-flex my-4">
         <span>
           Dari tanggal <strong className="text-warning">{startDate}</strong>{" "}
