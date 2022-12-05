@@ -40,16 +40,19 @@ const FormHabbit = ({
 
   const HabbitType = {
     regular: {
+      name: "Regular habbit",
       color: "blue",
       date: new Date(),
       isDone: false,
     },
     negative: {
+      name: "Negative habbit",
       color: "red",
       date: new Date(),
       isDone: true,
     },
     "one-time": {
+      name: "One time habbit",
       color: "purple",
       date: new Date(),
       isDone: false,
@@ -150,31 +153,33 @@ const FormHabbit = ({
 
   return (
     <Modal setValue={setShowModal}>
-      <div className="d-flex align-items-center mb-4">
-        <input
-          type="text"
-          placeholder="Habit name"
-          className={`rounded rounded-lg py-2 me-4 px-3 ${
-            isFullWidth ? styles.inputHabbit : styles.inputHabbitFocus
-          }`}
-          ref={habbitNameRef}
-          value={habbitName}
-          onChange={(e) => {
-            setHabbitName(e.target.value);
-            setIsFullWidth(true);
-          }}
-        />
-        {!isFullWidth && (
+      <div className={`${styles['habbit-form']} mb-4`}>
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Habbit name"
+            className={`form-control ${styles['habbit-form']}`}
+            ref={habbitNameRef}
+            value={habbitName}
+            onChange={(e) => {
+              setHabbitName(e.target.value);
+              setIsFullWidth(true);
+            }}
+            autoFocus={true}
+          />
+        </div>
+        <p className={styles['habbit-type']}>{HabbitType[type].name}</p>
+        {/* {!isFullWidth && (
           <ion-icon
             name="pencil-outline"
             style={{ fontSize: 26, cursor: "pointer" }}
             onClick={handlePenClick}
           ></ion-icon>
-        )}
+        )} */}
       </div>
       <div className="mb-4">
         <Heading title="Icon" />
-        <Card>
+        <Card color="#21242b">
           <div className="d-flex align-items-center p-2">
             <ion-icon
               name={iconName}
@@ -241,12 +246,12 @@ const FormHabbit = ({
       <div className="mb-4">
         <Heading title="Notes" />
         <textarea
-          name="sdfsdf"
+          name="notes"
           rows="5"
           placeholder="Write notes"
           className="w-100 form-control rounded rounded-lg p-3 shadow-none"
           style={{
-            backgroundColor: "#f5f0f05d",
+            backgroundColor: "#21242b",
             color: "white",
             outline: "none",
             border: "none",
@@ -255,8 +260,8 @@ const FormHabbit = ({
           onChange={(e) => setNote(e.target.value)}
         />
       </div>
-      <div className="d-flex mb-4">
-        <div>
+      <div className="mb-4">
+        {/* <div>
           <Heading title="Choose Date" />
           <div>
             <label htmlFor="startDate">Start Date</label>
@@ -276,22 +281,24 @@ const FormHabbit = ({
               onChange={(e) => setEndDate(e.target.value)}
             />
           </div>
-        </div>
-        <div className="ms-5">
-          <Heading title="At Time" />
+        </div> */}
+        <div className="">
+          <Heading title="Do it At" />
           <AtTime data={DATATIME} setValue={setAtTimeValue} />
         </div>
       </div>
-      <ButtonCustom
-        title={isLoading ? <Spinner /> : _checkTitleButton()}
-        isFullWidth={true}
-        size="large"
-        color="#E05C1A"
-        handlePress={
-          detailHabbit !== null ? updateHabbitToFirestore : addHabbitToFirestore
-        }
-        isDisabled={disabledButton}
-      />
+      <div className="mb-5">
+        <ButtonCustom
+          title={isLoading ? <Spinner /> : _checkTitleButton()}
+          isFullWidth={true}
+          size="large"
+          color="#2f7fe2"
+          handlePress={
+            detailHabbit !== null ? updateHabbitToFirestore : addHabbitToFirestore
+          }
+          isDisabled={disabledButton}
+        />
+      </div>
     </Modal>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BiRepeat, BiBlock } from 'react-icons/bi';
-import { BsFillCalendar2CheckFill } from 'react-icons/bs';
+import { BsCalendarCheck } from 'react-icons/bs';
 import Modal from '../Modal';
 import styles from './HabbitTypeSelector.module.scss';
 import ButtonCustom from '../ButtonCustom';
@@ -35,25 +35,25 @@ function HabbitTypeSelector({ setShowSelectTypeModal, dataDetailHabbit, setDataD
       }
       <div className="row">
         <div className='col-4'>
-          <div className={`${styles['habit-type']} ${habbitType === 'regular' ? 'bg-primary' : ''}`} onClick={() => changeHabbitType('regular')}>
+          <div className={`${styles['habit-type']} ${habbitType === 'regular' ? styles['bg-regular'] : ''}`} onClick={() => changeHabbitType('regular')}>
             <BiRepeat />
             <span>Regular</span>
           </div>
         </div>
         <div className='col-4'>
-          <div className={`${styles['habit-type']} ${habbitType === 'negative' ? 'bg-danger' : ''}`} onClick={() => changeHabbitType('negative')}>
+          <div className={`${styles['habit-type']} ${habbitType === 'negative' ? styles['bg-negative'] : ''}`} onClick={() => changeHabbitType('negative')}>
             <BiBlock />
             <span>Negative</span>
           </div>
         </div>
         <div className='col-4'>
-          <div className={`${styles['habit-type']} ${habbitType === 'one-time' ? 'bg-info' : ''}`} onClick={() => changeHabbitType('one-time')}>
-            <BsFillCalendar2CheckFill />
+          <div className={`${styles['habit-type']} ${habbitType === 'one-time' ? styles['bg-oneTime'] : ''}`} onClick={() => changeHabbitType('one-time')}>
+            <BsCalendarCheck />
             <span>One Time</span>
           </div>
         </div>
       </div>
-      <div className="mt-4 card bg-dark p-4" style={{height: '150px'}}>
+      <div className={`mt-4 card p-4 ${styles['habbit-info']}`}>
         {habbitType === 'regular' && 
           <ShowDescription 
             title='REGULAR'
@@ -73,6 +73,7 @@ function HabbitTypeSelector({ setShowSelectTypeModal, dataDetailHabbit, setDataD
       <div className='mt-4'>
         <ButtonCustom
           title="Create New Habit"
+          color="#21242b"
           isIcon={true}
           size="large"
           iconName="add"

@@ -15,30 +15,33 @@ const AtTime = ({ data, setValue }) => {
   };
 
   return (
-    <div className="row">
+    <div className={styles['time-select']}>
       {data?.map((time) => {
         return (
-          <div className="mb-3 col-4" key={time.id}>
+          <div className="" key={time.id}>
             <button
               data-hours={time.hours}
               data-icon={time.iconName}
               data-time={time.timeName}
-              className={styles.btnNormal}
+              className={styles['button-time']}
               style={
                 selectedTime === time.id
-                  ? { backgroundColor: "#E05C1A" }
-                  : { backgroundColor: "#d9d9d931" }
+                  ? { backgroundColor: "#2f7fe2" }
+                  : { backgroundColor: "#21242b" }
               }
               onClick={(e) => handleTimePick(e, time.id)}
             >
-              <ion-icon
-                name={time.iconName}
-                data-hours={time.hours}
-                data-icon={time.iconName}
-                data-time={time.timeName}
-              ></ion-icon>
+              {
+                time.iconName 
+                ?  <ion-icon
+                    name={time.iconName}
+                    data-hours={time.hours}
+                    data-icon={time.iconName}
+                    data-time={time.timeName}
+                  ></ion-icon>
+                : ''
+              }
               <span
-                className="ms-1"
                 data-hours={time.hours}
                 data-icon={time.iconName}
                 data-time={time.timeName}

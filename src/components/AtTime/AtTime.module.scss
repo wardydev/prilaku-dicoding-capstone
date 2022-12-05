@@ -1,16 +1,19 @@
-.btnNormal {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem;
-    border-radius: 8px;
-    background-color: #d9d9d931;
-    color: white;
-    font-weight: 500;
-    border: none;
-    opacity: 1;
+.time-select {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  max-width: 600px;
+}
 
-    &:hover {
-        background-color: #d9d9d95d;
-        opacity: 0.8;
-    }
+.button-time {
+  border: none;
+  color: #feffff;
+  width: 100%;
+  height: 50px;
+  border-radius: .25rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
 }

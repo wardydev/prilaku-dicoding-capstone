@@ -3,20 +3,27 @@
 .button-icon-only {
   width: 45px;
   height: 45px;
-  padding: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   background: transparent;
 
   span {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: .25rem;
-    background-color: $primary-color;
-    color: white;
     font-size: 1.3em;
+    user-select: none;
+    pointer-events: none;
+
+    svg {
+      user-select: none;
+      pointer-events: none;
+    }
   }
 }
 

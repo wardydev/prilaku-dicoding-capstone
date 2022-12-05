@@ -1,5 +1,11 @@
 const DATATIME = [
   {
+    id: "0",
+    timeName: "Anytime",
+    hours: [],
+    iconName: "",
+  },
+  {
     id: "1",
     timeName: "Morning",
     hours: [5, 11],

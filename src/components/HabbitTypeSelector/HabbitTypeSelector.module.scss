@@ -6,12 +6,37 @@
   align-items: center;
   gap: .75rem;
   border-radius: .25rem;
+  background-color: #21242b;
+  font-size: 14px;
 
   svg {
-    font-size: 2rem;
+    font-size: 1.75rem;
+  }
+
+  span {
+    text-transform: uppercase;
+    font-weight: bold;
   }
 }
 
-.onActive {
-  background-color: blue;
+.habbit-info {
+  height: 150px;
+  background-color: #21242b;
+
+  > h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.bg-regular {
+  background-color: #2f7fe2;
+}
+
+.bg-negative {
+  background-color: #cc4544;
+}
+
+.bg-oneTime {
+  background-color: hsl(200, 46%, 54%);
 }
