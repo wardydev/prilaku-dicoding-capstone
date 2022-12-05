@@ -41,7 +41,7 @@ function getWindowSize() {
 
 function formatterDateToObject(date) {
   const yyyy = date.getFullYear();
-  let mm = date.getMonth() + 1; // Months start at 0!
+  let mm = date.getMonth() + 1;
   let dd = date.getDate();
 
   if (dd < 10) dd = "0" + dd;
