@@ -277,6 +277,8 @@ const FormHabbit = ({
             value={selectedDayRange}
             onChange={(selected) => handleSelectedDay(selected)}
             shouldHighlightWeekends
+            colorPrimary="#F58349"
+            colorPrimaryLight="#FBCEB6"
           />
         </div>
         <div className="col-7">
