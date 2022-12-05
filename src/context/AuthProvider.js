@@ -14,8 +14,10 @@ const AuthProvider = ({ children }) => {
     try {
       const res = await signInWithPopup(auth, googleProvider);
       const { accessToken } = res.user;
-      setCookie("USER_TOKEN", accessToken, {maxAge: 60 * 60 * 24});
-      
+      setCookie("USER_TOKEN", accessToken, {
+        maxAge: 60 * 60 * 24 * 7,
+      });
+
       putJsonToken(JSON.stringify(accessToken));
       putUserInfo(JSON.stringify(res));
 

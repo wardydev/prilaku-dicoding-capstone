@@ -1,15 +1,26 @@
 import Link from "next/link";
 import Logo from "../src/components/Logo";
 import HomeHeader from "../src/components/HomeHeader";
+import { getCookie } from "cookies-next";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {
+    const USER_TOKEN = getCookie("USER_TOKEN");
+
+    if (!USER_TOKEN) {
+      localStorage.removeItem("TOKEN");
+      localStorage.removeItem("DATAUSERS");
+    }
+  }, []);
+
   return (
     <div className="landing">
       <HomeHeader />
 
       <div className="landing__hero text-center">
         <p className="landing__hero__title">
-          The habit tracker you get into the habit of using
+          Managing and tracking habit made easy just for you
         </p>
         <p className="landing__hero__subtitle">
           Prilaku let's you simply track your habits.
