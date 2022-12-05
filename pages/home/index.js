@@ -5,7 +5,6 @@ import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
 import { db } from "../../src/config/firebase";
 import ButtonCustom from "../../src/components/ButtonCustom";
 import CalendarComponent from "../../src/components/CalendarComponent";
-// import FormHabbit from "../../src/components/FormHabbit";
 import HabbitCard from "../../src/components/HabbitCard";
 import Header from "../../src/components/Header";
 import Heading from "../../src/components/Heading";
@@ -20,7 +19,7 @@ import { deleteHabbit } from "../../src/utils/firebaseFunc";
 import CardRate from "../../src/components/CardRate";
 import Spinner from "../../src/components/Spinner";
 import Alert from "../../src/components/Alert";
-import HabbitTypeSelector from "../../src/components/HabbitTypeSelector";
+import FormHabbit from "../../src/components/FormHabbit";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -87,10 +86,9 @@ const Home = () => {
   return (
     <Layout>
       {showModal && (
-        <HabbitTypeSelector
-          setShowSelectTypeModal={setShowModal}
-          dataDetailHabbit={dataDetailHabbit}
-          setDataDetailHabbit={setDataDetailHabbit}
+        <FormHabbit
+          setShowModal={setShowModal}
+          detailHabbit={dataDetailHabbit}
         />
       )}
       {isShowDetailUpdate && (

@@ -39,8 +39,14 @@ const FormHabbit = ({
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState();
   const [selectedDayRange, setSelectedDayRange] = useState({
-    from: formatterDateToObject(new Date()),
-    to: null,
+    from:
+      detailHabbit !== null
+        ? formatterDateToObject(new Date(detailHabbit.data.startDate))
+        : formatterDateToObject(new Date()),
+    to:
+      detailHabbit !== null
+        ? formatterDateToObject(new Date(detailHabbit.data.endDate))
+        : null,
   });
 
   const HabbitType = {
@@ -131,6 +137,8 @@ const FormHabbit = ({
         note: note,
         time: atTimevalue,
         created: Timestamp.now(),
+        startDate: Date.parse(startDate),
+        endDate: Date.parse(endDate),
       });
       setShowModal(false);
       setIsLoading(false);
@@ -153,7 +161,7 @@ const FormHabbit = ({
       new Date([selected.from.month, selected.from.day, selected.from.year])
     );
     setEndDate(
-      new Date([selected.to.month, selected.to.day, selected.to.year])
+      new Date([selected?.to?.month, selected?.to?.day, selected?.to?.year])
     );
   };
 

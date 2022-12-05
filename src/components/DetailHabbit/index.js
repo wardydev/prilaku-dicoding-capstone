@@ -45,7 +45,7 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
         <p className="fs-6 opacity-50">{dataDetailHabbit?.data?.note}</p>
       </div>
       <div className="mt-4 d-flex">
-        {setShowModal && (
+        {dataDetailHabbit.data.isDone == false && (
           <div className="me-3">
             <ButtonCustom
               title="Edit"
