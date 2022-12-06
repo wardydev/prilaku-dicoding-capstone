@@ -109,7 +109,9 @@ const FormHabbit = ({
         created: Timestamp.now(),
         uid: userSigned.user.uid,
         startDate: Date.parse(startDate),
-        endDate: Date.parse(endDate),
+        endDate: Date.parse(endDate)
+          ? Date.parse(endDate)
+          : Date.parse(startDate),
       };
 
       const habbit = await addDoc(collection(db, "habbits"), data);
@@ -138,7 +140,9 @@ const FormHabbit = ({
         time: atTimevalue,
         created: Timestamp.now(),
         startDate: Date.parse(startDate),
-        endDate: Date.parse(endDate),
+        endDate: Date.parse(endDate)
+          ? Date.parse(endDate)
+          : Date.parse(startDate),
       });
       setShowModal(false);
       setIsLoading(false);

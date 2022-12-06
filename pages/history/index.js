@@ -125,6 +125,8 @@ const History = () => {
                     data={habbit}
                     deleteHabbitById={() => deleteHabbit("habbits", habbit.id)}
                     time={habbit.data.time}
+                    startDate={formatDate(new Date(habbit.data.startDate))}
+                    endDate={formatDate(new Date(habbit.data.endDate))}
                   />
                 </div>
               );

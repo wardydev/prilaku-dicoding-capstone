@@ -72,7 +72,9 @@ const HabbitCard = ({
                 ></ion-icon>
                 <div className="d-flex items-center">
                   <span className="mx-2">{startDate}</span>
-                  <span className="mx-2">{endDate}</span>
+                  {startDate !== endDate && (
+                    <span className="mx-2">{endDate}</span>
+                  )}
                 </div>
               </div>
               <div className="d-flex align-items-center opacity-75 mb-1">
