@@ -1,3 +1,17 @@
+@mixin respond ($breakpoint) {
+    @if $breakpoint==tablet {
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
+  }
+  
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 576px) {
+      @content;
+    }
+  }
+  }
+
 .inputHabbit {
     background-color: rgba(128, 128, 128, 0.16);
     border: none;
