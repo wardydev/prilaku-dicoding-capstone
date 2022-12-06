@@ -105,7 +105,7 @@ const FormHabbit = ({
         color: colorHex,
         note: note,
         time: atTimevalue,
-        isDone: HabbitType[type].isDone,
+        isDone: false,
         created: Timestamp.now(),
         uid: userSigned.user.uid,
         startDate: Date.parse(startDate),
