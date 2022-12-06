@@ -32,13 +32,17 @@ const Navbar = () => {
       window.localStorage.removeItem("DATAUSERS");
       router.push("/login");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUserSignOut]);
 
   return (
     <div className={styles.navbar}>
       <div className="d-flex justify-content-between align-items-center px-3 py-3 bg-black border-bottom">
-        <Logo width={45} />
+        <Link href="/">
+          <a>
+            <Logo width={45} />
+          </a>
+        </Link>
         <div onClick={() => setIsNavbarActive(!isNavbarActive)}>
           {isNavbarActive ? (
             <ion-icon name="close-outline" style={{ fontSize: 36 }}></ion-icon>

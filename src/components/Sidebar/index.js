@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Sidebar.module.scss";
+import { deleteCookie } from "cookies-next";
+import Link from "next/link";
+
 import { routes } from "../../routes";
 import ListMenu from "../ListMenu";
 import Logo from "../Logo";
 import { useRouter } from "next/router";
 import { auth } from "../../config/firebase";
-import { deleteCookie } from "cookies-next";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -30,13 +32,17 @@ const Sidebar = () => {
       window.localStorage.removeItem("DATAUSERS");
       router.push("/login");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUserSignOut]);
 
   return (
     <div className={styles.sidebar}>
       <div className={styles.logoContainer}>
-        <Logo />
+        <Link href="/">
+          <a>
+            <Logo />
+          </a>
+        </Link>
       </div>
       <div className={styles.menusContainer}>
         <div className={styles.menuContainer}>
