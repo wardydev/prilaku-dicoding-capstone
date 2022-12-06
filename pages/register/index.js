@@ -87,7 +87,7 @@ const Register = () => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/">
-            <a>
+            <a style={{ textDecoration: "none", color: "#fff" }}>
               <Logo width="35" />
               <span>Prilaku</span>
             </a>
@@ -167,7 +167,7 @@ const Register = () => {
         <p className={styles.bottomText}>
           Already have an account?
           <Link href="/login">
-            <a>Sign In</a>
+            <a style={{ color: "#fff" }}>Sign In</a>
           </Link>
         </p>
       </div>

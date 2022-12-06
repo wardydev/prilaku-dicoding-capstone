@@ -49,7 +49,10 @@ const Blog = () => {
                 </div>
 
                 <Link href={`/blog/${blog.id}`}>
-                  <a className={styles.link}>
+                  <a
+                    className={styles.link}
+                    style={{ textDecoration: "none", color: "#fff" }}
+                  >
                     <p>Continue Reading</p>
                     <Image
                       src="/images/ic_arrow.svg"

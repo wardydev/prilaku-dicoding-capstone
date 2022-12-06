@@ -77,7 +77,7 @@ const Login = () => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/">
-            <a>
+            <a style={{ textDecoration: "none", color: "#fff" }}>
               <Logo width="35" />
               <span>Prilaku</span>
             </a>
@@ -86,7 +86,12 @@ const Login = () => {
 
         <div className={styles.card}>
           <button className={styles.btnGoogle} onClick={handleLoginWithGoogle}>
-            <Image src="/images/ic_google.svg" alt="Google" width="20px" height="20px" />
+            <Image
+              src="/images/ic_google.svg"
+              alt="Google"
+              width="20px"
+              height="20px"
+            />
             <span>Login with Google</span>
           </button>
 
@@ -137,7 +142,7 @@ const Login = () => {
         <p className={styles.bottomText}>
           Don&apos;t have an account yet?
           <Link href="/register">
-            <a>Sign Up</a>
+            <a style={{ color: "#fff" }}>Sign Up</a>
           </Link>
         </p>
       </div>

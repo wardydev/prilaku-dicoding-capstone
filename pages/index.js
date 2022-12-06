@@ -27,7 +27,12 @@ const Home = () => {
           Prilaku let you simply track your habits.
         </p>
         <Link href="/home">
-          <a className="landing__hero__cta">Go to the app</a>
+          <a
+            className="landing__hero__cta"
+            style={{ textDecoration: "none", color: "#fff" }}
+          >
+            Go to the app
+          </a>
         </Link>
       </div>
 
@@ -36,7 +41,8 @@ const Home = () => {
           <Image
             src="/images/dashboard.png"
             alt="Dashboard"
-            width="1000px" height="450px"
+            width="1000px"
+            height="450px"
             className="dashboard-image"
           />
         </div>
@@ -90,7 +96,12 @@ const Home = () => {
           Prilaku keeps your habits organized. Start tracking habit today!
         </p>
         <Link href="/home">
-          <a className="landing__hero__cta">Go to the app</a>
+          <a
+            className="landing__hero__cta"
+            style={{ textDecoration: "none", color: "#fff" }}
+          >
+            Go to the app
+          </a>
         </Link>
       </div>
 
