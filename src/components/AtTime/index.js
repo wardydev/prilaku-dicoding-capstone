@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./AtTime.module.scss";
 
 const AtTime = ({ data, setValue }) => {
   const [selectedTime, setSelectedTime] = useState();
+  const defaultValue = data[0];
+
+  useEffect(() => {
+    setSelectedTime(defaultValue.id);
+    setValue({
+      name: defaultValue.timeName,
+      hours: defaultValue.hours,
+      icon: defaultValue.iconName,
+    });
+  }, []);
 
   const handleTimePick = (e, id) => {
     setSelectedTime(id);
@@ -15,10 +25,10 @@ const AtTime = ({ data, setValue }) => {
   };
 
   return (
-    <div className="row">
+    <div className="d-flex flex-wrap gap-3">
       {data?.map((time) => {
         return (
-          <div className="mb-3 col-4" key={time.id}>
+          <div key={time.id}>
             <button
               data-hours={time.hours}
               data-icon={time.iconName}

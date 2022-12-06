@@ -1,5 +1,11 @@
 const DATATIME = [
   {
+    id: "0",
+    timeName: "EveryTime",
+    hours: [0 - 24],
+    iconName: "stopwatch-outline",
+  },
+  {
     id: "1",
     timeName: "Morning",
     hours: [5, 11],

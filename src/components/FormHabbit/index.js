@@ -279,7 +279,7 @@ const FormHabbit = ({
         />
       </div>
       <div className="d-flex mb-4 row">
-        <div className="col-5">
+        <div className="col-12 col-lg-5 mb-4">
           <Heading title="Choose Date" />
           <Calendar
             value={selectedDayRange}
@@ -289,7 +289,7 @@ const FormHabbit = ({
             colorPrimaryLight="#FBCEB6"
           />
         </div>
-        <div className="col-7">
+        <div className="col-12 col-lg-7">
           <Heading title="At Time" />
           <AtTime data={DATATIME} setValue={setAtTimeValue} />
         </div>
