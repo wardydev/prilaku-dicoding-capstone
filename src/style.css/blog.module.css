@@ -1,0 +1,118 @@
+.header {
+  margin: 5rem 0 1rem 0;
+  text-align: center;
+}
+.header h2 {
+  color: #949494;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 4px;
+  margin-top: 4rem;
+}
+.card .title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card .body {
+  color: #949494;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0rem 4rem;
+  margin-bottom: 5rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+  transition: all 0.1s ease-in-out;
+  padding-bottom: 2px;
+}
+.link:hover {
+  border-bottom: 1px solid #949494;
+  color: #fff;
+  cursor: pointer;
+}
+.link p {
+  margin: 0;
+}
+.link img {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.articles {
+  margin: auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  max-width: 700px;
+}
+.articles h1 {
+  font-weight: bold;
+  line-height: 2.8rem;
+}
+.articles p {
+  line-height: 1.6rem;
+}
+.articles img,
+.articles iframe {
+  width: 100%;
+  border-radius: 4px;
+}
+.articles > img {
+  margin: 3rem 0;
+}
+.articles .date {
+  color: #949494;
+}
+.articles .date span {
+  padding: 0 8px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 576px) {
+  .cardList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 768px) {
+  .cardList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}/*# sourceMappingURL=blog.module.css.map */

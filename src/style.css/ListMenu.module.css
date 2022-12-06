@@ -1,0 +1,41 @@
+.menus {
+  margin-bottom: 8px;
+}
+.menus .menuActive {
+  background-color: rgb(122, 122, 122);
+  padding: 12px 20px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+.menus .menuActive ion-icon {
+  margin-right: 12px;
+}
+.menus .menuActive a {
+  font-weight: 500;
+  color: white;
+}
+.menus .menuActive:hover {
+  cursor: pointer;
+}
+.menus .menu {
+  padding: 12px 20px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  display: flex;
+  align-items: center;
+  opacity: 0.6;
+}
+.menus .menu ion-icon {
+  margin-right: 12px;
+}
+.menus .menu a {
+  font-weight: 400;
+  color: white;
+}
+.menus .menu:hover {
+  background-color: rgb(66, 66, 66);
+  cursor: pointer;
+  opacity: 1;
+}/*# sourceMappingURL=ListMenu.module.css.map */

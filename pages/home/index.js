@@ -76,6 +76,7 @@ const Home = () => {
 
   useEffect(() => {
     getHabbitDataFromFirestore();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [habbits, habbitsDateActive]);
 
   const updateHabbit = (data) => {

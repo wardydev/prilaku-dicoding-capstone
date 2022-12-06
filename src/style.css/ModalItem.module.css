@@ -1,0 +1,23 @@
+.container {
+  width: 200px;
+  height: auto;
+  padding: 10px 18px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: gray;
+  border-radius: 10px;
+  z-index: 99;
+}
+.container .icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.container .icon:hover {
+  background-color: rgba(212, 212, 212, 0.2039215686) !important;
+  cursor: pointer;
+}/*# sourceMappingURL=ModalItem.module.css.map */

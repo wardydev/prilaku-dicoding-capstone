@@ -32,6 +32,7 @@ const Navbar = () => {
       window.localStorage.removeItem("DATAUSERS");
       router.push("/login");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUserSignOut]);
 
   return (

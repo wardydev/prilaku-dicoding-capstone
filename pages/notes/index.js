@@ -118,6 +118,7 @@ const Notes = () => {
 
   useEffect(() => {
     getNotesDocument();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uid]);
 
   const _clearForm = () => {

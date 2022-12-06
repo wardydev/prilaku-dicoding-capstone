@@ -1,0 +1,17 @@
+.inputHabbit {
+  background-color: rgba(128, 128, 128, 0.16);
+  border: none;
+  outline: none;
+  color: white;
+  font-size: xx-large;
+  width: 100%;
+}
+
+.inputHabbitFocus {
+  background-color: rgba(128, 128, 128, 0.16);
+  border: none;
+  outline: none;
+  color: white;
+  font-size: xx-large;
+  width: 240px;
+}/*# sourceMappingURL=FormHabbit.module.css.map */

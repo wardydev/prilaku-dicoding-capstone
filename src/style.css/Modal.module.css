@@ -1,0 +1,45 @@
+.main {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-color: #191919;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.main .content {
+  background-color: black;
+  min-height: 100vh;
+}
+@media only screen and (max-width: 576px) {
+  .main .content {
+    padding-top: 80px !important;
+  }
+}
+.main .closeIcon {
+  position: fixed;
+  top: 40px;
+  left: 100px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.0235294118);
+  border-radius: 50%;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+}
+@media only screen and (max-width: 576px) {
+  .main .closeIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+.main .closeIcon:hover {
+  background-color: rgba(255, 255, 255, 0.1529411765);
+}/*# sourceMappingURL=Modal.module.css.map */

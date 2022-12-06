@@ -1,0 +1,21 @@
+.buttonFill {
+  border-radius: 2rem;
+  color: rgb(231, 231, 231);
+  background: linear-gradient(45deg, rgb(0, 153, 247) 10%, rgb(241, 23, 18) 50%);
+  transition: 0.3s;
+}
+.buttonFill:hover {
+  background: linear-gradient(45deg, rgb(1, 116, 187) 10%, rgb(184, 16, 13) 50%);
+}
+
+.buttonOutline {
+  border-radius: 2rem;
+  color: rgb(231, 231, 231);
+  border: 1.65px solid rgb(140, 139, 139);
+  background: transparent;
+  transition: 0.3s;
+}
+.buttonOutline:hover {
+  color: rgb(185, 174, 174);
+  border: 1.75px solid rgb(185, 174, 174);
+}/*# sourceMappingURL=button.module.css.map */

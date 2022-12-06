@@ -3,6 +3,7 @@ import Logo from "../src/components/Logo";
 import HomeHeader from "../src/components/HomeHeader";
 import { getCookie } from "cookies-next";
 import { useEffect } from "react";
+import Image from "next/image";
 
 const Home = () => {
   useEffect(() => {
@@ -23,7 +24,7 @@ const Home = () => {
           Managing and tracking habit made easy just for you
         </p>
         <p className="landing__hero__subtitle">
-          Prilaku let's you simply track your habits.
+          Prilaku let you simply track your habits.
         </p>
         <Link href="/home">
           <a className="landing__hero__cta">Go to the app</a>
@@ -32,7 +33,12 @@ const Home = () => {
 
       <div className="landing__image">
         <div>
-          <img src="images/dashboard.png" alt="" />
+          <Image
+            src="/images/dashboard.png"
+            alt="Dashboard"
+            width="1000px" height="450px"
+            className="dashboard-image"
+          />
         </div>
       </div>
 
@@ -42,19 +48,34 @@ const Home = () => {
 
         <div className="row gap-3">
           <div className="landing__feature__card col-12 col-sm">
-            <img src="/images/ic_book.svg" alt="Icon book" />
+            <Image
+              src="/images/ic_book.svg"
+              alt="Icon book"
+              width="25px"
+              height="25px"
+            />
             <p className="title">Review your habits daily</p>
             <p className="body">See your habits for the day</p>
           </div>
 
           <div className="landing__feature__card col-12 col-sm">
-            <img src="/images/ic_calendar.svg" alt="Icon calendar" />
+            <Image
+              src="/images/ic_calendar.svg"
+              alt="Icon calendar"
+              width="25px"
+              height="25px"
+            />
             <p className="title">Track your habit</p>
             <p className="body">Easily track history of your habit</p>
           </div>
 
           <div className="landing__feature__card col-12 col-sm">
-            <img src="/images/ic_chart.svg" alt="" />
+            <Image
+              src="/images/ic_chart.svg"
+              alt="Icon chart"
+              width="25px"
+              height="25px"
+            />
             <p className="title">Habit summary</p>
             <p className="body">
               We give you statistics so you know where you going
