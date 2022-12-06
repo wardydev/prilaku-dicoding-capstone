@@ -19,7 +19,7 @@ const ListMenu = ({
           <span>{menu}</span>
         ) : (
           <Link href={`/${path}`}>
-            <a>{menu}</a>
+            <a style={{ textDecoration: "none" }}>{menu}</a>
           </Link>
         )}
       </div>

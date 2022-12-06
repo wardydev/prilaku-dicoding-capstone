@@ -12,6 +12,7 @@ const AtTime = ({ data, setValue }) => {
       hours: defaultValue.hours,
       icon: defaultValue.iconName,
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTimePick = (e, id) => {

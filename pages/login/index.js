@@ -13,6 +13,7 @@ import {
 import { auth } from "../../src/config/firebase";
 import { setCookie } from "cookies-next";
 import Logo from "../../src/components/Logo";
+import Image from "next/image";
 
 const Login = () => {
   const initialState = {
@@ -68,6 +69,7 @@ const Login = () => {
     if (JSON.parse(getJsonToken()) !== null) {
       router.push("/");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -75,7 +77,7 @@ const Login = () => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/">
-            <a>
+            <a style={{ textDecoration: "none", color: "#fff" }}>
               <Logo width="35" />
               <span>Prilaku</span>
             </a>
@@ -84,7 +86,12 @@ const Login = () => {
 
         <div className={styles.card}>
           <button className={styles.btnGoogle} onClick={handleLoginWithGoogle}>
-            <img src="/images/ic_google.svg" alt="Google" />
+            <Image
+              src="/images/ic_google.svg"
+              alt="Google"
+              width="20px"
+              height="20px"
+            />
             <span>Login with Google</span>
           </button>
 
@@ -133,9 +140,9 @@ const Login = () => {
         </div>
 
         <p className={styles.bottomText}>
-          Don't have an account yet?
+          Don&apos;t have an account yet?
           <Link href="/register">
-            <a>Sign Up</a>
+            <a style={{ color: "#fff" }}>Sign Up</a>
           </Link>
         </p>
       </div>

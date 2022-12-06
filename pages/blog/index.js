@@ -1,11 +1,12 @@
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import HomeHeader from "../../src/components/HomeHeader";
 import Spinner from "../../src/components/Spinner";
 import styles from "./blog.module.scss";
 
-const index = () => {
+const Blog = () => {
   const [blogs, setBlogs] = useState();
 
   useEffect(() => {
@@ -29,9 +30,12 @@ const index = () => {
             return (
               <div key={blog.id} className={`${styles.card}`}>
                 <div>
-                  <img
+                  <Image
                     src={blog.better_featured_image.source_url}
                     alt={blog.title.rendered}
+                    width="800px"
+                    height="500px"
+                    objectFit="cover"
                   />
                   <p
                     className={styles.title}
@@ -45,9 +49,17 @@ const index = () => {
                 </div>
 
                 <Link href={`/blog/${blog.id}`}>
-                  <a className={styles.link}>
+                  <a
+                    className={styles.link}
+                    style={{ textDecoration: "none", color: "#fff" }}
+                  >
                     <p>Continue Reading</p>
-                    <img src="images/ic_arrow.svg" alt="Arrow" />
+                    <Image
+                      src="/images/ic_arrow.svg"
+                      alt="Arrow"
+                      height="20px"
+                      width="20px"
+                    />
                   </a>
                 </Link>
               </div>
@@ -63,4 +75,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Blog;

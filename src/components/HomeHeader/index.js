@@ -11,7 +11,7 @@ const HomeHeader = () => {
 
   useEffect(() => {
     const usedData = JSON.parse(getUserInfo());
-    
+
     setUser(usedData);
   }, []);
 
@@ -45,21 +45,33 @@ const HomeHeader = () => {
         <ul className="nav-links">
           <li>
             <Link href="/">
-              <a className="active">Home</a>
+              <a
+                style={{ textDecoration: "none", color: "#fff" }}
+                className="active"
+              >
+                Home
+              </a>
             </Link>
           </li>
           <li>
             <Link href="/blog">
-              <a>Blog</a>
+              <a style={{ textDecoration: "none", color: "#fff" }}>Blog</a>
             </Link>
           </li>
           <li>
-            <a href="#">About</a>
+            <a style={{ textDecoration: "none", color: "#fff" }} href="#">
+              About
+            </a>
           </li>
           {!user && (
             <li>
               <Link href="/login">
-                <a className="btn-login">Login</a>
+                <a
+                  style={{ textDecoration: "none", color: "#fff" }}
+                  className="btn-login"
+                >
+                  Login
+                </a>
               </Link>
             </li>
           )}

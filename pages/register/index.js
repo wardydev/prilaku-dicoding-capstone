@@ -13,6 +13,7 @@ import {
 } from "../../src/utils/functions";
 import { setCookie } from "cookies-next";
 import Logo from "../../src/components/Logo";
+import Image from "next/image";
 
 const Register = () => {
   const initialState = {
@@ -78,6 +79,7 @@ const Register = () => {
     if (JSON.parse(getJsonToken()) !== null) {
       router.push("/home");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -85,7 +87,7 @@ const Register = () => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/">
-            <a>
+            <a style={{ textDecoration: "none", color: "#fff" }}>
               <Logo width="35" />
               <span>Prilaku</span>
             </a>
@@ -94,7 +96,12 @@ const Register = () => {
 
         <div className={styles.card}>
           <button className={styles.btnGoogle} onClick={handleLoginWithGoogle}>
-            <img src="/images/ic_google.svg" alt="Google" />
+            <Image
+              src="/images/ic_google.svg"
+              alt="Google"
+              width="20px"
+              height="20px"
+            />
             <span>Sign Up with Google</span>
           </button>
 
@@ -160,7 +167,7 @@ const Register = () => {
         <p className={styles.bottomText}>
           Already have an account?
           <Link href="/login">
-            <a>Sign In</a>
+            <a style={{ color: "#fff" }}>Sign In</a>
           </Link>
         </p>
       </div>
