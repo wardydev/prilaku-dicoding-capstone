@@ -1,12 +1,12 @@
 import React from "react";
 import HomeHeader from "../../src/components/HomeHeader";
 import styles from "./about.module.scss";
+import Image from "next/image";
 
 const index = () => {
   return (
     <div className="landing">
       <HomeHeader />
-
       <div className={styles.header}>
         <div>
           <h1 className={styles.center}>Who we are</h1>
@@ -14,7 +14,7 @@ const index = () => {
           <p>Prilaku is a website application that makes it easy to build habits, make schedules more organized, and can increase productivity. With a modern interface, great user experience, and lots of supporting features.</p>
         </div>
         <div>
-          <img src="/images/about.jpg"></img>
+          <Image src="/images/about.jpg" alt="meeting photo" width="600px" height="375px"></Image>
         </div>
       </div>
 
@@ -23,22 +23,22 @@ const index = () => {
         <h3>The creative people behind Prilaku</h3>
         <div className={styles.teamList}>
           <div className={styles.teamItem}>
-            <img src="/images/ari.jpg" alt="Foto Ari"></img>
+            <Image src="/images/ari.jpg" alt="Ari photo" width="320px" height="320px"></Image>
             <h4><a className={styles.link} href="https://www.linkedin.com/in/arialghifari/">Ari Alghifari</a></h4>
             <p>Front-End</p>
           </div>
           <div className={styles.teamItem}>
-            <img src="/images/haerul.jpg" alt="Foto Haerul"></img>
+            <Image src="/images/haerul.jpg" alt="Haerul photo" width="320px" height="320px"></Image>
             <h4><a className={styles.link} href="https://www.linkedin.com/in/hairul-wardi-166574231/">Haerul Wardi</a></h4>
             <p>Front-End</p>
           </div>
           <div className={styles.teamItem}>
-            <img src="/images/sukron.jpg" alt="Foto Sukron"></img>
+            <Image src="/images/sukron.jpg" alt="Sukron photo" width="320px" height="320px"></Image>
             <h4><a className={styles.link} href="https://www.linkedin.com/in/sukronsabari/">Sukron Sabari</a></h4>
             <p>Front-End</p>
           </div>
           <div className={styles.teamItem}>
-            <img src="/images/yasa.jpeg" alt="Foto Yasa"></img>
+            <Image src="/images/yasa.jpeg" alt="Yasa photo" width="320px" height="320px"></Image>
             <h4><a className={styles.link} href="https://www.linkedin.com/in/kusumayasa/">Kusuma Yasa</a></h4>
             <p>Front-End</p>
           </div>
