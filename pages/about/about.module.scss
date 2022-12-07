@@ -1,0 +1,92 @@
+.header {
+  margin: 5rem 0 1rem 0;
+  display: grid;
+
+  h1 {
+    margin-bottom: 3rem;
+  }
+
+  p {
+    margin-top: 1.5rem;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+
+.team {
+  margin: 5rem 0 1rem 0;
+
+  h3 {
+    color: #949494;
+    margin-top: 1em;
+  }
+
+  .teamList {
+    margin-top: 2rem;
+    display: grid;
+    column-gap: 1rem;
+  }
+
+  .teamItem {
+    text-align: center;
+    margin-bottom: 1rem;
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    h4 {
+      margin-top: .5rem;
+    }
+
+    p {
+      color: #949494;
+    }
+  }
+}
+
+.link {
+  border-bottom: 1px solid transparent;
+  transition: all 0.1s ease-in-out;
+  padding-bottom: 2px;
+
+  &:hover {
+    border-bottom: 1px solid #949494;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+  .teamList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 770px) {
+  .header {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.4rem;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .teamList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .teamList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

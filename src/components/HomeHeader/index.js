@@ -59,9 +59,9 @@ const HomeHeader = () => {
             </Link>
           </li>
           <li>
-            <a style={{ textDecoration: "none", color: "#fff" }} href="#">
-              About
-            </a>
+            <Link href="/about">
+              <a style={{ textDecoration: "none", color: "#fff" }}>About</a>
+            </Link>
           </li>
           {user ? (
             <li>
