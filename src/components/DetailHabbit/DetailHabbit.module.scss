@@ -1,0 +1,21 @@
+.wrapper {
+  margin-top: 2rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.data {
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dataWide {
+	padding-bottom: 4rem;
+}
