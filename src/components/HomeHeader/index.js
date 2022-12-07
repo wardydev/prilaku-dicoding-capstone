@@ -46,7 +46,7 @@ const HomeHeader = () => {
           <li>
             <Link href="/">
               <a
-                style={{ textDecoration: "none", color: "#fff" }}
+                style={{ textDecoration: "none", color: "#3c4043" }}
                 className="active"
               >
                 Home
@@ -55,12 +55,12 @@ const HomeHeader = () => {
           </li>
           <li>
             <Link href="/blog">
-              <a style={{ textDecoration: "none", color: "#fff" }}>Blog</a>
+              <a style={{ textDecoration: "none", color: "#3c4043" }}>Blog</a>
             </Link>
           </li>
           <li>
             <Link href="/about">
-              <a style={{ textDecoration: "none", color: "#fff" }}>About</a>
+              <a style={{ textDecoration: "none", color: "#3c4043" }}>About</a>
             </Link>
           </li>
           {user ? (

@@ -1,6 +1,9 @@
+@import "../../styles/variables.module";
+
 .header {
   margin: 5rem 0 1rem 0;
   display: grid;
+  color: var(--black);
 
   h1 {
     margin-bottom: 3rem;
@@ -19,9 +22,14 @@
 .team {
   margin: 5rem 0 1rem 0;
 
+  h2 {
+    color: var(--black);
+  }
+
   h3 {
-    color: #949494;
-    margin-top: 1em;
+    color: var(--grayLight);
+    font-weight: normal;
+    font-size: 1.4rem;
   }
 
   .teamList {
@@ -40,11 +48,12 @@
     }
 
     h4 {
-      margin-top: .5rem;
+      margin-top: 0.5rem;
+      color: var(--black);
     }
 
     p {
-      color: #949494;
+      color: var(--grayLight);
     }
   }
 }
@@ -55,8 +64,8 @@
   padding-bottom: 2px;
 
   &:hover {
-    border-bottom: 1px solid #949494;
-    color: #fff;
+    border-bottom: 1px solid var(--gray);
+    color: var(--black);
     cursor: pointer;
   }
 }

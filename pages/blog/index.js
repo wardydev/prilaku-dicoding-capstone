@@ -51,7 +51,7 @@ const Blog = () => {
                 <Link href={`/blog/${blog.id}`}>
                   <a
                     className={styles.link}
-                    style={{ textDecoration: "none", color: "#fff" }}
+                    style={{ textDecoration: "none", color: "#3c4043" }}
                   >
                     <p>Continue Reading</p>
                     <Image
