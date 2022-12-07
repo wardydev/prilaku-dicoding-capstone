@@ -15,17 +15,26 @@ const BlogDetail = () => {
 
   useEffect(() => {
     axios
-      .get("http://prekuel.com/wp-json/wp/v2/posts/?per_page=5")
+      .get("https://prekuel.com/wp-json/wp/v2/posts/?per_page=5")
       .then((res) => setBlogs(res.data));
   }, []);
 
   useEffect(() => {
     if (blogs) {
       const blog = blogs.filter((blog) => blog.id == id)[0];
-      blog ? setBlog(blog) : setBlog(false);
+      blog ? setBlog(blog) : setBlog(0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blogs]);
+
+  if (blog === 0) {
+    return (
+      <div className="landing">
+        <HomeHeader />
+        <p className="text-center mt-5">Article not found</p>
+      </div>
+    );
+  }
 
   return (
     <div className="landing">

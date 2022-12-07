@@ -135,7 +135,7 @@ const History = () => {
         </div>
         <div className="card-rate__responsive-bottom col-12 col-lg-4">
           <div className="mb-4">
-            <Heading title="Date" />
+            <Heading title="Summary" />
             <div className="row">
               <div className="col-6 mb-3">
                 <CardRate

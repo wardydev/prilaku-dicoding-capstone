@@ -76,7 +76,7 @@ const Home = () => {
 
   useEffect(() => {
     getHabbitDataFromFirestore();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [habbits, habbitsDateActive]);
 
   const updateHabbit = (data) => {
@@ -222,6 +222,7 @@ const Home = () => {
             />
           </div>
           <div className="card-rate__responsive-bottom">
+            <Heading title="Summary" />
             <div className="row">
               <div className="col-6 ">
                 <CardRate
