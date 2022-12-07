@@ -63,7 +63,18 @@ const HomeHeader = () => {
               About
             </a>
           </li>
-          {!user && (
+          {user ? (
+            <li>
+              <Link href="/home">
+                <a
+                  style={{ textDecoration: "none", color: "#fff" }}
+                  className="btn-login"
+                >
+                  Dashboard
+                </a>
+              </Link>
+            </li>
+          ) : (
             <li>
               <Link href="/login">
                 <a
