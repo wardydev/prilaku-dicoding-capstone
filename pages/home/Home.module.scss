@@ -1,0 +1,57 @@
+.home-page {
+  padding-bottom: 5rem;
+}
+
+.logo {
+  display: none;
+}
+
+.navbar-top__information {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-top__actions {
+  button[data-typebutton="button text with icon"],
+  a[data-userlogged] {
+    display: none;
+  }
+}
+
+.header-content {
+  position: fixed;
+  top: 67px;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  background-color: #FEFFFF;
+  &__inner {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.main-content {
+  margin-top: calc(70px + 180px + 1.25rem);
+
+  &__inner {
+    width: 90vw;
+    margin: 0 auto
+  }
+
+  .content {
+    h2 {
+      font-size: inherit;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .habbit-list {
+      min-height: 8rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #c3c4c56b;
+    }
+  }
+}
+

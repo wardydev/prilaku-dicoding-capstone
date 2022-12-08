@@ -1,0 +1,25 @@
+@import '../../../styles/variables.module.scss';
+
+.button-icon-only {
+  width: 45px;
+  height: 45px;
+  padding: .5rem;
+  border: none;
+  background: transparent;
+
+  span {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .25rem;
+    background-color: $primary-color;
+    color: white;
+    font-size: 1.3em;
+  }
+}
+
+.button__circle {
+  border-radius: 50% !important;
+}

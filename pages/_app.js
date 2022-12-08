@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "react-calendar/dist/Calendar.css";
-import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
+import "../styles/calendar.css";
 import Head from "next/head";
 
 import "../styles/globals.css";

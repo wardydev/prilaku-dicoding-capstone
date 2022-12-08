@@ -1,0 +1,17 @@
+.button-text-with-icon {
+  padding: .5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .25rem;
+  border-radius: .25rem;
+  border: none;
+
+  ion-icon {
+    font-size: 1.35rem;
+  }
+
+  span {
+    font-size: inherit;
+  }
+}
