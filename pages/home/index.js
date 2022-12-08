@@ -133,15 +133,6 @@ const Home = () => {
           > 
             <ion-icon name="add-outline"></ion-icon>
           </ButtonIconOnly>
-          <ButtonTextWithIcon 
-            icon={<ion-icon name="add-outline"></ion-icon>}
-            handleClick={() => {
-              setDataDetailHabbit(null);
-              setShowModal(true);
-            }}
-          >
-            Add Habit
-          </ButtonTextWithIcon>
           <UserLoginProfile />
         </div>
       </NavbarTop>
@@ -151,6 +142,32 @@ const Home = () => {
             habbitsDateActive={habbitsDateActive}
             setHabbitsDateActive={setHabbitsDateActive}
           />
+          <div className={styles["card-rate"]}>
+            <div className="row gap-5">
+              <div className="col-4">
+                <CardRate
+                  rateName="Unfinished Habit"
+                  rateCount={remaindHabbits.length}
+                />
+              </div>
+              <div className="col-4">
+                <CardRate
+                  color="#58B77A"
+                  rateName="Habit Finished"
+                  rateCount={finishedHabbits.length}
+                />
+              </div>
+              <div className="col-6">
+                <CardRate
+                  color="#ED7946"
+                  rateName="Completion Rate"
+                  rateCount={`${
+                    habbits?.length === 0 ? "0" : Math.round(completionRate)
+                  }%`}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <main className={styles["main-content"]}>

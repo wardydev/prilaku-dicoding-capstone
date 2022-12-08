@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getUserInfo } from "../../utils/functions";
 
-const UserLoginProfile = ({ width = 48 }) => {
+const UserLoginProfile = ({ width = 44 }) => {
   const [img, setImg] = React.useState("");
   
   React.useEffect(() => {

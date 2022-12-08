@@ -1,17 +1,14 @@
 import React from "react";
-import Card from "../Card";
+import styles from "./CardRate.module.scss";
 
-const CardRate = ({ color = "#f5f0f05d", rateName, rateCount, message }) => {
+const CardRate = ({ color = "#5899E8", rateName, rateCount }) => {
   return (
-    <Card color={color}>
-      <h6 className="fw-medium">{rateName}</h6>
-      <div>
-        <h2 className="display-6 fw-bold mb-1" style={{ marginBottom: -6 }}>
-          {rateCount}
-        </h2>
-        <span className="opacity-75">{message}</span>
+    <div className={styles["card-rate"]} style={{backgroundColor: color}}>
+      <h3 className={styles["card-rate__name"]}>{rateName}</h3>
+      <div className={styles["card-rate__count"]}>
+        <h3>{rateCount}</h3>
       </div>
-    </Card>
+    </div>
   );
 };
 

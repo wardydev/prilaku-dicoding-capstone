@@ -82,8 +82,9 @@
   width: 33em;
   z-index: 1;
   width: 100%;
-  max-width: 90vw;
+  /* max-width: 90vw; */
   height: fit-content;
+  margin: 0 auto;
   padding: .5rem;
 }
 
@@ -239,6 +240,10 @@
 .Calendar__monthYear > *.-hidden {
   cursor: default;
   pointer-events: none;
+}
+.Calendar__yearText,
+.Calendar__monthText {
+  font-size: 14px;
 }
 
 .Calendar__monthText {

@@ -39,7 +39,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="https://github.com/wardydev/prilaku-dicoding-capstone" target="blank">
-                  <ion-icon name="logo-instagram"></ion-icon>
+                  <ion-icon name="logo-github"></ion-icon>
                 </a>
               </li>
             </ul>

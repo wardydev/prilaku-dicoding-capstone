@@ -3,13 +3,13 @@ import Link from "next/link";
 
 const Navigation = ({ styles }) => {
   return (
-    <nav className="navigation">
+    <nav className={styles['navigation']}>
       <ul className={styles['navigation-links']}>
         <li>
           <Link href="/home">
               <a>
                 <ion-icon name="calendar-clear-outline"></ion-icon>
-                <span>habbit</span>
+                <span>habit</span>
               </a>
           </Link>
         </li>

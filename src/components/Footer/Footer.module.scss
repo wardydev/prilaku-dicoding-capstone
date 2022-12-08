@@ -1,6 +1,16 @@
+@import "../../../styles/mixin.module.scss";
+
 .footer {
   background: linear-gradient(257.26deg, #FAFAFB 61.81%, rgba(89, 154, 232, 0.125482) 531.27%);
   
+  @include respond($breakpoint: 768px) {
+    margin-left: 65px;
+  }
+
+  @include respond($breakpoint: 1024px) {
+    margin-right: 300px;
+  }
+
   ul {
     padding: 0;
   }
@@ -25,7 +35,13 @@
       }
 
       span {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+
+        @include respond($breakpoint: 1024px) {
+          font-size: 2rem;
+        }
       }
     }
 

@@ -40,7 +40,7 @@ const CalendarComponent = ({ habbitsDateActive, setHabbitsDateActive }) => {
         onChange={(selected) => {
           setHabbitsDateActive(new Date([selected.month, selected.day, selected.year]))
         }}
-        colorPrimary="#F58349"
+        colorPrimary="#5899E8"
         colorPrimaryLight="#FEFFFF"
         shouldHighlightWeekends
         renderFooter={() => (
