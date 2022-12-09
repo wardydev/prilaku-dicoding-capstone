@@ -31,29 +31,33 @@ import styles from "./Home.module.scss";
 import ButtonIconOnly from "../../src/components/ButtonIconOnly";
 import Footer from "../../src/components/Footer";
 
-const NavbarTopContent = ({ habbitsDateActive, setDataDetailHabbit, setShowModal }) => {
+const NavbarTopContent = ({
+  habbitsDateActive,
+  setDataDetailHabbit,
+  setShowModal,
+}) => {
   return (
     <>
-      <div className={styles['navbar-top__information']}>
+      <div className={styles["navbar-top__information"]}>
         <ButtonTextOnly>Today</ButtonTextOnly>
         <div className="date-active">{formatDate(habbitsDateActive)}</div>
       </div>
-      <div className={styles['navbar-top__actions']}>
-        <ButtonIconOnly 
+      <div className={styles["navbar-top__actions"]}>
+        <ButtonIconOnly
           isCircle={true}
           handleClick={() => {
             setDataDetailHabbit(null);
             setShowModal(true);
           }}
           ariaLabel="new habit"
-        > 
+        >
           <ion-icon name="add-outline"></ion-icon>
         </ButtonIconOnly>
         <UserLoginProfile />
       </div>
     </>
   );
-}
+};
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -68,6 +72,7 @@ const Home = () => {
   const [isShowCalendar, setIsShowCalendar] = useState(false);
 
   const getHabbitDataFromFirestore = async () => {
+    setIsLoading(true);
     try {
       setIsLoading(false);
       const userSigned = JSON.parse(getUserInfo());
@@ -118,12 +123,10 @@ const Home = () => {
     setShowModal(!showModal);
   };
 
-  
-
   return (
-    <Layout 
+    <Layout
       navbarTopContent={
-        <NavbarTopContent 
+        <NavbarTopContent
           setShowModal={setShowModal}
           setDataDetailHabbit={setDataDetailHabbit}
           habbitsDateActive={habbitsDateActive}
@@ -184,39 +187,41 @@ const Home = () => {
         <div className={styles["main-content__inner"]}>
           <div className={styles["content"]}>
             <h2>HABIT</h2>
-            <div className={styles['habbit-list']}>
-              {isLoading ? (<Spinner />) : 
-                (habbits?.length
-                  ? 
-                  <>
-                    {
-                      habbits?.map((habbit) => {
-                        return (
-                          <div className="mt-3 position-relative" key={habbit.id}>
-                            <HabbitCard
-                              title={habbit.data.name}
-                              iconName={habbit.data.icon}
-                              color={habbit.data.color}
-                              setValue={setIsShowDetailUpdate}
-                              setDataDetail={setDataDetailHabbit}
-                              time={habbit.data.time}
-                              data={habbit}
-                              deleteHabbitById={() => deleteHabbit("habbits", habbit.id)}
-                              handleUpdateHabbit={() => updateHabbit(habbit)}
-                              startDate={formatDate(new Date(habbit.data.startDate))}
-                              endDate={formatDate(new Date(habbit.data.endDate))}
-                            />
-                          </div>
-                        );
-                      })
-                    }
-                  </>
-                  : <Alert type="danger" message="There is no activity today" /> 
-                )
-              }
+            <div className={styles["habbit-list"]}>
+              {isLoading ? (
+                <Spinner />
+              ) : habbits?.length ? (
+                <>
+                  {habbits?.map((habbit) => {
+                    return (
+                      <div className="mt-3 position-relative" key={habbit.id}>
+                        <HabbitCard
+                          title={habbit.data.name}
+                          iconName={habbit.data.icon}
+                          color={habbit.data.color}
+                          setValue={setIsShowDetailUpdate}
+                          setDataDetail={setDataDetailHabbit}
+                          time={habbit.data.time}
+                          data={habbit}
+                          deleteHabbitById={() =>
+                            deleteHabbit("habbits", habbit.id)
+                          }
+                          handleUpdateHabbit={() => updateHabbit(habbit)}
+                          startDate={formatDate(
+                            new Date(habbit.data.startDate)
+                          )}
+                          endDate={formatDate(new Date(habbit.data.endDate))}
+                        />
+                      </div>
+                    );
+                  })}
+                </>
+              ) : (
+                <Alert type="danger" message="There is no activity today" />
+              )}
             </div>
             <div className="mt-4 mb-5 d-flex justify-content-center">
-              <ButtonTextWithIcon 
+              <ButtonTextWithIcon
                 icon={<ion-icon name="add-outline"></ion-icon>}
                 handleClick={() => {
                   setDataDetailHabbit(null);

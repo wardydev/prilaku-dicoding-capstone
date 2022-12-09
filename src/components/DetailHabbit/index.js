@@ -32,7 +32,7 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
           <p>{dataDetailHabbit?.data?.note}</p>
         </div>
       </div>
-{/*         
+      <div className="mt-5 d-flex justify-content-center">
         {dataDetailHabbit.data.isDone == false && (
           <div className="me-3">
             <ButtonCustom
@@ -56,59 +56,7 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
             setValue(false);
             deleteHabbit("habbits", dataDetailHabbit.id);
           }}
-        /> */}
-      <div className={styles.wrapper}>
-        <div>
-          <p className="mb-1">HABIT NAME</p>
-          <p className={styles.data}>{dataDetailHabbit?.data?.name}</p>
-        </div>
-
-        <div>
-          <p className="mt-3 mb-1">SCHEDULED</p>
-          <p className={styles.data}>
-            {startDate} {startDate != endDate && `- ${endDate}`}
-          </p>
-        </div>
-
-        <div>
-          <p className="mt-3 mb-1">AT TIME</p>
-          <p className={styles.data}>
-            <ion-icon name={dataDetailHabbit?.data?.time?.icon}></ion-icon>{" "}
-            {dataDetailHabbit?.data?.time?.name}
-          </p>
-        </div>
-
-        <div>
-          <p className="mt-3 mb-1">NOTE</p>
-          <p className={`${styles.data} ${styles.dataWide}`}>{dataDetailHabbit?.data?.note}</p>
-        </div>
-
-        <div className="mt-5 d-flex justify-content-center">
-          {dataDetailHabbit.data.isDone == false && (
-            <div className="me-3">
-              <ButtonCustom
-                title="Edit"
-                size="normal"
-                iconName="create"
-                isIcon={true}
-                handlePress={() => {
-                  setShowModal(true);
-                  setValue(false);
-                }}
-              />
-            </div>
-          )}
-          <ButtonCustom
-            title="Delete"
-            size="normal"
-            iconName="trash"
-            isIcon={true}
-            handlePress={() => {
-              setValue(false);
-              deleteHabbit("habbits", dataDetailHabbit.id);
-            }}
-          />
-        </div>
+        />
       </div>
     </Modal>
   );
