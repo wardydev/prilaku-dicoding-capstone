@@ -38,31 +38,32 @@ const HabbitCard = ({
 
   return (
     <div className={styles["habit-item"]}>
-      {!isDone && (
-        <label className={styles.wrapper}>
-          <input
-            className={styles.input}
-            type="checkbox"
-            checked={isDone}
-            onChange={handleUpdateHabbitDone}
-          />
-          <span className={styles.checkmark}></span>
-        </label>
-      )}
+      <label className={styles.wrapper}>
+        <input
+          className={styles.input}
+          type="checkbox"
+          checked={isDone}
+          onChange={handleUpdateHabbitDone}
+        />
+        <span className={styles.checkmark}></span>
+      </label>
       <div
         className={styles["habit-card"]}
         style={{ backgroundColor: isDone ? "#C3C4C5" : color }}
       >
         <div className={styles["habit-card__content"]}>
           <div className={styles["habit-card__icon"]}>
-            <ion-icon
-              name={iconName}
-            ></ion-icon>
+            <ion-icon name={iconName}></ion-icon>
           </div>
           <div className={styles["habit-card__information"]}>
             <div className={styles["habit-card__text"]}>
-              <div className={styles["habit-card__name"]} onClick={handleDetailHabbit}>
-                <strong className={isDone ? "text-decoration-line-through" : ""}>
+              <div
+                className={styles["habit-card__name"]}
+                onClick={handleDetailHabbit}
+              >
+                <strong
+                  className={isDone ? "text-decoration-line-through" : ""}
+                >
                   {title}
                 </strong>
               </div>
@@ -73,7 +74,9 @@ const HabbitCard = ({
                     style={{ fontSize: 16 }}
                   ></ion-icon>
                   <div className={styles["habit-card__endDate"]}>
-                    <span>{`${time.name.toLowerCase() == 'anytime' ? "Today" : time.name} ${endDate !== startDate ? '- ' + endDate : ''}`}</span>
+                    <span>{`${
+                      time.name.toLowerCase() == "anytime" ? "Today" : time.name
+                    } ${endDate !== startDate ? "- " + endDate : ""}`}</span>
                   </div>
                 </div>
               </div>
@@ -83,7 +86,7 @@ const HabbitCard = ({
               style={{ cursor: "pointer" }}
               onClick={(event) => {
                 event.stopPropagation();
-                setIsShowMoreOptions(() => !isShowMoreOptions)
+                setIsShowMoreOptions(() => !isShowMoreOptions);
               }}
             >
               <div className={styles["options-opener__icon"]}>

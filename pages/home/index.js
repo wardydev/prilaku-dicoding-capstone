@@ -72,9 +72,7 @@ const Home = () => {
   const [isShowCalendar, setIsShowCalendar] = useState(false);
 
   const getHabbitDataFromFirestore = async () => {
-    setIsLoading(true);
     try {
-      setIsLoading(false);
       const userSigned = JSON.parse(getUserInfo());
       const q = query(
         collection(db, "habbits"),
@@ -107,6 +105,7 @@ const Home = () => {
         setFinishedHabbits(dataFinishedHabbits);
         setRemaindHabbits(dataRemaindHabbits);
         setHabbits(filterDate);
+        setIsLoading(false);
       });
     } catch (err) {
       console.log(err);
@@ -188,37 +187,32 @@ const Home = () => {
           <div className={styles["content"]}>
             <h2>HABIT</h2>
             <div className={styles["habbit-list"]}>
-              {isLoading ? (
-                <Spinner />
-              ) : habbits?.length ? (
-                <>
-                  {habbits?.map((habbit) => {
-                    return (
-                      <div className="mt-3 position-relative" key={habbit.id}>
-                        <HabbitCard
-                          title={habbit.data.name}
-                          iconName={habbit.data.icon}
-                          color={habbit.data.color}
-                          setValue={setIsShowDetailUpdate}
-                          setDataDetail={setDataDetailHabbit}
-                          time={habbit.data.time}
-                          data={habbit}
-                          deleteHabbitById={() =>
-                            deleteHabbit("habbits", habbit.id)
-                          }
-                          handleUpdateHabbit={() => updateHabbit(habbit)}
-                          startDate={formatDate(
-                            new Date(habbit.data.startDate)
-                          )}
-                          endDate={formatDate(new Date(habbit.data.endDate))}
-                        />
-                      </div>
-                    );
-                  })}
-                </>
-              ) : (
+              {isLoading && <Spinner />}
+              {habbits?.length === 0 && (
                 <Alert type="danger" message="There is no activity today" />
               )}
+              {!isLoading &&
+                habbits?.map((habbit) => {
+                  return (
+                    <div className="mt-3 position-relative" key={habbit.id}>
+                      <HabbitCard
+                        title={habbit.data.name}
+                        iconName={habbit.data.icon}
+                        color={habbit.data.color}
+                        setValue={setIsShowDetailUpdate}
+                        setDataDetail={setDataDetailHabbit}
+                        time={habbit.data.time}
+                        data={habbit}
+                        deleteHabbitById={() =>
+                          deleteHabbit("habbits", habbit.id)
+                        }
+                        handleUpdateHabbit={() => updateHabbit(habbit)}
+                        startDate={formatDate(new Date(habbit.data.startDate))}
+                        endDate={formatDate(new Date(habbit.data.endDate))}
+                      />
+                    </div>
+                  );
+                })}
             </div>
             <div className="mt-4 mb-5 d-flex justify-content-center">
               <ButtonTextWithIcon

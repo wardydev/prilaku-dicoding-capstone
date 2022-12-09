@@ -19,13 +19,15 @@ import styles from "./History.module.scss";
 const NavbarTopContent = ({ habbitsDateActive }) => {
   return (
     <>
-      <div className={styles['navbar-top__information']}>
-        <div className={styles["date-active"]}>{formatDate(habbitsDateActive)}</div>
+      <div className={styles["navbar-top__information"]}>
+        <div className={styles["date-active"]}>
+          {formatDate(habbitsDateActive)}
+        </div>
       </div>
-      <UserLoginProfile classname={styles["user-logged-shown"]}/>
+      <UserLoginProfile classname={styles["user-logged-shown"]} />
     </>
-  )
-}
+  );
+};
 
 const History = () => {
   const [isShowDetailUpdate, setIsShowDetailUpdate] = useState(false);
@@ -39,7 +41,6 @@ const History = () => {
 
   const getHabbitDataFromFirestore = async () => {
     try {
-      setIsLoading(false);
       const userSigned = JSON.parse(getUserInfo());
       const q = query(
         collection(db, "habbits"),
@@ -66,6 +67,7 @@ const History = () => {
         setRemaindHabbits(dataRemaindHabbits);
         setFinishedHabbits(dataFinishedHabbits);
         setHabbits(snapshots);
+        setIsLoading(false);
       });
     } catch (err) {
       console.log(err);
@@ -76,10 +78,8 @@ const History = () => {
     getHabbitDataFromFirestore();
   }, [habbitsDateActive]);
 
-  
-
   return (
-    <Layout 
+    <Layout
       navbarTopContent={
         <NavbarTopContent habbitsDateActive={habbitsDateActive} />
       }
@@ -125,35 +125,32 @@ const History = () => {
           </div>
           <div className={styles["content"]}>
             <h2>FINISHED HABIT</h2>
-            <div className={styles['habbit-list']}>
-              {isLoading ? (<Spinner />) : 
-                (habbits?.length
-                  ? 
-                  <>
-                    {
-                      habbits?.map((habbit) => {
-                        return (
-                          <div className="mt-3 position-relative" key={habbit.id}>
-                            <HabbitCard
-                              title={habbit.data.name}
-                              iconName={habbit.data.icon}
-                              color={habbit.data.color}
-                              setValue={setIsShowDetailUpdate}
-                              setDataDetail={setDataDetailHabbit}
-                              data={habbit}
-                              deleteHabbitById={() => deleteHabbit("habbits", habbit.id)}
-                              time={habbit.data.time}
-                              startDate={formatDate(new Date(habbit.data.startDate))}
-                              endDate={formatDate(new Date(habbit.data.endDate))}
-                            />
-                          </div>
-                        );
-                      })
-                    }
-                  </>
-                  : <Alert type="danger" message="You don't have finished activity" /> 
-                )
-              }
+            <div className={styles["habbit-list"]}>
+              {isLoading && <Spinner />}
+              {habbits.length === 0 && (
+                <Alert type="danger" message="There is no activity finished" />
+              )}
+              {!isLoading &&
+                habbits?.map((habbit) => {
+                  return (
+                    <div className="mt-3 position-relative" key={habbit.id}>
+                      <HabbitCard
+                        title={habbit.data.name}
+                        iconName={habbit.data.icon}
+                        color={habbit.data.color}
+                        setValue={setIsShowDetailUpdate}
+                        setDataDetail={setDataDetailHabbit}
+                        data={habbit}
+                        deleteHabbitById={() =>
+                          deleteHabbit("habbits", habbit.id)
+                        }
+                        time={habbit.data.time}
+                        startDate={formatDate(new Date(habbit.data.startDate))}
+                        endDate={formatDate(new Date(habbit.data.endDate))}
+                      />
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
