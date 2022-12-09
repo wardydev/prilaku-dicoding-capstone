@@ -1,147 +1,184 @@
-@mixin respond ($breakpoint) {
-  @if $breakpoint==tablet {
-  @media only screen and (max-width: 768px) {
-    @content;
-  }
+@import "../../../styles/mixin.module.scss";
+
+.habit-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-@if $breakpoint==mobile {
-  @media only screen and (max-width: 576px) {
-    @content;
+.habit-card {
+  padding: .75rem;
+  border-radius: .5rem;
+  flex-grow: 1;
+  height: 71px;
+  display: flex;
+  align-items: center;
+
+  @include respond($breakpoint: 1024px) {
+    height: 80px;
   }
-}
+
+  &__content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    @include respond($breakpoint: 1024px) {
+      gap: 2rem;
+    }
+  }
+
+  &__icon {
+    ion-icon {
+      font-size: 36px;
+
+      @include respond($breakpoint: 1024px) {
+        font-size: 40px;
+      }
+    }
+  }
+
+  &__information {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__name {
+    margin-bottom: .25rem;
+    cursor: pointer;
+
+    strong {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__date {
+    &-info {
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+    }
+  }
 }
 
 .wrapper {
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 28px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 28px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
   
-  /* Hide the browser's default checkbox */
-  .wrapper .input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
+/* Hide the browser's default checkbox */
+.wrapper .input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
   
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 3px solid #C3C4C5;
+}
+
+.wrapper:hover .input ~ .checkmark {
+  background-color: #cccccc42;
+}
+
+.wrapper .input:checked ~ .checkmark {
+  background-color: rgba(204, 204, 204, 0.258);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.wrapper .input:checked ~ .checkmark:after {
+  display: block;
+}
+  
+.wrapper .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.options-opener {
+  position: relative;
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    padding: .5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    border: 3px solid white;
-  }
-  
-  .wrapper:hover .input ~ .checkmark {
-    background-color: #cccccc42;
-  }
-  
-  .wrapper .input:checked ~ .checkmark {
-    background-color: rgba(204, 204, 204, 0.258);
-  }
-  
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .wrapper .input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  .wrapper .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
 
-  .contentContainer {
-    display: flex;
-    align-items: center;
-
-    .cardIcon {
-      background-color: red !important;
-    }
-
-    .cardTitle {
-      margin-left: 1rem;
-
-      @include respond(mobile) {
-        margin-left: 0;
-      }
-    }
-
-    @include respond(mobile) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-
-  .link {
-    font-size: 18px;
-    font-weight: bold;
-    border-bottom: 2px solid rgba(255, 255, 255, 0);
-    &:hover {
-      border-bottom: 2px solid white;
-      cursor: pointer;
-    }
-
-    @include respond(mobile) {
+    ion-icon {
       font-size: 20px;
-      margin-bottom: 12px;
     }
   }
+}
 
-  .options {
-    position: absolute;
-    min-width: 150px;
-    min-height: 100px;
-    background-color: #FFFFFF;
-    top: 22px;
-    right: -6px;
-    border-radius: 8px;
-    z-index: 99;
+.options {
+  position: absolute;
+  background-color: #FEFFFF;
+  box-shadow: 0 4px 4px #C3C4C5;
+  width: 150px;
+  top: 50px;
+  right: -5px;
+  border-radius: 8px;
+  z-index: 99;
 
-    .menuOption {
-      color: rgb(65, 60, 60);
+  .menuOption {
+    color: #272828;
+    border-bottom: 1px solid rgba(195, 196, 197, 0.4196078431);
+    padding: 10px;
+    &:last-child {
+      border: none;
+    }
 
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.13);
-        border-radius: 8px;
-      }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.13);
+      border-radius: 8px;
     }
   }
+}
 
-  .habbitCardInfo {
-    display: flex;
-    align-items: center;
+.habbitCardInfo {
+  display: flex;
+  align-items: center;
 
-    @include respond(mobile) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+  @include respond(mobile) {
+    flex-direction: column;
+    align-items: flex-start;
   }
+}

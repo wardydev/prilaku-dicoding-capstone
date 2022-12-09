@@ -1,16 +1,30 @@
-.btnNormal {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem;
-    border-radius: 8px;
-    background-color: #d9d9d931;
-    color: white;
-    font-weight: 500;
-    border: none;
-    opacity: 1;
+@import "../../../styles//mixin.module.scss";
 
-    &:hover {
-        background-color: #d9d9d95d;
-        opacity: 0.8;
-    }
+.time-select {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 450px;
+  gap: 1rem;
+}
+//   @include respond($breakpoint: 576px) {
+//     column-gap: 1.5rem;
+//   }
+
+//   @include respond($breakpoint: 768px) {
+//     column-gap: 1.85rem;
+//   }
+// }
+
+.button-time {
+  border: none;
+  color: #feffff;
+  width: 150px;
+  max-width: 150px;
+  height: 50px;
+  border-radius: .25rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
 }

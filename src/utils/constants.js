@@ -1,7 +1,7 @@
 const DATATIME = [
   {
     id: "0",
-    timeName: "EveryTime",
+    timeName: "Anytime",
     hours: [0 - 24],
     iconName: "stopwatch-outline",
   },
@@ -66,40 +66,60 @@ const DATAICONS = [
     id: "10",
     name: "construct",
   },
+  {
+    id: "11",
+    name: "accessibility-outline",
+  },
 ];
 
 const DATACOLORS = [
   {
     id: "1",
-    hex: "#59C1BD",
+    hex: "#5899E8",
   },
   {
     id: "2",
-    hex: "#7743DB",
+    hex: "#3F853A",
   },
   {
     id: "3",
-    hex: "#A9AF7E",
+    hex: "#F5B947",
   },
   {
     id: "4",
-    hex: "#E97777",
+    hex: "#5657E7",
   },
   {
     id: "5",
-    hex: "#2146C7",
+    hex: "#CC4545",
   },
   {
     id: "6",
     hex: "#FF5858",
   },
   {
+    id: "7",
+    hex: "#4DAFEC",
+  },
+  {
     id: "8",
-    hex: "#38E54D",
+    hex: "#ED7946",
   },
   {
     id: "9",
-    hex: "#256D85",
+    hex: "#4DA8B7",
+  },
+  {
+    id: "10",
+    hex: "#58B77A",
+  },
+  {
+    id: "11",
+    hex: "#ec6954",
+  },
+  {
+    id: "12",
+    hex: "#8e69f7",
   },
 ];
 

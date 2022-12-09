@@ -1,0 +1,87 @@
+@import "../../../styles/mixin.module.scss";
+
+.footer {
+  background: linear-gradient(257.26deg, #FAFAFB 61.81%, rgba(89, 154, 232, 0.125482) 531.27%);
+  
+  @include respond($breakpoint: 768px) {
+    margin-left: 65px;
+  }
+
+  @include respond($breakpoint: 1024px) {
+    margin-right: 300px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  &__inner {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 2.5rem;
+  }
+
+  &-content {
+    margin-bottom: 2.5rem;
+
+    &__logo {
+      display: flex;
+      align-items: flex-end;
+      gap: .25rem;
+      margin-bottom: 1rem;
+
+      img {
+        height: 50px;
+      }
+
+      span {
+        font-size: 1.25rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+
+        @include respond($breakpoint: 1024px) {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    &__caption {
+      margin-bottom: 2rem;
+      p {
+        width: 80%;
+      }
+    }
+
+    &__social-links {
+      ul {
+        display: flex;
+        list-style-type: none;
+        gap: 1rem;
+
+        ion-icon {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .row {
+      h3 {
+        font-size: inherit;
+      }
+
+      .list-content {
+        list-style-type: none;
+      }
+    }
+  }
+
+  &-copyright {
+    padding: 1rem 0;
+    border-top: 1px solid rgba(195, 196, 197, 0.4196078431);
+    
+    p {
+      text-align: center;
+      margin: 0;
+    }
+  }
+}

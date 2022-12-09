@@ -1,0 +1,14 @@
+@import "../../../styles/mixin.module.scss";
+
+.user-logged {
+  display: none;
+  
+  @include respond($breakpoint: 768px) {
+    display: block;
+
+    img {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+}

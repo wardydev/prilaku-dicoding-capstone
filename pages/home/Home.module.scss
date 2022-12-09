@@ -1,0 +1,96 @@
+@import "../../styles/mixin.module.scss";
+
+.navbar-top__information {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-top__actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-content {
+  position: fixed;
+  top: 67px;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  background-color: #FEFFFF;
+
+  @include respond($breakpoint: 768px) {
+    top: 71px;
+    left: 65px;
+    width: calc(100% - 65px);
+    overflow: hidden;
+  }
+
+  @include respond($breakpoint: 1024px) {
+    width: 350px;
+    height: 100vh;
+    left: unset;
+    right: 0;
+    border-left: 1px solid #C3C4C5;
+  }
+
+  &__inner {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .card-rate {
+    display: none;
+
+    @include respond($breakpoint: 1024px) {
+      display: block;
+      margin-top: 2.5rem;
+    }
+
+    .row {
+      gap: 1rem;
+    }
+  }
+}
+
+.main-content {
+  margin-top: calc(67px + 127px + 1.75rem);
+
+  @include respond($breakpoint: 768px) {
+    margin-left: 65px;
+  }
+
+  @include respond($breakpoint: 1024px) {
+    margin-right: 350px;
+    margin-top: calc(71px + 2.5rem);
+  }
+
+  &__inner {
+    width: 90vw;
+    margin: 0 auto;
+
+    @include respond($breakpoint: 768px) {
+      width: 90%;
+    }
+  }
+
+  .content {
+    h2 {
+      font-size: inherit;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .habbit-list {
+      min-height: 15rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #c3c4c56b;
+
+      @include respond($breakpoint: 1024px) {
+        min-height: 30rem;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,23 @@
+@import "../../../styles/mixin.module.scss";
+
+.button-text-with-icon {
+  padding: .65rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .25rem;
+  border-radius: .25rem;
+  border: none;
+
+  @include respond($breakpoint: 1024px) {
+    padding: .75rem 1.5rem;
+  }
+
+  ion-icon {
+    font-size: 1.35rem;
+  }
+
+  span {
+    font-size: inherit;
+  }
+}

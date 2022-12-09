@@ -1,3 +1,19 @@
+.habit-detail {
+  h3 {
+    font-size: 1rem;
+  }
+
+  > div {
+    padding: .75rem 1rem;
+    border: 1px solid #C3C4C5;
+    margin-bottom: 2rem;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+=======
 .wrapper {
   margin-top: 2rem;
 

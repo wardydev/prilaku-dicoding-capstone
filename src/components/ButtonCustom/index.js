@@ -8,7 +8,7 @@ const ButtonCustom = ({
   iconName,
   isFullWidth = false,
   handlePress,
-  color = "#d9d9d931",
+  color = "rgba(235, 236, 236, 0.5)",
   isDisabled = false,
 }) => {
   let btnSize;
@@ -25,7 +25,7 @@ const ButtonCustom = ({
       className={isFullWidth ? styles.btnNormalFull : btnSize}
       onClick={handlePress}
       style={
-        isDisabled ? { backgroundColor: "gray" } : { backgroundColor: color }
+        isDisabled ? { backgroundColor: "#C3C4C5", color: "#EBECEC" } : { backgroundColor: color }
       }
       disabled={isDisabled}
     >

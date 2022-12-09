@@ -1,0 +1,20 @@
+.card-rate {
+  width: 120px;
+  height: 120px;
+  padding: .75rem;
+  border-radius: .25rem;
+  color: #feffff;
+
+  &__name {
+    font-size: 1rem;
+    font-weight: bold;
+    width: 80%;
+  }
+
+  &__count {
+    h3 {
+      font-size: 2.75rem;
+      font-weight: bold;
+    }  
+  }
+}

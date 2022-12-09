@@ -55,7 +55,7 @@ const ModalItem = ({
           data.map((item) => {
             return (
               <div
-                className={`col-4 mb-2 me-2 ${styles.icon}`}
+                className={`col-3 ${styles.icon}`}
                 key={item.id}
                 onClick={() => handleColorPick(item.id, item.hex)}
                 style={
@@ -67,7 +67,7 @@ const ModalItem = ({
                 <div
                   style={{
                     width: 30,
-                    height: 25,
+                    height: 30,
                     backgroundColor: item.hex,
                     borderRadius: "50%",
                   }}

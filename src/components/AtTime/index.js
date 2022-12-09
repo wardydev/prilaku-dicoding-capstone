@@ -26,7 +26,7 @@ const AtTime = ({ data, setValue }) => {
   };
 
   return (
-    <div className="d-flex flex-wrap gap-3">
+    <div className={styles['time-select']}>
       {data?.map((time) => {
         return (
           <div key={time.id}>
@@ -34,11 +34,11 @@ const AtTime = ({ data, setValue }) => {
               data-hours={time.hours}
               data-icon={time.iconName}
               data-time={time.timeName}
-              className={styles.btnNormal}
+              className={styles['button-time']}
               style={
                 selectedTime === time.id
-                  ? { backgroundColor: "#E05C1A" }
-                  : { backgroundColor: "#d9d9d931" }
+                  ? { backgroundColor: "#5899E8" }
+                  : { backgroundColor: "rgba(235, 236, 236, 0.5)", color: '#272828' }
               }
               onClick={(e) => handleTimePick(e, time.id)}
             >

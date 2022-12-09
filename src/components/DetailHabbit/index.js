@@ -16,6 +16,47 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
 
   return (
     <Modal setValue={setValue}>
+      <div className={styles["habit-detail"]}>
+        <h3>HABIT NAME</h3>
+        <div className={styles["habit-detail__name"]}>
+          <p>{dataDetailHabbit?.data?.name}</p>
+        </div>
+
+        <h3>DATE</h3>
+        <div className={styles["habit-detail__date"]}>
+          <p>{`${startDate} - ${endDate}`}</p>
+        </div>
+
+        <h3>NOTES</h3>
+        <div className={styles["habit-detail__notes"]}>
+          <p>{dataDetailHabbit?.data?.note}</p>
+        </div>
+      </div>
+{/*         
+        {dataDetailHabbit.data.isDone == false && (
+          <div className="me-3">
+            <ButtonCustom
+              title="Edit"
+              size="normal"
+              iconName="create"
+              isIcon={true}
+              handlePress={() => {
+                setShowModal(true);
+                setValue(false);
+              }}
+            />
+          </div>
+        )}
+        <ButtonCustom
+          title="Delete"
+          size="normal"
+          iconName="trash"
+          isIcon={true}
+          handlePress={() => {
+            setValue(false);
+            deleteHabbit("habbits", dataDetailHabbit.id);
+          }}
+        /> */}
       <div className={styles.wrapper}>
         <div>
           <p className="mb-1">HABIT NAME</p>

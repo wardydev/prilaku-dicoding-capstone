@@ -1,0 +1,19 @@
+.navbar-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: .75rem 0;
+  background-color: #FEFFFF;
+  border-bottom: 1px solid #C3C4C5;
+  // box-shadow: 0 4px 8px #C3C4C5;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95vw;
+    margin: 0 auto;
+  }
+}
