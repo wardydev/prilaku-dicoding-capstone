@@ -1,30 +1,32 @@
-@mixin respond ($breakpoint) {
-    @if $breakpoint==tablet {
-    @media only screen and (max-width: 768px) {
-      @content;
-    }
-  }
-  
-  @if $breakpoint==mobile {
-    @media only screen and (max-width: 576px) {
-      @content;
-    }
-  }
-  }
+@import "../../../styles/mixin.module.scss";
 
-.inputHabbit {
-    background-color: rgba(128, 128, 128, 0.16);
+.habbit-form {
+  input[placeholder='Habbit name'] {
+    background-color: transparent;
+    color: #272828;
     border: none;
-    outline: none;
-    color: white;
-    font-size: xx-large;
+    padding: .5rem 0;
     width: 100%;
+    font-weight: bold;
+    font-size: 1.4rem;
+
+
+    &:focus {
+      outline: none !important;
+      border: none;
+      box-shadow: unset;
+    }
+  }
 }
-.inputHabbitFocus {
-    background-color: rgba(128, 128, 128, 0.16);
-    border: none;
-    outline: none;
-    color: white;
-    font-size: xx-large;
-    width: 240px;
+
+.dateAndTime {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2.5rem;
+  margin-bottom: 2.75rem;
+
+  @include respond($breakpoint: 768px) {
+    flex-direction: row;
+  }
 }

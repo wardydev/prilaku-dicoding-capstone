@@ -19,13 +19,12 @@ import { DATAICONS, DATATIME, DATACOLORS } from "../../utils/constants";
 import ModalItem from "../ModalItem";
 import { db } from "../../config/firebase";
 import Spinner from "../Spinner";
-import { formatterDateToObject, getUserInfo } from "../../utils/functions";
+import { formatDate, formatterDateToObject, getUserInfo } from "../../utils/functions";
+import CalendarComponent from "../CalendarComponent";
 
 const FormHabbit = ({
   setShowModal,
   detailHabbit,
-  setShowSelectTypeModal,
-  habbitType: type,
 }) => {
   const habbitNameRef = useRef();
   const [isFullWidth, setIsFullWidth] = useState(false);
@@ -36,7 +35,7 @@ const FormHabbit = ({
   const [isLoading, setIsLoading] = useState(false);
   const [disabledButton, setDisabledButton] = useState(true);
   const userSigned = JSON.parse(getUserInfo());
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(() => new Date());
   const [endDate, setEndDate] = useState();
   const [selectedDayRange, setSelectedDayRange] = useState({
     from:
@@ -49,32 +48,32 @@ const FormHabbit = ({
         : null,
   });
 
-  const HabbitType = {
-    regular: {
-      color: "blue",
-      date: new Date(),
-      isDone: false,
-    },
-    negative: {
-      color: "red",
-      date: new Date(),
-      isDone: true,
-    },
-    "one-time": {
-      color: "purple",
-      date: new Date(),
-      isDone: false,
-    },
-  };
+  // const HabbitType = {
+  //   regular: {
+  //     color: "blue",
+  //     date: new Date(),
+  //     isDone: false,
+  //   },
+  //   negative: {
+  //     color: "red",
+  //     date: new Date(),
+  //     isDone: true,
+  //   },
+  //   "one-time": {
+  //     color: "purple",
+  //     date: new Date(),
+  //     isDone: false,
+  //   },
+  // };
 
   const [habbitName, setHabbitName] = useState(
     detailHabbit !== null ? detailHabbit.data.name : ""
   );
   const [iconName, setIconName] = useState(
-    detailHabbit !== null ? detailHabbit.data.icon : "american-football-outline"
+    detailHabbit !== null ? detailHabbit.data.icon : "accessibility-outline"
   );
   const [colorHex, setColorHex] = useState(
-    detailHabbit !== null ? detailHabbit.data.color : HabbitType[type]?.color
+    detailHabbit !== null ? detailHabbit.data.color : "#419CE5"
   );
   const [note, setNote] = useState(
     detailHabbit !== null ? detailHabbit.data.note : ""
@@ -113,6 +112,7 @@ const FormHabbit = ({
           ? Date.parse(endDate)
           : Date.parse(startDate),
       };
+      console.log(data);
 
       const habbit = await addDoc(collection(db, "habbits"), data);
       if (habbit) {
@@ -178,28 +178,25 @@ const FormHabbit = ({
 
   return (
     <Modal setValue={setShowModal}>
-      <div className="d-flex align-items-center mb-4">
-        <input
-          type="text"
-          placeholder="Habit name"
-          className={`rounded rounded-lg py-2 me-4 px-3 ${
-            isFullWidth ? styles.inputHabbit : styles.inputHabbitFocus
-          }`}
-          ref={habbitNameRef}
-          value={habbitName}
-          onChange={(e) => {
-            setHabbitName(e.target.value);
-            setIsFullWidth(true);
-          }}
-        />
-        {!isFullWidth && (
-          <ion-icon
-            name="pencil-outline"
-            style={{ fontSize: 26, cursor: "pointer" }}
-            onClick={handlePenClick}
-          ></ion-icon>
-        )}
+      <div className={`${styles['habbit-form']} mb-4`}>
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Habbit name"
+            className={`form-control ${styles['habbit-form']}`}
+            ref={habbitNameRef}
+            value={habbitName}
+            onChange={(e) => {
+              setHabbitName(e.target.value);
+              setIsFullWidth(true);
+            }}
+            autoFocus={true}
+          />
+        </div>
       </div>
+
+
+      {/*  */}
       <div className="mb-4">
         <Heading title="Icon" />
         <Card>
@@ -211,10 +208,10 @@ const FormHabbit = ({
             <div className="ms-5 w-100">
               <div style={{ position: "relative" }}>
                 <h4
-                  style={{ cursor: "pointer", cursor: "pointer" }}
+                  style={{ cursor: "pointer", fontSize: "inherit" }}
                   onClick={() => setShowModalIcons(!showModalIcons)}
                 >
-                  {iconName === "american-football-outline"
+                  {iconName === "accessibility-outline"
                     ? "Choose Icon"
                     : iconName}
                 </h4>
@@ -230,11 +227,11 @@ const FormHabbit = ({
                   />
                 )}
               </div>
-              <hr />
+              <hr style={{borderTop: '1px solid rgb(95 99 104 / 75%)'}}/>
               <div style={{ position: "relative" }}>
                 <div className="d-flex justify-content-between align-items-center">
                   <h4
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer", fontSize: "inherit" }}
                     onClick={() => setIsModalColors(!isShowModalColors)}
                   >
                     Color
@@ -269,13 +266,13 @@ const FormHabbit = ({
       <div className="mb-4">
         <Heading title="Notes" />
         <textarea
-          name="sdfsdf"
+          name="notes"
           rows="5"
           placeholder="Write notes"
           className="w-100 form-control rounded rounded-lg p-3 shadow-none"
           style={{
-            backgroundColor: "#f5f0f05d",
-            color: "white",
+            backgroundColor: "rgb(235 236 236 / 50%)",
+            color: "#272828",
             outline: "none",
             border: "none",
           }}
@@ -283,18 +280,19 @@ const FormHabbit = ({
           onChange={(e) => setNote(e.target.value)}
         />
       </div>
-      <div className="d-flex mb-4 row">
-        <div className="col-12 col-lg-5 mb-4">
+      <div className={styles["dateAndTime"]}>
+        <div>
           <Heading title="Choose Date" />
           <Calendar
             value={selectedDayRange}
             onChange={(selected) => handleSelectedDay(selected)}
             shouldHighlightWeekends
-            colorPrimary="#F58349"
-            colorPrimaryLight="#FBCEB6"
+            colorPrimary="#5899E8"
+            colorPrimaryLight="#CBDDF3"
+            calendarClassName="Calendar__modal"
           />
         </div>
-        <div className="col-12 col-lg-7">
+        <div>
           <Heading title="At Time" />
           <AtTime data={DATATIME} setValue={setAtTimeValue} />
         </div>
@@ -303,7 +301,7 @@ const FormHabbit = ({
         title={isLoading ? <Spinner /> : _checkTitleButton()}
         isFullWidth={true}
         size="large"
-        color="#E05C1A"
+        color="#5899E8"
         handlePress={
           detailHabbit !== null ? updateHabbitToFirestore : addHabbitToFirestore
         }

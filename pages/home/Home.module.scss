@@ -1,4 +1,5 @@
 @import "../../styles/mixin.module.scss";
+// @import "../../styles/calendar.css";
 
 .home-page {
   padding-bottom: 5rem;
@@ -8,22 +9,6 @@
   }
 }
 
-.logo {
-  display: none;
-
-  @include respond($breakpoint: 1024px) {
-    display: flex;
-    align-items: flex-end;
-    gap: .5rem;
-
-  }
-
-  > :last-child {
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-}
 
 .navbar-top__information {
   display: flex;
@@ -62,7 +47,7 @@
   }
 
   @include respond($breakpoint: 1024px) {
-    width: 300px;
+    width: 350px;
     height: 100vh;
     left: unset;
     right: 0;
@@ -96,7 +81,7 @@
   }
 
   @include respond($breakpoint: 1024px) {
-    margin-right: 300px;
+    margin-right: 350px;
     margin-top: calc(71px + 2.5rem);
   }
 

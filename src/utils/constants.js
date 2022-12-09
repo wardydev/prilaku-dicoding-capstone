@@ -1,7 +1,7 @@
 const DATATIME = [
   {
     id: "0",
-    timeName: "EveryTime",
+    timeName: "Anytime",
     hours: [0 - 24],
     iconName: "stopwatch-outline",
   },
@@ -65,6 +65,10 @@ const DATAICONS = [
   {
     id: "10",
     name: "construct",
+  },
+  {
+    id: "11",
+    name: "accessibility-outline",
   },
 ];
 

@@ -1,16 +1,31 @@
 import React from "react";
 
 import styles from "./Layout.module.scss";
-import Sidebar from "../Sidebar";
-import Navbar from "../Navbar";
 
-const Layout = ({ children }) => {
+import NavbarLeftBottom from "../NavbarLeftBottom";
+import NavbarTop from "../NavbarTop";
+
+import Logo from "../Logo";
+import Footer from "../Footer";
+
+const Layout = ({ children, navbarTopContent }) => {
   return (
-    <>
-      <Sidebar />
-      <Navbar />
-      <div className={styles.childrenContainer}>{children}</div>
-    </>
+    <section className={styles["section-page"]}>
+      <NavbarLeftBottom />
+      <NavbarTop>
+        <div className={styles["logo"]}>
+          <Logo />
+          <span>Prilaku</span>
+        </div>
+        {
+          navbarTopContent
+        }
+      </NavbarTop>
+      <main className={styles.childrenContainer}>
+        {children}
+      </main>
+      <Footer />
+    </section>
   );
 };
 

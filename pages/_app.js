@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/calendar.css";
 import Head from "next/head";
 
 import "../styles/globals.css";
+import "../styles/calendar.css";
 import AuthProvider from "../src/context/AuthProvider";
 import Script from "next/script";
 

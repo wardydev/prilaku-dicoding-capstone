@@ -1,6 +1,7 @@
 import React from "react";
 import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
 import { formatterDateToObject } from "../../utils/functions";
+import styles from "./Calendar.module.scss";
 
 // eslint-disable-next-line react/display-name
 const ButtonInvisible = React.forwardRef((props, ref) => {
@@ -24,18 +25,15 @@ const ButtonInvisible = React.forwardRef((props, ref) => {
 const CalendarComponent = ({ habbitsDateActive, setHabbitsDateActive }) => {
   const buttonRef = React.createRef();
 
-  // const changeView = (selected) => {
-  //   const selectedDate = document.querySelector('.Calendar__day.-selected');
-  //   selectedDate.scrollIntoView({inline: "center"})
-  // }
-
   React.useEffect(() => {
     buttonRef.current.click();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
       <Calendar
+        style={styles['Calendar']}
         value={formatterDateToObject(habbitsDateActive)}
         onChange={(selected) => {
           setHabbitsDateActive(new Date([selected.month, selected.day, selected.year]))

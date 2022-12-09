@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ children, color = "#f5f0f05d" }) => {
+const Card = ({ children, color = "rgb(235 236 236 / 50%)" }) => {
   return (
     <div className="rounded rounded-lg p-3" style={{ backgroundColor: color }}>
       {children}

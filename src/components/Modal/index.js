@@ -1,18 +1,29 @@
 import React from "react";
+import ButtonIconOnly from "../ButtonIconOnly";
 import styles from "./Modal.module.scss";
 
 const Modal = ({ children, setValue }) => {
   return (
-    <main className={styles.main}>
-      <div className={styles.closeIcon} onClick={() => setValue(false)}>
-        <ion-icon name="close-outline" style={{ fontSize: 36 }}></ion-icon>
-      </div>
-      <div className={`row justify-content-center`}>
-        <div className={`col-12 col-lg-7 px-4 py-4 ${styles.content}`}>
+    <div className={styles["modal-custom"]}>
+      <div className={styles["modal-custom__inner"]}>
+        <div className={styles["close-modal"]}>
+          <ButtonIconOnly
+            handleClick={(event) => {
+              event.stopPropagation();
+              setValue(false)
+            }}
+            ariaLabel="Close modal"
+            isCircle={true}
+            bgColor="#C3C4C5"
+          >
+            <ion-icon name="close"></ion-icon>
+          </ButtonIconOnly>
+        </div>
+        <div className={styles["modal-content"]}>
           {children}
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 
