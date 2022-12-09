@@ -1,6 +1,20 @@
 /** @type {import('next').NextConfig} */
 
+
 module.exports = {
+=======
+const withPWA = require("next-pwa")({
+  dest: "public",
+  disable: process.env.NODE_ENV === "development",
+  register: true,
+});
+
+module.exports = withPWA({
+  reactStrictMode: true,
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV !== "development",
+  },
   images: {
     domains: [
       "upload.wikimedia.org",
@@ -9,3 +23,5 @@ module.exports = {
     ],
   },
 };
+=======
+});

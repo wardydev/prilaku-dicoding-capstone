@@ -1,20 +1,18 @@
-import React, { useState } from "react";
-import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
+import React from "react";
 
 import { deleteHabbit } from "../../utils/firebaseFunc";
-import { formatDate, formatterDateToObject } from "../../utils/functions";
+import { formatDate } from "../../utils/functions";
 import ButtonCustom from "../ButtonCustom";
-import Heading from "../Heading";
 import Modal from "../Modal";
 import styles from "./DetailHabbit.module.scss";
 
 const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
-  const startDate = formatDate(new Date(dataDetailHabbit.data.startDate));
-  const endDate = formatDate(new Date(dataDetailHabbit.data.endDate));
-  const [selectedDayRange, setSelectedDayRange] = useState({
-    from: formatterDateToObject(new Date(dataDetailHabbit.data.startDate)),
-    to: formatterDateToObject(new Date(dataDetailHabbit.data.endDate)),
-  });
+  const startDate = formatDate(new Date(dataDetailHabbit.data.startDate)).split(
+    ","
+  )[1];
+  const endDate = formatDate(new Date(dataDetailHabbit.data.endDate)).split(
+    ","
+  )[1];
 
   return (
     <Modal setValue={setValue}>
@@ -59,6 +57,59 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
             deleteHabbit("habbits", dataDetailHabbit.id);
           }}
         /> */}
+      <div className={styles.wrapper}>
+        <div>
+          <p className="mb-1">HABIT NAME</p>
+          <p className={styles.data}>{dataDetailHabbit?.data?.name}</p>
+        </div>
+
+        <div>
+          <p className="mt-3 mb-1">SCHEDULED</p>
+          <p className={styles.data}>
+            {startDate} {startDate != endDate && `- ${endDate}`}
+          </p>
+        </div>
+
+        <div>
+          <p className="mt-3 mb-1">AT TIME</p>
+          <p className={styles.data}>
+            <ion-icon name={dataDetailHabbit?.data?.time?.icon}></ion-icon>{" "}
+            {dataDetailHabbit?.data?.time?.name}
+          </p>
+        </div>
+
+        <div>
+          <p className="mt-3 mb-1">NOTE</p>
+          <p className={`${styles.data} ${styles.dataWide}`}>{dataDetailHabbit?.data?.note}</p>
+        </div>
+
+        <div className="mt-5 d-flex justify-content-center">
+          {dataDetailHabbit.data.isDone == false && (
+            <div className="me-3">
+              <ButtonCustom
+                title="Edit"
+                size="normal"
+                iconName="create"
+                isIcon={true}
+                handlePress={() => {
+                  setShowModal(true);
+                  setValue(false);
+                }}
+              />
+            </div>
+          )}
+          <ButtonCustom
+            title="Delete"
+            size="normal"
+            iconName="trash"
+            isIcon={true}
+            handlePress={() => {
+              setValue(false);
+              deleteHabbit("habbits", dataDetailHabbit.id);
+            }}
+          />
+        </div>
+      </div>
     </Modal>
   );
 };
