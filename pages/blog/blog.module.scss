@@ -1,9 +1,15 @@
+@import "../../styles/variables.module";
+
 .header {
   margin: 5rem 0 1rem 0;
   text-align: center;
 
+  h1 {
+    color: var(--black);
+  }
+
   h2 {
-    color: #949494;
+    color: var(--gray);
     font-size: 1rem;
     margin-top: 1rem;
     margin-bottom: 5rem;
@@ -33,10 +39,11 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    color: var(--black);
   }
 
   .body {
-    color: #949494;
+    color: var(--gray);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -59,10 +66,10 @@
   border-bottom: 1px solid transparent;
   transition: all 0.1s ease-in-out;
   padding-bottom: 2px;
+  font-weight: 500;
 
   &:hover {
-    border-bottom: 1px solid #949494;
-    color: #fff;
+    border-bottom: 1px solid #3c4043;
     cursor: pointer;
   }
 
@@ -87,6 +94,7 @@
     font-weight: bold;
     line-height: 2.8rem;
     margin-bottom: 3rem;
+    color: var(--black);
   }
 
   .body {
@@ -95,6 +103,7 @@
 
   p {
     line-height: 1.6rem;
+    color: var(--black);
   }
 
   img,
@@ -108,7 +117,7 @@
   }
 
   .date {
-    color: #949494;
+    color: var(--grayLight);
 
     span {
       padding: 0 8px;

@@ -167,7 +167,7 @@ const Register = () => {
         <p className={styles.bottomText}>
           Already have an account?
           <Link href="/login">
-            <a style={{ color: "#fff" }}>Sign In</a>
+            <a style={{ color: "#3c4043" }}>Sign In</a>
           </Link>
         </p>
       </div>
