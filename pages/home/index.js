@@ -31,6 +31,30 @@ import styles from "./Home.module.scss";
 import ButtonIconOnly from "../../src/components/ButtonIconOnly";
 import Footer from "../../src/components/Footer";
 
+const NavbarTopContent = ({ habbitsDateActive, setDataDetailHabbit, setShowModal }) => {
+  return (
+    <>
+      <div className={styles['navbar-top__information']}>
+        <ButtonTextOnly>Today</ButtonTextOnly>
+        <div className="date-active">{formatDate(habbitsDateActive)}</div>
+      </div>
+      <div className={styles['navbar-top__actions']}>
+        <ButtonIconOnly 
+          isCircle={true}
+          handleClick={() => {
+            setDataDetailHabbit(null);
+            setShowModal(true);
+          }}
+          ariaLabel="new habit"
+        > 
+          <ion-icon name="add-outline"></ion-icon>
+        </ButtonIconOnly>
+        <UserLoginProfile />
+      </div>
+    </>
+  );
+}
+
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [isShowDetailUpdate, setIsShowDetailUpdate] = useState(false);
@@ -94,32 +118,18 @@ const Home = () => {
     setShowModal(!showModal);
   };
 
-  const NavbarTopContent = () => {
-    return (
-      <>
-        <div className={styles['navbar-top__information']}>
-          <ButtonTextOnly>Today</ButtonTextOnly>
-          <div className="date-active">{formatDate(habbitsDateActive)}</div>
-        </div>
-        <div className={styles['navbar-top__actions']}>
-          <ButtonIconOnly 
-            isCircle={true}
-            handleClick={() => {
-              setDataDetailHabbit(null);
-              setShowModal(true);
-            }}
-            ariaLabel="new habit"
-          > 
-            <ion-icon name="add-outline"></ion-icon>
-          </ButtonIconOnly>
-          <UserLoginProfile />
-        </div>
-      </>
-    );
-  }
+  
 
   return (
-    <Layout navbarTopContent={<NavbarTopContent />}>
+    <Layout 
+      navbarTopContent={
+        <NavbarTopContent 
+          setShowModal={setShowModal}
+          setDataDetailHabbit={setDataDetailHabbit}
+          habbitsDateActive={habbitsDateActive}
+        />
+      }
+    >
       {showModal && (
         <FormHabbit
           setShowModal={setShowModal}

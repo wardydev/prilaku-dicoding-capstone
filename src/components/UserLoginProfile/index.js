@@ -2,8 +2,9 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getUserInfo } from "../../utils/functions";
+import styles from "./UserLoginProfile.module.scss";
 
-const UserLoginProfile = ({ width = 44 }) => {
+const UserLoginProfile = ({ width = 44, classname }) => {
   const [img, setImg] = React.useState("");
   
   React.useEffect(() => {
@@ -16,13 +17,12 @@ const UserLoginProfile = ({ width = 44 }) => {
 
   return (
     <Link href="/user">
-      <a href="" style={{textDecoration: 'none'}} data-userlogged>
+      <a href="" className={`${styles["user-logged"]} ${classname}`} style={{width: width}}>
         <Image
           src={img || "/images/deadpool.svg"}
           width={width}
           height={width}
           alt="image profile"
-          style={{borderRadius: '50%'}}
         />
       </a>
     </Link>

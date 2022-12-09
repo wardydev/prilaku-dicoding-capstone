@@ -48,24 +48,6 @@ const FormHabbit = ({
         : null,
   });
 
-  // const HabbitType = {
-  //   regular: {
-  //     color: "blue",
-  //     date: new Date(),
-  //     isDone: false,
-  //   },
-  //   negative: {
-  //     color: "red",
-  //     date: new Date(),
-  //     isDone: true,
-  //   },
-  //   "one-time": {
-  //     color: "purple",
-  //     date: new Date(),
-  //     isDone: false,
-  //   },
-  // };
-
   const [habbitName, setHabbitName] = useState(
     detailHabbit !== null ? detailHabbit.data.name : ""
   );
@@ -195,8 +177,6 @@ const FormHabbit = ({
         </div>
       </div>
 
-
-      {/*  */}
       <div className="mb-4">
         <Heading title="Icon" />
         <Card>

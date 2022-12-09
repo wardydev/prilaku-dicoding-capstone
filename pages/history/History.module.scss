@@ -4,25 +4,31 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  .date-active {
+    font-weight: 500;
+  }
 }
 
-.navbar-top__actions {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+.user-logged-shown {
+  display: block !important;
+
+  img {
+    border-radius: 50%;
+  }
 }
 
-.header-content {
-  position: fixed;
-  top: 67px;
-  left: 0;
-  z-index: 5;
-  width: 100%;
-  background-color: #FEFFFF;
+.history-info {
+  display: none;
 
   @include respond($breakpoint: 768px) {
+    display: block;
+    position: fixed;
     top: 71px;
     left: 65px;
+    z-index: 5;
+    width: 100%;
+    background-color: #FEFFFF;
     width: calc(100% - 65px);
     overflow: hidden;
   }
@@ -55,7 +61,7 @@
 }
 
 .main-content {
-  margin-top: calc(67px + 127px + 1.75rem);
+  margin-top: calc(71px + 1.75rem);
 
   @include respond($breakpoint: 768px) {
     margin-left: 65px;
@@ -83,14 +89,13 @@
     }
 
     .habbit-list {
-      min-height: 15rem;
+      min-height: 60vh;
       padding-bottom: 1rem;
-      border-bottom: 1px solid #c3c4c56b;
+      margin-bottom: 1rem;
 
       @include respond($breakpoint: 1024px) {
-        min-height: 30rem;
+        min-height: 70vh;
       }
     }
   }
 }
-

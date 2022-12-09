@@ -7,6 +7,7 @@ import NavbarTop from "../NavbarTop";
 
 import Logo from "../Logo";
 import Footer from "../Footer";
+import UserLoginProfile from "../UserLoginProfile";
 
 const Layout = ({ children, navbarTopContent }) => {
   return (
@@ -21,7 +22,7 @@ const Layout = ({ children, navbarTopContent }) => {
           navbarTopContent
         }
       </NavbarTop>
-      <main className={styles.childrenContainer}>
+      <main>
         {children}
       </main>
       <Footer />
