@@ -1,27 +1,22 @@
 /** @type {import('next').NextConfig} */
 
-const withPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
+const withPWA = require("next-pwa")({
+  dest: "public",
+  disable: process.env.NODE_ENV === "development",
+  register: true,
+});
 
 module.exports = withPWA({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-  disable: "development",
   reactStrictMode: true,
   swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV !== "development",
+  },
   images: {
     domains: [
       "upload.wikimedia.org",
       "prekuel.com",
       "lh3.googleusercontent.com",
     ],
-  },
-  pwa: {
-    dest: "public",
-    register: true,
-    skipWaiting: true,
-    runtimeCaching,
-    buildExcludes: [/middleware-manifest.json$/],
   },
 });
