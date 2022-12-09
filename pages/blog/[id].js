@@ -15,8 +15,8 @@ const BlogDetail = () => {
 
   useEffect(() => {
     axios
-      .get("https://prekuel.com/wp-json/wp/v2/posts/?category=248")
-      .then((res) => setBlogs(res.data.slice(0, 3)));
+      .get("https://prekuel.com/wp-json/wp/v2/posts/?category=248&per_page=3")
+      .then((res) => setBlogs(res.data));
   }, []);
 
   useEffect(() => {
