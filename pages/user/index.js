@@ -45,6 +45,10 @@ const User = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUserSignOut]);
 
+  React.useEffect(() => {
+    getHabbitDataFromFirestore();
+  }, []);
+
   const handleSignout = () => {
     auth.signOut().then(() => {
       setIsUserSignOut(true);
@@ -54,10 +58,8 @@ const User = () => {
     });
   };
 
-  ///
   const getHabbitDataFromFirestore = async () => {
     try {
-      setIsLoading(false);
       const userSigned = JSON.parse(getUserInfo());
       const q = query(
         collection(db, "habbits"),
@@ -70,6 +72,9 @@ const User = () => {
           data: doc.data(),
         }));
 
+        console.log("snapshot")
+        console.log(snapshots)
+
         const dataRemaindHabbits = snapshots.filter((habbit) => {
           return habbit.data.isDone === false;
         });
@@ -80,7 +85,8 @@ const User = () => {
         setCompletionRate(
           (100 * dataFinishedHabbits.length) / snapshots.length
         );
-
+        
+        console.log(dataRemaindHabbits);
         setRemaindHabbits(dataRemaindHabbits);
         setFinishedHabbits(dataFinishedHabbits);
         setHabbits(snapshots);
@@ -90,9 +96,7 @@ const User = () => {
     }
   };
 
-  useEffect(() => {
-    getHabbitDataFromFirestore();
-  }, [habbitsDateActive]);
+  
 
 
   return (

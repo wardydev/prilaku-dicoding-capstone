@@ -45,6 +45,7 @@ const HabbitCard = ({
           checked={isDone}
           onChange={handleUpdateHabbitDone}
         />
+        {/* <ion-icon name="checkmark" className={styles["checkmark"]}></ion-icon> */}
         <span className={styles.checkmark}></span>
       </label>
       <div
