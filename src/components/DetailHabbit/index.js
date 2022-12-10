@@ -13,7 +13,7 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
   const endDate = formatDate(new Date(dataDetailHabbit.data.endDate)).split(
     ","
   )[1];
-
+  
   return (
     <Modal setValue={setValue}>
       <div className={styles["habit-detail"]}>
@@ -24,7 +24,14 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
 
         <h3>DATE</h3>
         <div className={styles["habit-detail__date"]}>
-          <p>{`${startDate} - ${endDate}`}</p>
+          <p>
+            {startDate} {startDate != endDate && `- ${endDate}`}
+          </p>
+        </div>
+
+        <h3>AT TIME</h3>
+        <div className={styles["habit-detail__name"]}>
+          <p>{dataDetailHabbit?.data?.time?.name}</p>
         </div>
 
         <h3>NOTES</h3>
@@ -39,6 +46,7 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
               title="Edit"
               size="normal"
               iconName="create"
+              color="#5899E8"
               isIcon={true}
               handlePress={() => {
                 setShowModal(true);
@@ -51,6 +59,7 @@ const DetailHabbit = ({ setValue, dataDetailHabbit, setShowModal }) => {
           title="Delete"
           size="normal"
           iconName="trash"
+          color="#eb6868"
           isIcon={true}
           handlePress={() => {
             setValue(false);

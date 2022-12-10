@@ -15,6 +15,7 @@ const HabbitCard = ({
   time,
   startDate,
   endDate,
+  forHistory,
 }) => {
   const [isShowMoreOptions, setIsShowMoreOptions] = useState(false);
   const [isDone, setIsDone] = useState(data?.data?.isDone);
@@ -35,6 +36,8 @@ const HabbitCard = ({
       console.log(err);
     }
   };
+
+  const formatShortDate = (date) => date.split(",")[1];
 
   return (
     <div className={styles["habit-item"]}>
@@ -70,13 +73,30 @@ const HabbitCard = ({
               </div>
               <div className={styles["habit-card__date"]}>
                 <div className={styles["habit-card__date-info"]}>
-                  <ion-icon
-                    name={time.icon}
-                    style={{ fontSize: 16 }}
-                  ></ion-icon>
-                  <div className={styles["habit-card__endDate"]}>
-                    <span>{time.name}</span>
-                  </div>
+                  {forHistory ? (
+                    <>
+                      <ion-icon
+                        name="calendar"
+                        style={{ fontSize: 16 }}
+                      ></ion-icon>
+                      <div className={styles["habit-card__endDate"]}>
+                        <span style={{ fontSize: "0.9rem" }}>
+                          {formatShortDate(startDate)}{" "}
+                          {startDate != endDate && `- ${formatShortDate(endDate)}`}
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <ion-icon
+                        name={time.icon}
+                        style={{ fontSize: 16 }}
+                      ></ion-icon>
+                      <div className={styles["habit-card__endDate"]}>
+                        <span>{time.name}</span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

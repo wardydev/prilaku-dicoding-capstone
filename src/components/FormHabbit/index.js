@@ -94,7 +94,6 @@ const FormHabbit = ({
           ? Date.parse(endDate)
           : Date.parse(startDate),
       };
-      console.log(data);
 
       const habbit = await addDoc(collection(db, "habbits"), data);
       if (habbit) {

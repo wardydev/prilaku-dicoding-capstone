@@ -11,15 +11,12 @@ import { auth } from "../../src/config/firebase";
 import { useRouter } from "next/router";
 import CardRate from "../../src/components/CardRate";
 
-
 const User = () => {
   const [img, setImg] = React.useState(null);
   const [emailUser, setEmailUser] = React.useState(null);
   const [nameUser, setNameUser] = React.useState(null);
 
   const [isUserSignOut, setIsUserSignOut] = React.useState(false);
-  const [habbits, setHabbits] = useState([]);
-  const [habbitsDateActive, setHabbitsDateActive] = useState(new Date());
   const [remaindHabbits, setRemaindHabbits] = useState(0);
   const [finishedHabbits, setFinishedHabbits] = useState(0);
   const [completionRate, setCompletionRate] = useState(0);
@@ -29,11 +26,9 @@ const User = () => {
     const { user } = JSON.parse(getUserInfo());
     const nameUserFromEmail = user.email.split("@")[0];
 
-    console.log(user)
     setEmailUser(user.email);
-    setNameUser(() => user.name ? user.name : nameUserFromEmail);
+    setNameUser(() => (user.name ? user.name : nameUserFromEmail));
     setImg(user.photoURL);
-  
   }, []);
 
   React.useEffect(() => {
@@ -61,60 +56,52 @@ const User = () => {
   const getHabbitDataFromFirestore = async () => {
     try {
       const userSigned = JSON.parse(getUserInfo());
-      const q = query(
+
+      const allHabit = query(
         collection(db, "habbits"),
-        where("isDone", "==", true),
         where("uid", "==", userSigned.user.uid)
       );
-      onSnapshot(q, (querySnapshot) => {
+
+      onSnapshot(allHabit, (querySnapshot) => {
         const snapshots = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           data: doc.data(),
         }));
 
-        console.log("snapshot")
-        console.log(snapshots)
-
         const dataRemaindHabbits = snapshots.filter((habbit) => {
           return habbit.data.isDone === false;
         });
+
         const dataFinishedHabbits = snapshots.filter((habbit) => {
           return habbit.data.isDone === true;
         });
 
         setCompletionRate(
-          (100 * dataFinishedHabbits.length) / snapshots.length
+          Math.round((100 * dataFinishedHabbits.length) / snapshots.length)
         );
-        
-        console.log(dataRemaindHabbits);
         setRemaindHabbits(dataRemaindHabbits);
         setFinishedHabbits(dataFinishedHabbits);
-        setHabbits(snapshots);
       });
     } catch (err) {
       console.log(err);
     }
   };
 
-  
-
-
   return (
     <>
       <Layout
         navbarTopContent={
-          <>  
+          <>
             <div className={styles["logo"]}>
               <Image
                 src={"/images/logo.png"}
                 width="35px"
                 height="35px"
                 alt="image profile"
-              >
-              </Image>
+              ></Image>
               <h1>Prilaku</h1>
             </div>
-            <UserLoginProfile classname={styles["user-logged-shown"]}/>
+            <UserLoginProfile classname={styles["user-logged-shown"]} />
           </>
         }
       >
@@ -141,9 +128,7 @@ const User = () => {
                       <CardRate
                         color="#ED7946"
                         rateName="Completion Rate"
-                        rateCount={`${
-                          habbits?.length === 0 ? "0" : Math.round(completionRate)
-                        }%`}
+                        rateCount={`${completionRate || 0}%`}
                       />
                     </div>
                   </div>
@@ -177,10 +162,9 @@ const User = () => {
             </div>
           </div>
         </div>
-    
       </Layout>
     </>
   );
-}
+};
 
 export default User;

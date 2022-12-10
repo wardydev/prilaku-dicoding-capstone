@@ -36,21 +36,33 @@ const NavbarTopContent = ({
   setDataDetailHabbit,
   setShowModal,
 }) => {
-  
+  const todayDate = new Date();
+
   return (
     <>
       <div className={styles["navbar-top__information"]}>
-        <ButtonTextOnly handleClick={() => {  
-          const todayClass = document.querySelector('.main-calendar .Calendar__day.-today');
-          const selectedClass = document.querySelector('.main-calendar .Calendar__day.-selected');
+        <ButtonTextOnly
+          handleClick={() => {
+            const todayClass = document.querySelector(
+              ".main-calendar .Calendar__day.-today"
+            );
+            const selectedClass = document.querySelector(
+              ".main-calendar .Calendar__day.-selected"
+            );
 
-          const today = todayClass || selectedClass;
+            const today = todayClass || selectedClass;
 
-          if (today) {
-            today.scrollIntoView({inline: "center"})
-            today.click();
-          }
-        }}>Today</ButtonTextOnly>
+            if (today) {
+              today.scrollIntoView({ inline: "center" });
+              today.click();
+            }
+          }}
+        >
+          {todayDate.toLocaleDateString() ==
+          habbitsDateActive.toLocaleDateString()
+            ? "Today"
+            : "Back to Today"}
+        </ButtonTextOnly>
         <div className="date-active">{formatDate(habbitsDateActive)}</div>
       </div>
       <div className={styles["navbar-top__actions"]}>
@@ -85,11 +97,13 @@ const Home = () => {
   const getHabbitDataFromFirestore = async () => {
     try {
       const userSigned = JSON.parse(getUserInfo());
-      const q = query(
+
+      const allHabit = query(
         collection(db, "habbits"),
         where("uid", "==", userSigned.user.uid)
       );
-      onSnapshot(q, (querySnapshot) => {
+
+      onSnapshot(allHabit, (querySnapshot) => {
         const snapshots = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           data: doc.data(),
@@ -110,9 +124,8 @@ const Home = () => {
         });
 
         setCompletionRate(
-          (100 * dataFinishedHabbits.length) / snapshots.length
+          Math.round((dataFinishedHabbits.length / snapshots.length) * 100)
         );
-
         setFinishedHabbits(dataFinishedHabbits);
         setRemaindHabbits(dataRemaindHabbits);
         setHabbits(filterDate);
@@ -184,9 +197,7 @@ const Home = () => {
                 <CardRate
                   color="#ED7946"
                   rateName="Completion Rate"
-                  rateCount={`${
-                    habbits?.length === 0 ? "0" : Math.round(completionRate)
-                  }%`}
+                  rateCount={`${completionRate || 0}%`}
                 />
               </div>
             </div>
