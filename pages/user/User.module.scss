@@ -1,0 +1,184 @@
+@import "../../styles/mixin.module.scss";
+
+.user-logged-shown {
+  display: block !important;
+
+  img {
+    border-radius: 50%;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: flex-end;
+  gap: .5rem;
+
+  h1 {
+    margin: 0;
+  }
+
+  @include respond($breakpoint: 768px) {
+    display: none;
+  }
+
+  > :last-child {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+}
+
+.history-info {
+  display: none;
+
+  @include respond($breakpoint: 768px) {
+    display: block;
+    position: fixed;
+    top: 71px;
+    left: 65px;
+    z-index: 5;
+    width: 100%;
+    background-color: #FEFFFF;
+    width: calc(100% - 65px);
+    overflow: hidden;
+  }
+
+  @include respond($breakpoint: 1024px) {
+    width: 350px;
+    height: 100vh;
+    left: unset;
+    right: 0;
+    border-left: 1px solid #C3C4C5;
+  }
+
+  &__inner {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .card-rate {
+    display: none;
+
+    @include respond($breakpoint: 1024px) {
+      display: block;
+      margin-top: 2.5rem;
+    }
+
+    .row {
+      gap: 1rem;
+    }
+  }
+}
+
+.main-content {
+  margin-top: calc(71px + 1.75rem);
+
+  @include respond($breakpoint: 768px) {
+    margin-left: 65px;
+  }
+
+  @include respond($breakpoint: 1024px) {
+    margin-right: 350px;
+    margin-top: calc(71px + 2.5rem);
+  }
+
+  &__inner {
+    width: 90vw;
+    margin: 0 auto;
+
+    @include respond($breakpoint: 768px) {
+      width: 90%;
+    }
+  }
+
+  .content {
+    h2 {
+      font-size: inherit;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .habbit-list {
+      min-height: 60vh;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+
+      @include respond($breakpoint: 1024px) {
+        min-height: 70vh;
+      }
+    }
+  }
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  @include respond($breakpoint: 576px) {
+    flex-direction: row;
+  }
+
+  &__photo {
+    align-self: center;
+    width: 200px;
+    height: 200px;
+    border-radius: .5rem;
+    background-color: rgba(235, 236, 236, 0.5);
+
+    img {
+      width: 200px !important;
+      margin: auto;
+    }
+  }
+
+  &__data {
+    @include respond($breakpoint: 576px) {
+      flex-grow: 1;
+      margin-top: 1.25rem;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: inherit;
+    }
+
+    div {
+      margin-bottom: 2.5rem;
+      p {
+        padding: .75rem;
+        border: 1px solid rgba(235, 236, 236, 0.5);
+        background-color: rgba(235, 236, 236, 0.5);
+        border-radius: .25rem;
+      }
+    }
+  }
+
+  &__name {
+    text-transform: capitalize;
+  }
+}
+
+.button-logout {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include respond($breakpoint: 576px) {
+    margin-top: 7rem;
+  }
+
+  button {
+    width: 10rem;
+    height: 3rem;
+    display: inline-block;
+    border: none;
+    background-color: #5899E8;
+    color: #FEFFFF;
+    text-align: center;
+    border-radius: .25rem;
+    font-weight: 500;
+  }
+}

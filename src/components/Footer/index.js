@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Footer.module.scss";
 
 const Footer = () => {
@@ -63,19 +64,19 @@ const Footer = () => {
         </div>
         <div className={styles["footer-content"]}>
           <div className={styles["row"]}>
-            <div className="col-12 col-md-6 mb-5">
-              <h3>Our Address</h3>
-              <ul className={styles["list-content"]}>
-                <li>Bali</li>
-                <li>Kalimantan Timur</li>
-                <li>Nusa Tenggara Barat</li>
-              </ul>
-            </div>
-            <div className="col-12 col-md-6">
+            <div className="col-12">
               <h3>Information</h3>
               <ul className={styles["list-content"]}>
-                <li>About Us</li>
-                <li>Blog</li>
+                <li>
+                  <Link href="/about">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog">
+                    Blog
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
