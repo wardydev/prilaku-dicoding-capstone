@@ -10,7 +10,7 @@ const Footer = () => {
         <div className={styles["footer-content"]}>
           <div className={styles["footer-content__logo"]}>
             <Image
-              src="/images/logo2.svg"
+              src="/images/logo.png"
               width={48}
               height={48}
               alt="image profile"
@@ -24,22 +24,38 @@ const Footer = () => {
           <div className={styles["footer-content__social-links"]}>
             <ul>
               <li>
-                <a href="https://www.facebook.com/mbkm.ri/" target="blank">
+                <a
+                  href="https://www.facebook.com/dicoding/"
+                  target="__blank"
+                  style={{ color: "#3c4043" }}
+                >
                   <ion-icon name="logo-facebook"></ion-icon>
                 </a>
               </li>
               <li>
-                <a href="https://twitter.com/dicoding" target="blank">
+                <a
+                  href="https://twitter.com/dicoding"
+                  target="__blank"
+                  style={{ color: "#3c4043" }}
+                >
                   <ion-icon name="logo-twitter"></ion-icon>
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com/dicoding" target="blank">
+                <a
+                  href="https://www.instagram.com/dicoding"
+                  target="__blank"
+                  style={{ color: "#3c4043" }}
+                >
                   <ion-icon name="logo-instagram"></ion-icon>
                 </a>
               </li>
               <li>
-                <a href="https://github.com/wardydev/prilaku-dicoding-capstone" target="blank">
+                <a
+                  href="https://github.com/wardydev/prilaku-dicoding-capstone"
+                  target="__blank"
+                  style={{ color: "#3c4043" }}
+                >
                   <ion-icon name="logo-github"></ion-icon>
                 </a>
               </li>
@@ -70,7 +86,7 @@ const Footer = () => {
         <p>© 2022 Prilaku - Captstone Project Team C22 - 077</p>
       </div>
     </footer>
-  )
-}
+  );
+};
 
 export default Footer;

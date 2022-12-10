@@ -47,6 +47,7 @@ const index = () => {
               <a
                 className={styles.link}
                 href="https://www.linkedin.com/in/arialghifari/"
+                style={{ color: "#3c4043", textDecoration: "none" }}
               >
                 Ari Alghifari
               </a>
@@ -64,6 +65,7 @@ const index = () => {
               <a
                 className={styles.link}
                 href="https://www.linkedin.com/in/hairul-wardi-166574231/"
+                style={{ color: "#3c4043", textDecoration: "none" }}
               >
                 Haerul Wardi
               </a>
@@ -81,6 +83,7 @@ const index = () => {
               <a
                 className={styles.link}
                 href="https://www.linkedin.com/in/sukronsabari/"
+                style={{ color: "#3c4043", textDecoration: "none" }}
               >
                 Sukron Sabari
               </a>
@@ -98,6 +101,7 @@ const index = () => {
               <a
                 className={styles.link}
                 href="https://www.linkedin.com/in/kusumayasa/"
+                style={{ color: "#3c4043", textDecoration: "none" }}
               >
                 Kusuma Yasa
               </a>
