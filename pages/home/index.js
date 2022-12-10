@@ -36,10 +36,21 @@ const NavbarTopContent = ({
   setDataDetailHabbit,
   setShowModal,
 }) => {
+  
   return (
     <>
       <div className={styles["navbar-top__information"]}>
-        <ButtonTextOnly>Today</ButtonTextOnly>
+        <ButtonTextOnly handleClick={() => {  
+          const todayClass = document.querySelector('.main-calendar .Calendar__day.-today');
+          const selectedClass = document.querySelector('.main-calendar .Calendar__day.-selected');
+
+          const today = todayClass || selectedClass;
+
+          if (today) {
+            today.scrollIntoView({inline: "center"})
+            today.click();
+          }
+        }}>Today</ButtonTextOnly>
         <div className="date-active">{formatDate(habbitsDateActive)}</div>
       </div>
       <div className={styles["navbar-top__actions"]}>

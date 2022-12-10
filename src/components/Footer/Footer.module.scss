@@ -2,7 +2,7 @@
 
 .footer {
   background: linear-gradient(257.26deg, #FAFAFB 61.81%, rgba(89, 154, 232, 0.125482) 531.27%);
-  
+  margin-top: 7rem;
   @include respond($breakpoint: 768px) {
     margin-left: 65px;
   }

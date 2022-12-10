@@ -45,6 +45,7 @@ const HabbitCard = ({
           checked={isDone}
           onChange={handleUpdateHabbitDone}
         />
+        {/* <ion-icon name="checkmark" className={styles["checkmark"]}></ion-icon> */}
         <span className={styles.checkmark}></span>
       </label>
       <div
@@ -70,13 +71,11 @@ const HabbitCard = ({
               <div className={styles["habit-card__date"]}>
                 <div className={styles["habit-card__date-info"]}>
                   <ion-icon
-                    name="calendar-outline"
+                    name={time.icon}
                     style={{ fontSize: 16 }}
                   ></ion-icon>
                   <div className={styles["habit-card__endDate"]}>
-                    <span>{`${
-                      time.name.toLowerCase() == "anytime" ? "Today" : time.name
-                    } ${endDate !== startDate ? "- " + endDate : ""}`}</span>
+                    <span>{time.name}</span>
                   </div>
                 </div>
               </div>

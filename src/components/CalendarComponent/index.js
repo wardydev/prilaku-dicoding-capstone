@@ -6,8 +6,8 @@ import styles from "./Calendar.module.scss";
 // eslint-disable-next-line react/display-name
 const ButtonInvisible = React.forwardRef((props, ref) => {
   const scrollToToday = () => {
-    const today = document.querySelector('.Calendar__day.-today');
-    const selectedDate = document.querySelector('.Calendar__day.-selected')
+    const today = document.querySelector('.main-calendar .Calendar__day.-today');
+    const selectedDate = document.querySelector('.main-calendar .Calendar__day.-selected')
     if (today) {
       today.scrollIntoView({inline: "center"})
     } else {
@@ -41,6 +41,7 @@ const CalendarComponent = ({ habbitsDateActive, setHabbitsDateActive }) => {
         colorPrimary="#5899E8"
         colorPrimaryLight="#FEFFFF"
         shouldHighlightWeekends
+        calendarClassName="main-calendar"
         renderFooter={() => (
           <div style={{ display: 'flex', justifyContent: 'center', padding: '1rem 2rem' }}>
             <ButtonInvisible ref={buttonRef}/>
