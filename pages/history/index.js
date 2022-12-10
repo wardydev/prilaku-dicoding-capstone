@@ -42,12 +42,30 @@ const History = () => {
   const getHabbitDataFromFirestore = async () => {
     try {
       const userSigned = JSON.parse(getUserInfo());
-      const q = query(
+
+      const isDoneHabit = query(
         collection(db, "habbits"),
         where("isDone", "==", true),
         where("uid", "==", userSigned.user.uid)
       );
-      onSnapshot(q, (querySnapshot) => {
+
+      onSnapshot(isDoneHabit, (querySnapshot) => {
+        const snapshots = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }));
+        snapshots.sort((a, b) => b.data.endDate - a.data.endDate);
+
+        setHabbits(snapshots);
+        setIsLoading(false);
+      });
+
+      const allHabit = query(
+        collection(db, "habbits"),
+        where("uid", "==", userSigned.user.uid)
+      );
+
+      onSnapshot(allHabit, (querySnapshot) => {
         const snapshots = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           data: doc.data(),
@@ -56,18 +74,16 @@ const History = () => {
         const dataRemaindHabbits = snapshots.filter((habbit) => {
           return habbit.data.isDone === false;
         });
+
         const dataFinishedHabbits = snapshots.filter((habbit) => {
           return habbit.data.isDone === true;
         });
 
         setCompletionRate(
-          (100 * dataFinishedHabbits.length) / snapshots.length
+          Math.round((100 * dataFinishedHabbits.length) / snapshots.length)
         );
-
         setRemaindHabbits(dataRemaindHabbits);
         setFinishedHabbits(dataFinishedHabbits);
-        setHabbits(snapshots);
-        setIsLoading(false);
       });
     } catch (err) {
       console.log(err);
@@ -76,7 +92,8 @@ const History = () => {
 
   useEffect(() => {
     getHabbitDataFromFirestore();
-  }, [habbitsDateActive]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [habbits, habbitsDateActive]);
 
   return (
     <Layout
@@ -89,6 +106,9 @@ const History = () => {
           setValue={setIsShowDetailUpdate}
           dataDetailHabbit={dataDetailHabbit}
           setShowModal={false}
+          remaindHabbits={remaindHabbits}
+          finishedHabbits={finishedHabbits}
+          completionRate={completionRate}
         />
       )}
       <div className={styles["main-content"]}>
@@ -114,9 +134,7 @@ const History = () => {
                     <CardRate
                       color="#ED7946"
                       rateName="Completion Rate"
-                      rateCount={`${
-                        habbits?.length === 0 ? "0" : Math.round(completionRate)
-                      }%`}
+                      rateCount={`${completionRate || 0}%`}
                     />
                   </div>
                 </div>
@@ -147,6 +165,7 @@ const History = () => {
                         time={habbit.data.time}
                         startDate={formatDate(new Date(habbit.data.startDate))}
                         endDate={formatDate(new Date(habbit.data.endDate))}
+                        forHistory={true}
                       />
                     </div>
                   );

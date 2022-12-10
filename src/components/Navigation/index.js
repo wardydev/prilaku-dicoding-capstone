@@ -34,7 +34,7 @@ const Navigation = ({ styles }) => {
           </Link>
         </li>
         <li>
-          <Link href="/article">
+          <Link href="/blog">
             <a
               style={{
                 textDecoration: "none",
@@ -42,12 +42,12 @@ const Navigation = ({ styles }) => {
               }}
             >
               <ion-icon name="albums-outline"></ion-icon>
-              <span>article</span>
+              <span>blog</span>
             </a>
           </Link>
         </li>
         <li>
-          <Link href="/users">
+          <Link href="/user">
             <a
               style={{
                 textDecoration: "none",

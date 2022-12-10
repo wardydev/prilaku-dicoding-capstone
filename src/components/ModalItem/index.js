@@ -67,7 +67,7 @@ const ModalItem = ({
                 <div
                   style={{
                     width: 30,
-                    height: 30,
+                    height: 26,
                     backgroundColor: item.hex,
                     borderRadius: "50%",
                   }}
