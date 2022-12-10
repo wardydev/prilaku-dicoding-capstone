@@ -9,7 +9,7 @@ const Navigation = ({ styles }) => {
           <Link href="/home">
               <a>
                 <ion-icon name="calendar-clear-outline"></ion-icon>
-                <span>habit</span>
+                <span>home</span>
               </a>
           </Link>
         </li>
@@ -22,15 +22,15 @@ const Navigation = ({ styles }) => {
           </Link>
         </li>
         <li>
-          <Link href="/article">
+          <Link href="/blog">
               <a>
                 <ion-icon name="albums-outline"></ion-icon>
-                <span>article</span>
+                <span>blog</span>
               </a>
           </Link>
         </li>
         <li>
-          <Link href="/users">
+          <Link href="/user">
               <a>
                 <ion-icon name="person-outline"></ion-icon>
                 <span>User</span>
