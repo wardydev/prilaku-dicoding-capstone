@@ -69,12 +69,16 @@ const Footer = () => {
               <ul className={styles["list-content"]}>
                 <li>
                   <Link href="/about">
-                    About Us
+                    <a style={{ textDecoration: "none", color: "#3c4043" }}>
+                      About Us
+                    </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/blog">
-                    Blog
+                    <a style={{ textDecoration: "none", color: "#3c4043" }}>
+                      Blog
+                    </a>
                   </Link>
                 </li>
               </ul>

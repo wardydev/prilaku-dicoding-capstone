@@ -38,6 +38,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="shortcut icon" href="/favicon.png" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icon-192x192.png"></link>
+        <meta name="dicoding:email" content="arialghifari99@gmail.com" />
         <title>Prilaku — Managing habits made easy</title>
       </Head>
       <AuthProvider>

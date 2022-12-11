@@ -22,7 +22,11 @@ const HomeHeader = () => {
 
   return (
     <div className="landing__header py-4 d-flex align-items-center justify-content-between">
-      <Logo />
+      <Link href="/">
+        <a>
+          <Logo />
+        </a>
+      </Link>
       <div
         className="hamburgerBtn"
         aria-label="open navigation drawer"
