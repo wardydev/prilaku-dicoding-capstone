@@ -8,6 +8,7 @@ import NavbarTop from "../NavbarTop";
 import Logo from "../Logo";
 import Footer from "../Footer";
 import UserLoginProfile from "../UserLoginProfile";
+import Link from "next/link";
 
 const Layout = ({ children, navbarTopContent }) => {
   return (
@@ -15,16 +16,16 @@ const Layout = ({ children, navbarTopContent }) => {
       <NavbarLeftBottom />
       <NavbarTop>
         <div className={styles["logo"]}>
-          <Logo />
-          <span>Prilaku</span>
+          <Link href="/">
+            <a className="d-flex align-items-center gap-2" style={{ textDecoration: "none", color: "#3c4043" }}>
+              <Logo width="35" />
+              <span>Prilaku</span>
+            </a>
+          </Link>
         </div>
-        {
-          navbarTopContent
-        }
+        {navbarTopContent}
       </NavbarTop>
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
       <Footer />
     </section>
   );
